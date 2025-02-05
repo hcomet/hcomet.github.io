@@ -1,0 +1,16 @@
+{
+    "name": "cydWeeWX for CYD2USB",
+    "version": "1.0.0",
+    "new_install_prompt_erase": true,
+    "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        { "path": "../firmware/cydWeeWX.ino.bootloader.bin", "offset": 4096 },
+        { "path": "../firmware/cydWeeWX.ino.partitions.bin", "offset": 32768 },
+        { "path": "../firmware/boot_app0.bin", "offset": 57344 },
+        { "path": "../firmware/cydWeeWX_cyd2usb.ino.bin", "offset": 65536 }
+      ]
+    }
+  ]
+}

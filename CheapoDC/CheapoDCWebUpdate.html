@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light" />
+  <meta name="description" content="Information about CheapoDC Web Update using HTTP OTA" />
+  <title>CheapoDC Web Update</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+</head>
+
+<body class="d-flex flex-column h-100">
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #474c88;">
+        <div class="container-md">
+            <div class="navbar-brand">
+                <a target="_blank" href="https://github.com/hcomet/CheapoDC/">
+                    <img src="../images/cheapo.png" alt="CheapoDC Logo" class="mx-auto float-end"></a>
+            </div>
+
+            <span class="navbar-text fs-4 fw-medium">CheapoDC Web OTA Update
+            </span>
+        </div>
+    </nav>
+</header>
+    <main class="h-80 overflow-y-auto">
+      <div class="container-md fs-5 fw-medium">
+        <h2 class="mt-4">What is Web OTA Update?</h2>
+        <p>CheapoDC supports an HTTP-based Over-the-Air (OTA) firmware update mechanism that leverages the <a
+            href="https://github.com/chrisjoyce911/esp32FOTA"
+            class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+            target="_blank">esp32FOTA</a> library from Chris Joyce. Web OTA Update is available in CheapDC as of firmware
+          V2.2.0.
+          Notification of an available update is shown in the CheapoDC Web UI on the <a
+            class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+            href="https://github.com/hcomet/CheapoDC#cheapodc-device-management" target="_blank">Device Management</a>
+          page. Web OTA Update will
+          update both the ESP32 firmware and data partitions while preserving your CheapoDC configuration.</p>
+        <h2>Web OTA Update Steps</h2>
+        <ol>
+          <li>Backup your CheapoDC configuration files. Use the File Management page to download the CDCConfig.json
+            and
+            CDCWifi.json files just
+            in case there is a problem and you need to recover them.</li>
+          </li>
+          <li>Go to Web OTA Update on the Device Management page. If a new release of CheapoDC firmware is available then the new
+            release version will be displayed.</li>
+          <li>To start the update process enter your CheapoDC password in the password field then click the Update button.</li>
+          <li>Information about the progress of the update will be displayed in the Update Progress section above the Web OTA Update
+            section.
+          </li>
+          <li>Once the update is successfully completed, the ChepoDC will automatically reboot and the Device Management page should refresh
+            about 5 seconds after the reboot message is displayed.
+          </li>
+        </ol>
+        <h2>Web OTA Update FAQ</h2>
+        <div class="accordion fs-4 fw-normal mt-3" id="accordion1">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                <span class="fs-5 fw-medium">How do I know if an update is available?</span>
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                The CheapoDC Web UI will display a notification on the Device Management page in the <a
+                  href="https://github.com/hcomet/CheapoDC#firmware-update">
+                  Firmware Update</a> section.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseThree">
+                <span class="fs-5 fw-medium">How do I update my CheapoDC?</span>
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                Before doing the update remember to backup your configuration files. Enter your CheapoDC password and
+                then
+                click the
+                "Update" button on under Web OTA Update to start the update process.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+                <span class="fs-5 fw-medium">Will my configuration be preserved?</span>
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                Yes, your configuration will be preserved during the update process. The first step of the update
+                process
+                is to backup both
+                configuration files to CheapoDC memory. Then the files will be restored after the updated data
+                partition
+                is written. However, you should backup your
+                configuration files before doing an update just in case there is a problem.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                <span class="fs-5 fw-medium">How long does the update take?</span>
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                The update process should only take a couple minutes to complete. Progress will be displayed in the
+                Update
+                Progress section.
+                The update steps are to:
+                <ol>
+                  <li>backup the configuration files,</li>
+                  <li>update the data partition,</li>
+                  <li>restore the configuration files to the updated data partition,</li>
+                  <li>update the firmware
+                    partition,</li>
+                  <li>then reboot the CheapoDC.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                <span class="fs-5 fw-medium">What happens if the update fails?</span>
+              </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                An error will be displayed in the Update Progress section if any of the update steps fail. The ESP32
+                is
+                well designed for OTA
+                firmware updates with dual firmware partitions protecting against firmware corruption during OTA
+                updates.
+                Unfortunately the data
+                partition is not similarly protected. If your Web OTA Update fails, note the error message then reboot
+                the
+                CheapoDC. You should
+                be able to try the update again using the Web UI. If you cannot connect to the Web UI after reboot
+                then
+                the data partition may
+                be corrupt. Use the <a href="">WebFlash</a> tool to re-Flash your CheapoDC to a fresh state. Then
+                restore
+                the configuration files
+                you downloaded before doing the Web OTA Update. Use File Upload on the Web UI File Management page.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSix">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
+                <span class="fs-5 fw-medium">Can I update to a previous version?</span>
+              </button>
+            </h2>
+            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                With the Web OTA Update you can only update to the latest version available. If you want to update to
+                a
+                previous version you
+                will need to download the previous release from GitHub and then build and install it with the Arduino
+                IDE.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSeven">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseThree">
+                <span class="fs-5 fw-medium">Is it secure?</span>
+              </button>
+            </h2>
+            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                The firmware and data partition images are stored on GitHub and downloaded using authenticated HTTPS. The
+                security is at least on par with downloading the source from GitHub and building the firmware yourself.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer mt-4 py-3" data-bs-theme="dark" style="background-color: #474c88;">
+      <div class="container-md mx-auto">
+        <span class=" text-white">CheapoDC by <a href="https://github.com/hcomet" class="link-light">hcomet</a> &copy; 2025</a>.</span>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" data-bs-theme="auto">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light" />
+    <meta name="description" content="CheapoDC WebFlash Utility" />
+    <title>CheapoDC WebFlash</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #474c88;">
+            <div class="container-md">
+                <div class="navbar-brand">
+                    <a target="_blank" href="https://github.com/hcomet/CheapoDC/">
+                        <img src="../images/cheapo.png" alt="CheapoDC Logo" class="mx-auto float-end"></a>
+                </div>
+
+                <span class="navbar-text fs-4 fw-medium">CheapoDC WebFlash
+                </span>
+            </div>
+        </nav>
+    </header>
+    <main class="h-80 overflow-y-auto">
+        <div class="container-md fs-5 fw-medium">
+            <h1 class="pt-3">WebFlash Installer</h1>
+            <div class="fw-medium fs-5 text-start mt-4">
+                <p>This WebFlash installer is for the Cheapo Dew Controller (CheapoDC). For the latest
+                    information about CheapoDC,
+                    as well as how to configure the device, see the <a href="https://github.com/hcomet/CheapoDC"
+                        class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                        target="_blank">CheapoDC GitHub repository</a>.
+                </p>
+                <p>CheapoDC was developed for the <a
+                        href="https://michiel.vanderwulp.be/domotica/Modules/ESP32-C3-SuperMini/"
+                        class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                        target="_blank">ESP32-C3 SuperMini</a> and this installer will only work for ESP32-C3 based
+                    modules. WebFlash will erase
+                    all flash memory on your device then do a full install to both the firmware and data partitions. If
+                    upgrading a device, make
+                    sure you backup your <strong>CDCWiFi.json</strong> and <strong>CDCConfig.json</strong> configuration
+                    files before flashing
+                    your CheapoDC.</p>
+                <p>Connect your ESP32 to your computer via USB to use WebFlash. Make sure that
+                    no other programs are connected to the same port for your device. Once the
+                    WebFlash is complete goto
+                    <a href="https://github.com/hcomet/CheapoDC/tree/main/CheapoDC#first-time-device-configuration"
+                        class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                        target="_blank">First Time Device Configuration</a> to setup your CheapoDC.
+                </p>
+            </div>
+        </div>
+        <div class="container mb-5 pb-5">
+            <div class="container position-relative mx-a pb-5">
+                <div>
+                    <p class="position-absolute top-0 start-50 translate-middle-x">Click <strong>Connect</strong> to start WebFlash
+                    </p>
+                </div>
+                <div>
+                    <span class="position-absolute top-50 start-50 translate-middle-x">
+                        <esp-web-install-button>
+                            <button type="button" class="btn btn-primary mt-3" slot="activate">Connect</button>
+                        </esp-web-install-button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="text-center footer py-3" data-bs-theme="dark" style="background-color: #474c88;">
+        <div class="container-md mx-auto">
+            <span class="text-white">CheapoDC by <a href="https://github.com/hcomet" class="link-light">hcomet</a>
+                &copy; 2025</a>. - WebFlash powered by <a href="https://esphome.github.io/esp-web-tools/" class="link-light">ESP Web Tools</a></span>
+        </div>
+    </footer>
+    <script>window.onload = function () { document.querySelector('esp-web-install-button').manifest = `./webFlashManifest.json`; };</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

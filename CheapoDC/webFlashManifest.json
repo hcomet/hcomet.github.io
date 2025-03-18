@@ -1,0 +1,16 @@
+{
+    "name": "CheapoDC",
+    "version": "2.2.0",
+    "builds": [
+    {
+      "chipFamily": "ESP32-C3",
+      "parts": [
+        { "path": "./firmware/CheapoDCv2.2.0/CheapoDC.ESP32-C3.bootloader.bin", "offset": 0 },
+        { "path": "./firmware/CheapoDCv2.2.0/CheapoDC.ESP32-C3.partitions.bin", "offset": 32768 },
+        { "path": "./firmware/CheapoDCv2.2.0/boot_app0.bin", "offset": 57344 },
+        { "path": "./firmware/CheapoDCv2.2.0/CheapoDC.ESP32-C3.bin", "offset": 65536 },
+        { "path": "./firmware/CheapoDCv2.2.0/CheapoDC.littlefs.bin", "offset": 3997696 }
+      ]
+    }
+  ]
+}

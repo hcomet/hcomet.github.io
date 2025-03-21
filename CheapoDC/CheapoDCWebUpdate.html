@@ -7,6 +7,7 @@
   <meta name="color-scheme" content="dark light" />
   <meta name="description" content="Information about CheapoDC Web Update using HTTP OTA" />
   <title>CheapoDC Web Update</title>
+  <link rel="icon" type="image/png" href="../images/favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -34,7 +35,7 @@
             href="https://github.com/chrisjoyce911/esp32FOTA"
             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
             target="_blank">esp32FOTA</a> library from Chris Joyce. Web OTA Update is available in CheapDC as of firmware
-          V2.2.0.
+          version <mark>2.2.0</mark>.
           Notification of an available update is shown in the CheapoDC Web UI on the <a
             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
             href="https://github.com/hcomet/CheapoDC#cheapodc-device-management" target="_blank">Device Management</a>
@@ -58,32 +59,32 @@
           </li>
         </ol>
         <h2>Web OTA Update FAQ</h2>
-        <div class="accordion fs-4 fw-normal mt-3" id="accordion1">
+        <div class="accordion fs-4 fw-normal mt-3" id="accordionFAQ">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                aria-expanded="true" aria-controls="collapseOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="false" aria-controls="collapseOne">
                 <span class="fs-5 fw-medium">How do I know if an update is available?</span>
               </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-              data-bs-parent="#accordionExample">
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+              data-bs-parent="#accordionFAQ">
               <div class="accordion-body">
-                The CheapoDC Web UI will display a notification on the Device Management page in the <a
-                  href="https://github.com/hcomet/CheapoDC#firmware-update">
-                  Firmware Update</a> section.
+                CheapoDC will check for the availability of a new release of firmware when it boots up. 
+                If a new release is available then a notification will be shown in the Web UI on the Device Management 
+                page in the <a href="https://github.com/hcomet/CheapoDC#firmware-update">Firmware Update</a> section.
               </div>
             </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingTwo">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseThree">
+                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 <span class="fs-5 fw-medium">How do I update my CheapoDC?</span>
               </button>
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-              data-bs-parent="#accordionExample">
+              data-bs-parent="#accordionFAQ">
               <div class="accordion-body">
                 Before doing the update remember to backup your configuration files. Enter your CheapoDC password and
                 then
@@ -95,12 +96,12 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingThree">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 <span class="fs-5 fw-medium">Will my configuration be preserved?</span>
               </button>
             </h2>
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-              data-bs-parent="#accordionExample">
+              data-bs-parent="#accordionFAQ">
               <div class="accordion-body">
                 Yes, your configuration will be preserved during the update process. The first step of the update
                 process
@@ -120,7 +121,7 @@
               </button>
             </h2>
             <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-              data-bs-parent="#accordionExample">
+              data-bs-parent="#accordionFAQ">
               <div class="accordion-body">
                 The update process should only take a couple minutes to complete. Progress will be displayed in the
                 Update
@@ -145,7 +146,7 @@
               </button>
             </h2>
             <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-              data-bs-parent="#accordionExample">
+              data-bs-parent="#accordionFAQ">
               <div class="accordion-body">
                 An error will be displayed in the Update Progress section if any of the update steps fail. The ESP32
                 is
@@ -174,7 +175,7 @@
               </button>
             </h2>
             <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
-              data-bs-parent="#accordionExample">
+              data-bs-parent="#accordionFAQ">
               <div class="accordion-body">
                 With the Web OTA Update you can only update to the latest version available. If you want to update to
                 a
@@ -192,7 +193,7 @@
               </button>
             </h2>
             <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
-              data-bs-parent="#accordionExample">
+              data-bs-parent="#accordionFAQ">
               <div class="accordion-body">
                 The firmware and data partition images are stored on GitHub and downloaded using authenticated HTTPS. The
                 security is at least on par with downloading the source from GitHub and building the firmware yourself.

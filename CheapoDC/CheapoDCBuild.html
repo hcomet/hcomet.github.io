@@ -16,7 +16,7 @@
 
 <body class="d-flex flex-column h-100">
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #474c88;">
+        <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #484e89;">
             <div class="container-md">
                 <div class="navbar-brand">
                     <a target="_blank" href="https://github.com/hcomet/CheapoDC/">
@@ -30,11 +30,290 @@
     </header>
     <main class="h-80 overflow-y-auto">
         <div class="container-md fs-5 fw-medium">
-            <h1 class="pt-3">Six Output Device Example Build</h1>
+            <h1 class="pt-3">Six Output CheapoDC Build</h1>
             <div class="fw-medium fs-5 text-start mt-4">
-                <p>Coming soon.</p>
-                
+                <div class="text-center">
+                    <img src="/images/CheapoDC-6.png" alt="CheapoDC 6 Output"
+                        class="img-fluid mx-auto border border-dark border-2">
+                </div>
+                <p>The image above shows the front and back sides of a demo/test version of the CheapoDC with six
+                    outputs configured. A few
+                    points to consider for this build:
+                <ul>
+                    <li>This 6 output device was built for testing and demonstration purposes, not to be used on an
+                        actual
+                        astrophotography rig and as such affected some aspects of the design.
+                    </li>
+                    <li>Because of the first point, there is an LED for each output to help with testing. In general,
+                        having a lot of flashing red LEDs on an astrophotography rig is not a good idea. Only the status
+                        LED
+                        should be needed on a 'production' CheapoDC.
+                    </li>
+                    <li>This design supports the maximum six outputs supported by CheapoDC firmware. Four outputs have
+                        RCA sockets,
+                        commonly used for dew straps, and two outputs have 5.5mm X 2.1mm 12 volt sockets. This can be
+                        built and
+                        The number of outputs and balance of RCA versus 5.5X2.1 sockets can be configured based on
+                        personal need.
+                        For my personal CheapoDC devices, I use devices designed with two RCA outputs. I only have to
+                        control two
+                        dew straps on my rigs. The basics of these builds are shown on the main
+                        <a href="https://github.com/hcomet/CheapoDC#basic-wiring-diagram"
+                            class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            target="_blank">CheapoDC repository page</a>.
+                    </li>
+                    <li>The CheapoDC firmware will support from one to six outputs. The first two are assumed to be dew
+                        controller outputs but the
+                        additional four may be configured as dew controller, PWM or boolean (on/off) outputs.
+                    </li>
+                </ul>
+                </p>
+                <h2>Parts Required</h2>
+                <p>An AliExpress link is provided for most parts. This is for reference and not necessarily a
+                    recommendation to purchase
+                    from the link.
+                </p>
+                <div class="clearfix">
+                    <div class="col-md-6 float-md-end mb-3 ms-md-3 ps-2">
+                        <img src="/images/CheapoDC-6-parts.png" alt="CheapoDC 6 Output"
+                            class="img-fluid mx-auto border border-dark border-2">
+                    </div>
+                    <h4>Parts List</h4>
+
+                    <ul>
+                        <li>6 - <a href="https://www.aliexpress.com/item/1005006478302624.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">Dual MOSFET modules</a>, one per output. Cost: US$7.00</li>
+                        <li>1 - <a href="https://www.aliexpress.com/item/1005007500404686.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">LM2596 buck converter module</a>, to reduce 12 volts to 5 volts. Cost:
+                            US$1.75</li>
+                        <li>1 - <a href="https://www.aliexpress.com/item/1005007560784307.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">ESP32-C3 SuperMini module</a>. This will often come with the pin headers
+                            separate which will need to
+                            be soldered to the module. Cost: US$3.25
+                        </li>
+                        <li>3 - <a href="https://www.aliexpress.com/item/32799292477.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">12VDC 5.5mm x 2.1mm sockets</a>. One for 12 volt in and two for outputs.
+                            Cost: US$2.00</li>
+                        <li>4 - <a href="https://www.aliexpress.com/item/1005006635645522.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">RCA sockets</a>. One for each dew strap output. Cost: US$3.00</li>
+                        <li>1 - <a href="https://www.aliexpress.com/item/1005006365905448.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">SPST Switch</a>. Note that this switch has an integrated status LED
+                            which uses the third
+                            connector as a ground for the LED. An extra 2N2222 transistor and resistor is required to
+                            switch
+                            this LED from the ESP32-C3. These are described below with the power board. Cost: US$4.75
+                        </li>
+                        <li>Some <a href="https://www.aliexpress.com/item/1005007528068254.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">2.54mm pin male header strips</a> which will be used for the small
+                            ESP32-C3 board. Cost: US$1.75</li>
+                        <li>2 - <a href="https://www.aliexpress.com/item/4000696234162.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">2.54mm by 8 pin female headers</a>. Used for the small ESP32-C3 board. I
+                            used the cheaper 40 pin
+                            female headers (link above) and cut them down to size. Cost: US$1.75</li>
+                        <li>2 - <a href="https://www.aliexpress.com/item/1005005586939219.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">5 amp PPTC resettable fuses</a>. Output loads and ESP32-C3 load will be
+                            split across
+                            them. Cost: US$2.00</li>
+                        <li>6 - <a href="https://www.aliexpress.com/item/1005006526203359.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">12VDC Red LEDs</a>. One for each output. Cost: US$2.00</li>
+                        <li>Some <a href="https://www.aliexpress.com/item/1005005819162727.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">protoboard</a> or perfboard. To be used for the small ESP32-C3 board and
+                            the power
+                            board. A single 6cm X 8cm piece should be enough. Cost: US$1.00</li>
+                    </ul>
+
+                </div>
+                <h4>Additional Items</h4>
+                <ul>
+                    <li>Several different connectors are used to make the wiring easier. These include <a
+                            href="https://www.aliexpress.com/item/4001129080280.html"
+                            class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            target="_blank">dupont connectors</a>,
+                        <a href="https://www.aliexpress.com/item/32782704195.html"
+                            class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            target="_blank">Molex KK-254 connectors</a> and <a
+                            href="https://www.aliexpress.com/item/1005007558623950.html"
+                            class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            target="_blank">screw terminal connectors</a>. Many of these can be replaced with direct
+                        soldering
+                        of the wires.
+                    </li>
+                    <li>Silicone wire. Silicone wire is very flexible and much easier to work with in the small confines
+                        of the case used for
+                        this project. You will need to pick the gauge of wire used base on your application and expected
+                        current handling. My
+                        dew straps are 15 to 18 watts or 1.25 to 1.5 amps at 12 volts. Current ratings shown below.
+                    </li>
+                    <li>An assortment of screws are required to attach the different modules to the 3D printed case.
+                    </li>
+                    <li>The 3D printed case.</li>
+                </ul>
+
+                <h3>Silicone Wire Current Ratings</h3>
+                <table class="table table-striped border border-dark border-2">
+                    <thead>
+                        <tr>
+                            <th scope="col">Wire Gauge</th>
+                            <th scope="col">Current Rating</th>
+                            <th scope="col">Used For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">16 AWG</th>
+                            <td>10 Amp</td>
+                            <td>Main power input.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">18 AWG</th>
+                            <td>6 Amp</td>
+                            <td>MOSFET power bus. 5 amp fuses.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">22 AWG</th>
+                            <td>3 Amp</td>
+                            <td>MOSFET to Output socket connections.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">28 AWG</th>
+                            <td>0.8 Amp</td>
+                            <td>GPIO signal connections.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Costing is just an estimate but there's roughly US$30.00 in core parts and then allowing another
+                    US$20.00 for
+                    the additional items puts the cost for a 6 output controller at about US$50.00. As I mentioned above
+                    I use two
+                    output controllers for my three rigs. They were less than US$20.00 each.</p>
+                <h2>Protoboards</h2>
+                <p>There are two small subassemblies that are with protoboard to make the final assembly easier. A
+                    single piece of
+                    protoboard may be cut down using a hobby knife to create the two pieces needed for the ESP32-C3
+                    board and the Power
+                    board.
+                </p>
+
+                <div class="row align-items-center">
+                    <div class="col text-center">
+                        <div class="border border-dark border-2">
+                            <img src="/images/esp32-c3-board.png" alt="ESP32-C3 Board" class="img-fluid mx-auto">
+                            <img src="/images/esp32-c3-board-schematic.png" alt="ESP32-C3 Board"
+                                class="img-fluid mx-auto">
+                            <hr class="opacity-100 mt-0">
+                            <h4>ESP32-C3 Board</h4>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="border border-dark border-2">
+                            <img src="/images/power-board.png" alt="ESP32-C3 Board" class="img-fluid mx-auto">
+                            <img src="/images/power-board-schematic.png" alt="ESP32-C3 Board" class="img-fluid mx-auto">
+                            <hr class="opacity-100 mt-0">
+                            <h4>Power Board</h4>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-5">The ESP32-C3 board provides a socket for the ESP32-C3 SuperMini module and the
+                    connections to the
+                    GPIO pins. This piece of protoboard is 30 mm wide by 25 mm deep. Two 8 pin female 2.54mm pin headers
+                    and four 8 pin male 2.54mm pin headers are required. They may be made by cutting down longer 40 pin
+                    headers with a hobby knife. The connections are shown in the schematic and are made by soldering
+                    wire from pin to
+                    pin on the underside of the protoboard. Placing the ESP32-C3 in a socketed mount allows for easy
+                    removal of the
+                    if required. Next to each socketed pin is a male pin for the corresponding ESP32-C3 pin plus a
+                    ground pin. This
+                    allows for the use of 2 socket Dupont connectors for the GPIO pins used to control the MOSFET
+                    modules
+                    and the status LED.
+                </p>
+                <p>The Power board privdes a place to connect the input power to the two resettable fuses and then to
+                    the two MOSFET
+                    power lines. It also has the 2N2222 transitor used to switch the LED light in the power switch. This
+                    piece of protoboard
+                    is 27 mm wide by 32 mm deep. The screw connector blocks, J1 and J2, have 5.04 spaced pins. J3 is a 2
+                    pin male 2.54mm
+                    header while J4 is a 2 pin Molex KK-254 male socket.
+                </p>
+
+                <h2>The Case</h2>
+                <div class="clearfix">
+                    <div class="col-md-6 float-md-end mb-3 ms-md-3 ps-2">
+                        <img src="/images/cheapodc-case.png" alt="CheapoDC Case"
+                            class="img-fluid mx-auto border border-dark border-2">
+                    </div>
+                    <p>There is a four piece 3D printed case for this project. The more text more text more text more text 
+                        more text more text more text more text more text more text more text more text more text more text 
+                    </p>
+                </div>
+                <div class="row align-items-start">
+                    <div class="col text-center">
+                        <div class="border border-dark border-2">
+                            <img src="/images/case-bottom.png" alt="ESP32-C3 Board" class="img-fluid mx-auto">
+                            <hr class="opacity-100 mt-0">
+                            <h4>Case Bottom</h4>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="border border-dark border-2">
+                            <img src="/images/case-bottom-populated.png" alt="ESP32-C3 Board" class="img-fluid mx-auto">
+                            <hr class="opacity-100 mt-0">
+                            <h4>Case Bottom - Modules Installed</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <p>The ESP32-C3 board provides a socket for the ESP32-C3 SuperMini module and the connections to the
+                    GPIO pins. The connections are shown in the schematic and are made by soldering wire from pint to
+                    pin on the underside of the protoboard. The GPIO pins are used to control the MOSFET modules
+                    and the status LED and will be connected using 2 socket Dupont connectors.
+                </p>
+                <div class="row align-items-start">
+                    <div class="col text-center ">
+                        <div class="border border-dark border-2">
+                            <img src="/images/case-bottom-power.png" alt="ESP32-C3 Board" class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0">
+                            <h4>Power Distribution</h4>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="border border-dark border-2">
+                            <img src="/images/case-bottom-control.png?11" alt="ESP32-C3 Board"
+                                class="img-fluid mx-auto">
+                            <hr class="opacity-100 mt-0">
+                            <h4>Control Distribution</h4>
+                        </div>
+                    </div>
+                </div>
+                <p>Some text.</p>
+                <div class="row align-items-start">
+                    <div class="col text-center ">
+                        <div class="border border-dark border-2">
+                            <img src="/images/case-bottom-wiring.png" alt="ESP32-C3 Board" class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0">
+                            <h4>Wiring Complete</h4>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p>Some text</p>
+                    </div>
+                </div>
+
             </div>
+        </div>
+
+        </div>
         </div>
     </main>
 
@@ -44,12 +323,13 @@
                 &copy; 2025</a>.</span>
         </div>
     </footer>
-    
-  
-  
+
+
+
     <script>window.onload = function () { document.querySelector('esp-web-install-button').manifest = `./webFlashManifest.json`; };</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -7,313 +7,1781 @@
     <meta name="color-scheme" content="dark light" />
     <meta name="description" content="CheapoDC Device Build" />
     <title>CheapoDC Device Build</title>
-    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="icon" type="image/png" href="../images/favicon.png?11">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .custom-popover {
+            --bs-popover-max-width: 430px;
+            --bs-popover-border-color: #484e89;
+            --bs-popover-header-bg: #484e89;
+            --bs-popover-header-color: var(--bs-white);
+            --bs-popover-body-padding-x: 1rem;
+            --bs-popover-body-padding-y: .5rem;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <style type="text/css" media="print">
+        @media print {
+            html {
+                font-size: 8pt;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+            }
+        }
+
+        @page {
+            -webkit-print-color-adjust: exact;
+        }
+    </style>
 </head>
 
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100 d-print-inline">
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #484e89;">
+        <nav class="navbar navbar-expand navbar-dark d-print-block" style="background-color: #484e89;">
             <div class="container-md">
                 <div class="navbar-brand">
                     <a target="_blank" href="https://github.com/hcomet/CheapoDC/">
-                        <img src="../images/cheapo.png" alt="CheapoDC Logo" class="mx-auto float-end"></a>
+                        <img src="../images/cheapo.png?11" alt="CheapoDC Logo" class="mx-auto float-end"></a>
                 </div>
-
-                <span class="navbar-text fs-4 fw-medium">CheapoDC Device Build
-                </span>
+                <ul class="navbar-nav">
+                    <li class="nav-item  mb-0 mt-1 d-none d-sm-block">
+                        <span class="navbar-text fs-4 fw-medium">CheapoDC Device Build
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-item dropdown  d-print-none">
+                            <a class="nav-link fs-3 fw-medium pt-0 mt-0" data-bs-toggle="dropdown" href="#"
+                                role="button" aria-expanded="false"><i class="bi bi-list"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li class="d-none d-sm-block">
+                                    <span class="dropdown-header fs-4 fw-medium">Contents</span>
+                                </li>
+                                <li class="d-sm-none">
+                                    <span class="dropdown-header fs-4 fw-medium">CheapoDC Device Build</span>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#introducing-cheapodc">Introducing CheapoDC</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#example-builds">CheapoDC Example Builds</a></li>
+                                <ul style="list-style-type: none;">
+                                    <li><a class="dropdown-item" href="#parts-list">Parts List</a></li>
+                                    <li><a class="dropdown-item" href="#addtional-items">Additional Items</a></li>
+                                    <li><a class="dropdown-item" href="#cost">Cost</a></li>
+                                    <li><a class="dropdown-item" href="#3d-printed-cases">3D-printed Cases</a></li>
+                                </ul>
+                                <li><a class="dropdown-item" href="#3-output-build">3-Output Build</a></li>
+                                <ul style="list-style-type: none;">
+                                    <li><a class="dropdown-item" href="#3-output-assembly">Assembly</a></li>
+                                </ul>
+                                <li><a class="dropdown-item" href="#6-output-build">6-Output Build</a></li>
+                                <ul style="list-style-type: none;">
+                                    <li><a class="dropdown-item" href="#6-output-protoboards">Protoboards</a></li>
+                                    <li><a class="dropdown-item" href="#6-output-assembly">Assembly</a></li>
+                                </ul>
+                                <li><a class="dropdown-item" href="#hardware-verification">Hardware Verification</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#reporting-issues">Reporting Issues</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#top-of-page">Top of Page</a></li>
+                            </ul>
+                        </span>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
     <main class="h-80 overflow-y-auto">
-        <div class="container-md fs-5 fw-medium">
-            <h1 class="pt-3">Six Output CheapoDC Build</h1>
-            <div class="fw-medium fs-5 text-start mt-4">
-                <div class="text-center">
-                    <img src="/images/CheapoDC-6.png" alt="CheapoDC 6 Output"
-                        class="img-fluid mx-auto border border-dark border-2">
-                </div>
-                <p>The image above shows the front and back sides of a demo/test version of the CheapoDC with six
-                    outputs configured. A few
-                    points to consider for this build:
+        <div class="container-md fs-4 fw-normal lh-sm">
+            <br id="top-of-page">
+            <div class="text-center">
+                <img src="/images/cheapodc-builds.png?11" alt="CheapoDC 6 Output"
+                    class="img-fluid mx-auto border border-dark border-2">
+            </div>
+            <h1 class="mt-5" id="introducing-cheapodc">Introducing CheapoDC</h1>
+            <span class="fs-4 fw-normal">
+                <p>The Cheapo Dew Controller, or CheapoDC, is a DIY astrophotography dew controller with the goal of
+                    being cheap, simple and easy to both build and use with:
                 <ul>
-                    <li>This 6 output device was built for testing and demonstration purposes, not to be used on an
-                        actual
-                        astrophotography rig and as such affected some aspects of the design.
-                    </li>
-                    <li>Because of the first point, there is an LED for each output to help with testing. In general,
-                        having a lot of flashing red LEDs on an astrophotography rig is not a good idea. Only the status
-                        LED
-                        should be needed on a 'production' CheapoDC.
-                    </li>
-                    <li>This design supports the maximum six outputs supported by CheapoDC firmware. Four outputs have
-                        RCA sockets,
-                        commonly used for dew straps, and two outputs have 5.5mm X 2.1mm 12 volt sockets. This can be
-                        built and
-                        The number of outputs and balance of RCA versus 5.5X2.1 sockets can be configured based on
-                        personal need.
-                        For my personal CheapoDC devices, I use devices designed with two RCA outputs. I only have to
-                        control two
-                        dew straps on my rigs. The basics of these builds are shown on the main
-                        <a href="https://github.com/hcomet/CheapoDC#basic-wiring-diagram"
+                    <li>Low cost off the shelf components including an ESP32-C3 SuperMini, ESP32-C3 SuperMini expansion board,
+                        a dual MOSFET module for each output and a 12V to 5V buck converter, plus some protoboard, RCA jacks, 12V barrel
+                        jacks and wire.</li>
+                    <li>No coding or Arduino IDE experience necessary with both <a href="/CheapoDC/CheapoDCFlash.html"
                             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                            target="_blank">CheapoDC repository page</a>.
+                            target="_blank">WebFlash</a> and <a href="/CheapoDC/CheapoDCWebUpdate.html"
+                            class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            target="_blank">Web OTA Update</a> support.</li>
+                    <li>Comprehensive Web UI for configuration of dew controller operation and management of the device
+                        setup.</li>
+                    <li>Flexibility to support from two to six power outputs, four of which may be used as additional
+                        dew
+                        controller outputs or independently configured and controlled as PWM or On/Off outputs.</li>
+                    <li><a href="/CheapoDC/indi/CheapoDC.html"
+                            class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            target="_blank">INDI</a> and StellarMate support 'out-of-the-box' and an open API for any
+                        third
+                        party integrations.
                     </li>
-                    <li>The CheapoDC firmware will support from one to six outputs. The first two are assumed to be dew
-                        controller outputs but the
-                        additional four may be configured as dew controller, PWM or boolean (on/off) outputs.
-                    </li>
+                    <li>Build cost of US$30.00 to US$50.00 depending on the number outputs.</li>
                 </ul>
+                <p>
+                    The <a href="https://github.com/hcomet/CheapoDC"
+                        class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                        target="_blank">CheapoDC repository page</a> contains the firmware, dew controller algorithm,
+                    Web UI and API details. Any issues or questions can also be raised there.
                 </p>
-                <h2>Parts Required</h2>
-                <p>An AliExpress link is provided for most parts. This is for reference and not necessarily a
-                    recommendation to purchase
-                    from the link.
+            </span>
+            <h1 id="example-builds" class="pt-3">CheapoDC Example Builds</h1>
+            <span class="fs-4 fw-normal">
+                <p>The ease of building the CheapoDC is dependent on the number of controller outputs. Each
+                    output requires a MOSFET module and each module requires six connections. Two connections for 12
+                    volt power input, two for the controlled power output and then two connections to the ESP32-C3 to
+                    trigger the MOSFETs. This means that a minimal two output controller requires a dozen connections
+                    and wires for the outputs. Fairly easy and manageable. A controller with the maximum six outputs
+                    requires three dozen connections and wires for the outputs. Not particularly complex, but fitting all those
+                    wires in a small case can be a lot less easy and manageable.</p>
+                <p>I use devices with two RCA outputs since I only have need to control two dew straps on
+                    my rigs. The basics of the original CheapoDC 2-Output build is shown on the main
+                    <a href="https://github.com/hcomet/CheapoDC#basic-wiring-diagram"
+                        class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                        target="_blank">CheapoDC repository page</a>. However, many astrophotographers require more than two
+                        dew controller outputs and would also like the option to control other accessories.
                 </p>
-                <div class="clearfix">
-                    <div class="col-md-6 float-md-end mb-3 ms-md-3 ps-2">
-                        <img src="/images/CheapoDC-6-parts.png" alt="CheapoDC 6 Output"
-                            class="img-fluid mx-auto border border-dark border-2">
-                    </div>
-                    <h4>Parts List</h4>
+                <p>
+                    This document provides details, including parts list, assembly steps and 3D case, for building a 3&#8209;Output CheapoDC and a 6&#8209;Output CheapoDC.
+                Control of three outputs should cover almost all situations where dew heater straps are required while continuing
+                    to be very easy to build. Six outputs provides the flexibility to control several dew heater straps as well as
+                    some 12V accessories such as a camera cooler. 
+                </p>
+            </span>
+            <h2 id="parts-list">Parts List</h2>
+            <span class="fs-4 fw-normal">
+                <p>The following table lists the parts used in the builds and the number of each item required for each
+                    build
+                    version. The <span class="text-info">Item Names</span>
+                    support popovers with images of the item. The <span class="text-primary">Item Costs</span> provide
+                    links
+                    to examples on AliExpress. The links are for reference purposes and not an endorsement to purchase
+                    from
+                    the link.
+                </p>
+            </span>
+            <a href="/files/cheapodc-parts-list.csv" download data-bs-toggle="popover" data-bs-container="body"
+                data-bs-trigger="focus hover" data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover d-print-none"
+                data-bs-content="Download parts list CSV file.">
+                <i class="bi bi-download"></i></a>
+            <table class="table table-sm table-striped border border-dark border-2 fs-5">
+                <thead>
+                    <tr>
+                        <th scope="col">Item</th>
+                        <div class="text-end">
+                            <th scope="col">3&#8209;Output Number</th>
+                        </div>
+                        <th scope="col">6&#8209;Output Number</th>
+                        <th scope="col">Item Cost</th>
+                        <th scope="col">Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/esp32-c3.png?11' alt='ESP32-C3 SuperMini' class='mx-auto' width='400px'>">
+                                ESP32-C3 SuperMini</a></th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">1</td>
+                        <td><a href="https://www.aliexpress.com/item/1005007560784307.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">US$3.00</a></td>
+                        <td>Often comes with the pin headers needing to be soldered.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/esp32-c3-xboard.png?11' alt='ESP32-C3 SuperMini Expansion Board' class='mx-auto' width='400px'>">
+                                ESP32-C3 SuperMini Expansion Board</a></th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">0</td>
+                        <td><a href="https://www.aliexpress.com/item/1005007446928015.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">US$3.00</a></td>
+                        <td>Used in 3&#8209;Output build to simplify the build.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/mosfet-module.png?11' alt='Dual MOSFET Module' class='mx-auto' width='400px'>">
+                                Dual MOSFET Module</a></th>
+                        <td class="text-center">3</td>
+                        <td class="text-center">6</td>
+                        <td><a href="https://www.aliexpress.com/item/1005006478302624.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">US$1.00</a></td>
+                        <td>One required per output.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/lm2596.png?11' alt='LM2596 Buck Converter' class='mx-auto' width='400px'>">
+                                LM2596</a></th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">1</td>
+                        <td><a href="https://www.aliexpress.com/item/1005007500404686.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">US$1.50</a></td>
+                        <td>DC to DC buck converter to reduce 12V input to 5V for the ESP32-C3. Needs to be set to
+                            correct output voltage before use.</td>
+                    </tr>
 
-                    <ul>
-                        <li>6 - <a href="https://www.aliexpress.com/item/1005006478302624.html"
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/barrel-jack.png?11' alt='Barrel Jack' class='mx-auto' width='400px'>">
+                                12V Barrel Jack</a></th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">3</td>
+                        <td><a href="https://www.aliexpress.com/item/32799292477.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                target="_blank">Dual MOSFET modules</a>, one per output. Cost: US$7.00</li>
-                        <li>1 - <a href="https://www.aliexpress.com/item/1005007500404686.html"
+                                target="_blank">US$1.00</a></td>
+                        <td>5.5mm x 2.1mm barrel jack. Used to connect 12V power supply to the CheapoDC and for 2
+                            outputs on the 6&#8209;Output version.</td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/rca-jack.png?11' alt='RCA Jack' class='mx-auto' width='400px'>">
+                                RCA Jack</a></th>
+                        <td class="text-center">4</td>
+                        <td class="text-center">4</td>
+                        <td><a href="https://www.aliexpress.com/item/1005006635645522.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                target="_blank">LM2596 buck converter module</a>, to reduce 12 volts to 5 volts. Cost:
-                            US$1.75</li>
-                        <li>1 - <a href="https://www.aliexpress.com/item/1005007560784307.html"
+                                target="_blank">US$1.00</a></td>
+                        <td>Commonly used for dew heater straps. An extra one is used for the 3&#8209;Output build to
+                            make a
+                            test LED.</td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/rocker-switch.png?11' alt='Rocker Switch' class='mx-auto' width='400px'>">
+                                Rocker Switch</a></th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">1</td>
+                        <td><a href="https://www.aliexpress.com/item/1005006365905448.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                target="_blank">ESP32-C3 SuperMini module</a>. This will often come with the pin headers
-                            separate which will need to
-                            be soldered to the module. Cost: US$3.25
-                        </li>
-                        <li>3 - <a href="https://www.aliexpress.com/item/32799292477.html"
+                                target="_blank">US$0.50</a></td>
+                        <td>SPST rocker switch. This one has an LED integrated into the switch which will be used in the
+                            6-Outlet build.</td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/pptc.png?11' alt='RUEF500' class='mx-auto' width='400px'>">
+                                RUEF500 PPTC</a></th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">2</td>
+                        <td><a href="https://www.aliexpress.com/item/1005005586939219.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                target="_blank">12VDC 5.5mm x 2.1mm sockets</a>. One for 12 volt in and two for outputs.
-                            Cost: US$2.00</li>
-                        <li>4 - <a href="https://www.aliexpress.com/item/1005006635645522.html"
+                                target="_blank">US$0.10</a></td>
+                        <td>5A PPTC resettable fuse.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/female-header.png?11' alt='Female Pin Header' class='mx-auto' width='400px'>">
+                                Female Pin Header</a></th>
+                        <td class="text-center">0</td>
+                        <td class="text-center">2</td>
+                        <td><a href="https://www.aliexpress.com/item/4000696234162.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                target="_blank">RCA sockets</a>. One for each dew strap output. Cost: US$3.00</li>
-                        <li>1 - <a href="https://www.aliexpress.com/item/1005006365905448.html"
+                                target="_blank">US$0.50</a></td>
+                        <td>2.54mm, 8-pin female headers used for the <a href="#" data-bs-toggle="popover"
+                                data-bs-container="body" data-bs-trigger="focus hover"
+                                data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
+                                data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/esp32-c3-board.png?11' alt='ESP32-C3-board' class='mx-auto' width='400px'>">
+                                ESP32-C3-board</a> in the 6&#8209;Output build. You can also use longer female headers
+                            (seen in the
+                            male header link below) and cut them down.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/male-header.png?11' alt='Male Pin Header' class='mx-auto' width='400px'>">
+                                Male Pin Header</a></th>
+                        <td class="text-center">2</td>
+                        <td class="text-center">2</td>
+                        <td><a href="https://www.aliexpress.com/item/1005007528068254.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                target="_blank">SPST Switch</a>. Note that this switch has an integrated status LED
-                            which uses the third
-                            connector as a ground for the LED. An extra 2N2222 transistor and resistor is required to
-                            switch
-                            this LED from the ESP32-C3. These are described below with the power board. Cost: US$4.75
-                        </li>
-                        <li>Some <a href="https://www.aliexpress.com/item/1005007528068254.html"
+                                target="_blank">US$0.20</a></td>
+                        <td>2.54mm, male pin header used for Dupont jumper connection points. 40-pin headers are easily
+                            cut to size.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/protoboard.png?11' alt='Protoboard' class='mx-auto' width='400px'>">
+                                Protoboard</a></th>
+                        <td class="text-center">0</td>
+                        <td class="text-center">1</td>
+                        <td><a href="https://www.aliexpress.com/item/1005005819162727.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                target="_blank">2.54mm pin male header strips</a> which will be used for the small
-                            ESP32-C3 board. Cost: US$1.75</li>
-                        <li>2 - <a href="https://www.aliexpress.com/item/4000696234162.html"
+                                target="_blank">US$1.00</a></td>
+                        <td>Used in the 6&#8209;Output build for <a href="#" data-bs-toggle="popover"
+                                data-bs-container="body" data-bs-trigger="focus hover"
+                                data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
+                                data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/esp32-c3-board.png?11' alt='ESP32-C3-board' class='mx-auto' width='400px'>">
+                                ESP32-C3-board</a> and <a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/power-board.png?11' alt='Power-board' class='mx-auto' width='400px'>">
+                                Power-board</a>. A single 6cm X 8cm piece
+                            should be enough
+                            for both boards.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/red-led.png?11' alt='Red LED' class='mx-auto' width='400px'>">
+                                Red LED</a></th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">0</td>
+                        <td><a href="https://www.aliexpress.com/item/1005003323707856.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                target="_blank">2.54mm by 8 pin female headers</a>. Used for the small ESP32-C3 board. I
-                            used the cheaper 40 pin
-                            female headers (link above) and cut them down to size. Cost: US$1.75</li>
-                        <li>2 - <a href="https://www.aliexpress.com/item/1005005586939219.html"
+                                target="_blank">US$0.05</a></td>
+                        <td>5mm red LEDs used in the 3&#8209;Output build for the Status LED and a test LED.</td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/12v-red-led.png?11' alt='12V Red LED' class='mx-auto' width='400px'>">
+                                12V Red LED</a></th>
+                        <td class="text-center">0</td>
+                        <td class="text-center">6</td>
+                        <td><a href="https://www.aliexpress.com/item/1005006526203359.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                target="_blank">5 amp PPTC resettable fuses</a>. Output loads and ESP32-C3 load will be
-                            split across
-                            them. Cost: US$2.00</li>
-                        <li>6 - <a href="https://www.aliexpress.com/item/1005006526203359.html"
+                                target="_blank">US$0.10</a></td>
+                        <td>5mm with pre-wired resistor for 12v. Optional for the 6&#8209;Output build. See comments on
+                            these LEDs in the 6-Outlet build
+                            notes.
+                        </td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/3k-resistor.png?11' alt='3K Resistor' class='mx-auto' width='400px'>">
+                                3K&#8486; resistor</th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">1</td>
+                        <td>US$0.10</a></td>
+                        <td>Used for the status LED. Used directly with the status LED in the 3&#8209;Output build and
+                            used with the
+                            2N2222 transistor in the 6&#8209;Output build. Getting a <a
+                                href="https://www.aliexpress.com/item/1005007714306585.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                target="_blank">12VDC Red LEDs</a>. One for each output. Cost: US$2.00</li>
-                        <li>Some <a href="https://www.aliexpress.com/item/1005005819162727.html"
+                                target="_blank">kit with an assortment of &#188;W resistors</a> may be an option.
+                        </td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/dupont.png?11' alt='Dupont jumpers' class='mx-auto' width='400px'>">
+                                Dupont jumpers</th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">0</td>
+                        <td><a href="https://www.aliexpress.com/item/1005004647016228.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                target="_blank">protoboard</a> or perfboard. To be used for the small ESP32-C3 board and
-                            the power
-                            board. A single 6cm X 8cm piece should be enough. Cost: US$1.00</li>
-                    </ul>
-
-                </div>
-                <h4>Additional Items</h4>
+                                target="_blank">US$2.00</a></a></td>
+                        <td>Package of 20, Female to Female Dupont jumpers, 10cm long . Used with in the 3&#8209;Output
+                            build to connect
+                            between pin headers. May also optionally be used in the 6&#8209;Output build.
+                        </td>
+                        </td>
+                    </tr><tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/2N2222.png?11' alt='2N2222' class='mx-auto' width='400px'>">
+                                2N2222</th>
+                        <td class="text-center">0</td>
+                        <td class="text-center">1</td>
+                        <td><a href="https://www.aliexpress.com/item/1005005990965554.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">US$0.10</a></a></td>
+                        <td>Used on the <a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/power-board.png?11' alt='Power-board' class='mx-auto' width='400px'>">
+                                Power-board</a> for the 6-Outlet build. Allows the ESP32-C3 to control the Switch
+                            LED as a
+                            Status LED.
+                        </td>
+                    
+                    </tr>
+                    <tr>
+                        <th scope="row">Optional items</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/esp32-c3-xboard.png?11' alt='ESP32-C3 SuperMini Expansion Board' class='mx-auto' width='400px'>">
+                                ESP32-C3 SuperMini Expansion Board</a></th>
+                        <td class="text-center">0</td>
+                        <td class="text-center">1</td>
+                        <td><a href="https://www.aliexpress.com/item/1005007446928015.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">US$3.00</a></td>
+                        <td>Instead of creating your own ESP32-C3-board an expansion board may be used instead. Requires an alternate case
+                            bottom.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/red-led.png?11' alt='Red LED' class='mx-auto' width='400px'>">
+                                Red LED</a></th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">2</td>
+                        <td><a href="https://www.aliexpress.com/item/1005003323707856.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">US$0.05</a></td>
+                        <td>5mm red LED used to make a test LED for output verification instead of using a voltmeter..</td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/510-resistor.png?11' alt='510 Resistor' class='mx-auto' width='400px'>">
+                                510&#8486; resistor</th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">2</td>
+                        <td>US$0.10</a></td>
+                        <td>Used with the Red LED to make a test LED for output verification instead of using a voltmeter. Getting a <a
+                                href="https://www.aliexpress.com/item/1005007714306585.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">kit with an assortment of &#188;W resistors</a> may be an option.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/rca-plug.png?11' alt='RCA Plug' class='mx-auto' width='400px'>">
+                                RCA Plug</a></th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">1</td>
+                        <td><a href="https://www.aliexpress.com/item/1005005222350895.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">US$1.00</a></td>
+                        <td>Used to make the LED test tool for output verification. Also useful if using a voltmeter for verification.</td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/barrel-plug.png?11' alt='RCA Plug' class='mx-auto' width='400px'>">
+                                12V 5.5x2.1mm Barrel Plug</a></th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">0</td>
+                        <td><a href="https://www.aliexpress.com/item/1005001842323383.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">US$1.00</a></td>
+                        <td>Used to make the LED test tool for output verification. The 6-Output build uses both RCA and Barrel jacks.</td>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 id="addtional-items">Additional Items</h2>
+            <span class="fs-4 fw-normal">
                 <ul>
-                    <li>Several different connectors are used to make the wiring easier. These include <a
-                            href="https://www.aliexpress.com/item/4001129080280.html"
+                    <li>
+                        <p>Silicone wire. Silicone wire is very flexible and much easier to work with in small
+                            spaces,
+                            especially with the tight 6-Outlet build. You will need to pick the gauge of wire used based on your
+                            application and expected current handling. My dew straps are 15 to 18 watts or 1.25 to 1.5 amps
+                            at 12 volts.
+                            Current ratings by wire gauge shown below.</p>
+                        <h4>Silicone Wire Current Ratings</h4>
+                        <table class="table table-sm table-striped border border-dark border-2 fs-5">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Wire Gauge</th>
+                                    <th scope="col">Current Rating</th>
+                                    <th scope="col">Used For</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">16 AWG</th>
+                                    <td class="text-center">10 Amp</td>
+                                    <td>Main power input.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">18 AWG</th>
+                                    <td class="text-center">6 Amp</td>
+                                    <td>MOSFET power bus. 3 outputs at 1.5 amps max.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">22 AWG</th>
+                                    <td class="text-center">3 Amp</td>
+                                    <td>MOSFET to Output jack connections.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">28 AWG</th>
+                                    <td class="text-center">0.8 Amp</td>
+                                    <td>GPIO signal connections.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li>3D-printed cases discussed in the next section.</li>
+                    <li>An assortment of <a href="#" data-bs-toggle="popover" data-bs-container="body"
+                            data-bs-trigger="focus hover" data-bs-custom-class="custom-popover" data-bs-position="top"
+                            data-bs-html="true" data-bs-boundary="popper"
+                            class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            data-bs-content="<img src='/images/screws.png?11' alt='self-tapping screws' class='mx-auto' width='400px'>">
+                            self-tapping pan head screws</a> are required to attach the different modules to the 3D
+                        printed case bottom and to hold
+                        the case together.
+                        <ul class="list-unstyled ms-5">
+                            <li><span class="fw-medium">M2x5mm Screws:</span> 2 for each MOSFET module, 2 for the
+                                ESP32-C3 expansion
+                                board.</li>
+                            <li><span class="fw-medium">M3x5mm Screws:</span> 2 for each of the 6-Output Power-board and
+                                ESP32-C3-boards.
+                            </li>
+                            <li><span class="fw-medium">M3x6mm Screws:</span> 4 to hold the case top and bottom
+                                together.</li>
+                        </ul>
+                    </li>
+                    <li><a href="https://www.aliexpress.com/item/1005001393566382.html"
                             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                            target="_blank">dupont connectors</a>,
+                            target="_blank">Heat shrink tubing</a> to cover soldered connections and wire splices. There
+                        are
+                        a lot of wires pressed into a small space with these builds and exposed connections should be
+                        minimized
+                        to prevent shorts. Electrical tape may also be used but heat shrink tubing is much easer to use
+                        and more resilient.</li>
+                    <li>The 6-Outlet build uses a couple of extra connectors that are used to make the wiring easier.
+                        These
+                        include <a href="https://www.aliexpress.com/item/4001129080280.html"
+                            class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            target="_blank">Dupont connectors</a>,
                         <a href="https://www.aliexpress.com/item/32782704195.html"
                             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                             target="_blank">Molex KK-254 connectors</a> and <a
                             href="https://www.aliexpress.com/item/1005007558623950.html"
                             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                            target="_blank">screw terminal connectors</a>. Many of these can be replaced with direct
-                        soldering
-                        of the wires.
+                            target="_blank">screw terminal blocks</a>. These require a crimping tool and some patience
+                        so
+                        you may choose to use direct soldering of the wires or pre-made Dupont jumpers instead.
                     </li>
-                    <li>Silicone wire. Silicone wire is very flexible and much easier to work with in the small confines
-                        of the case used for
-                        this project. You will need to pick the gauge of wire used base on your application and expected
-                        current handling. My
-                        dew straps are 15 to 18 watts or 1.25 to 1.5 amps at 12 volts. Current ratings shown below.
-                    </li>
-                    <li>An assortment of screws are required to attach the different modules to the 3D printed case.
-                    </li>
-                    <li>The 3D printed case.</li>
                 </ul>
-
-                <h3>Silicone Wire Current Ratings</h3>
-                <table class="table table-striped border border-dark border-2">
-                    <thead>
-                        <tr>
-                            <th scope="col">Wire Gauge</th>
-                            <th scope="col">Current Rating</th>
-                            <th scope="col">Used For</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">16 AWG</th>
-                            <td>10 Amp</td>
-                            <td>Main power input.</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">18 AWG</th>
-                            <td>6 Amp</td>
-                            <td>MOSFET power bus. 5 amp fuses.</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">22 AWG</th>
-                            <td>3 Amp</td>
-                            <td>MOSFET to Output socket connections.</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">28 AWG</th>
-                            <td>0.8 Amp</td>
-                            <td>GPIO signal connections.</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p>Costing is just an estimate but there's roughly US$30.00 in core parts and then allowing another
-                    US$20.00 for
-                    the additional items puts the cost for a 6 output controller at about US$50.00. As I mentioned above
-                    I use two
-                    output controllers for my three rigs. They were less than US$20.00 each.</p>
-                <h2>Protoboards</h2>
-                <p>There are two small subassemblies that are with protoboard to make the final assembly easier. A
-                    single piece of
-                    protoboard may be cut down using a hobby knife to create the two pieces needed for the ESP32-C3
-                    board and the Power
-                    board.
+            </span>
+            <h2 id="cost">Cost</h2>
+            <span class="fs-4 fw-normal">
+                <p>Costing is just an estimate but for the 3-Output build there's less than US$20.00 in core parts and
+                    for
+                    the 6-Output build there's about US$25.00 in core parts. Each of them need a case and some screws
+                    which
+                    should be less than US$25.00 or cheaper if you can print your own case. The next section discusses
+                    the
+                    two 3D-printed 
+                    cases designed for these builds. 
                 </p>
-
-                <div class="row align-items-center">
-                    <div class="col text-center">
-                        <div class="border border-dark border-2">
-                            <img src="/images/esp32-c3-board.png" alt="ESP32-C3 Board" class="img-fluid mx-auto">
-                            <img src="/images/esp32-c3-board-schematic.png" alt="ESP32-C3 Board"
-                                class="img-fluid mx-auto">
-                            <hr class="opacity-100 mt-0">
-                            <h4>ESP32-C3 Board</h4>
-                        </div>
-                    </div>
-                    <div class="col text-center">
-                        <div class="border border-dark border-2">
-                            <img src="/images/power-board.png" alt="ESP32-C3 Board" class="img-fluid mx-auto">
-                            <img src="/images/power-board-schematic.png" alt="ESP32-C3 Board" class="img-fluid mx-auto">
-                            <hr class="opacity-100 mt-0">
-                            <h4>Power Board</h4>
-                        </div>
+            </span>
+            <h2 id="3d-printed-cases">3D-printed Cases</h2>
+            <div class="row align-items-start">
+                <div class="col text-center ">
+                    <div class="border border-dark border-2">
+                        <img src="/images/3-output-case.png?11" alt="3-Output Case" class="img-fluid ms-0 me-0">
+                        <hr class="opacity-100 mt-0 mb-0">
+                        <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">3-Output Case</figcaption>
                     </div>
                 </div>
-                <p class="mt-5">The ESP32-C3 board provides a socket for the ESP32-C3 SuperMini module and the
-                    connections to the
-                    GPIO pins. This piece of protoboard is 30 mm wide by 25 mm deep. Two 8 pin female 2.54mm pin headers
-                    and four 8 pin male 2.54mm pin headers are required. They may be made by cutting down longer 40 pin
-                    headers with a hobby knife. The connections are shown in the schematic and are made by soldering
-                    wire from pin to
-                    pin on the underside of the protoboard. Placing the ESP32-C3 in a socketed mount allows for easy
-                    removal of the
-                    if required. Next to each socketed pin is a male pin for the corresponding ESP32-C3 pin plus a
-                    ground pin. This
-                    allows for the use of 2 socket Dupont connectors for the GPIO pins used to control the MOSFET
-                    modules
-                    and the status LED.
-                </p>
-                <p>The Power board privdes a place to connect the input power to the two resettable fuses and then to
-                    the two MOSFET
-                    power lines. It also has the 2N2222 transitor used to switch the LED light in the power switch. This
-                    piece of protoboard
-                    is 27 mm wide by 32 mm deep. The screw connector blocks, J1 and J2, have 5.04 spaced pins. J3 is a 2
-                    pin male 2.54mm
-                    header while J4 is a 2 pin Molex KK-254 male socket.
-                </p>
-
-                <h2>The Case</h2>
-                <div class="clearfix">
-                    <div class="col-md-6 float-md-end mb-3 ms-md-3 ps-2">
-                        <img src="/images/cheapodc-case.png" alt="CheapoDC Case"
-                            class="img-fluid mx-auto border border-dark border-2">
-                    </div>
-                    <p>There is a four piece 3D printed case for this project. The more text more text more text more text 
-                        more text more text more text more text more text more text more text more text more text more text 
-                    </p>
-                </div>
-                <div class="row align-items-start">
-                    <div class="col text-center">
-                        <div class="border border-dark border-2">
-                            <img src="/images/case-bottom.png" alt="ESP32-C3 Board" class="img-fluid mx-auto">
-                            <hr class="opacity-100 mt-0">
-                            <h4>Case Bottom</h4>
-                        </div>
-                    </div>
-                    <div class="col text-center">
-                        <div class="border border-dark border-2">
-                            <img src="/images/case-bottom-populated.png" alt="ESP32-C3 Board" class="img-fluid mx-auto">
-                            <hr class="opacity-100 mt-0">
-                            <h4>Case Bottom - Modules Installed</h4>
-                        </div>
+                <div class="col text-center ">
+                    <div class="border border-dark border-2">
+                        <img src="/images/6-output-case.png?11" alt="6-Output Case" class="img-fluid ms-0 me-0">
+                        <hr class="opacity-100 mt-0 mb-0">
+                        <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6-Output Case</figcaption>
                     </div>
                 </div>
-
-                <p>The ESP32-C3 board provides a socket for the ESP32-C3 SuperMini module and the connections to the
-                    GPIO pins. The connections are shown in the schematic and are made by soldering wire from pint to
-                    pin on the underside of the protoboard. The GPIO pins are used to control the MOSFET modules
-                    and the status LED and will be connected using 2 socket Dupont connectors.
-                </p>
-                <div class="row align-items-start">
-                    <div class="col text-center ">
-                        <div class="border border-dark border-2">
-                            <img src="/images/case-bottom-power.png" alt="ESP32-C3 Board" class="img-fluid ms-0 me-0">
-                            <hr class="opacity-100 mt-0">
-                            <h4>Power Distribution</h4>
-                        </div>
-                    </div>
-                    <div class="col text-center">
-                        <div class="border border-dark border-2">
-                            <img src="/images/case-bottom-control.png?11" alt="ESP32-C3 Board"
-                                class="img-fluid mx-auto">
-                            <hr class="opacity-100 mt-0">
-                            <h4>Control Distribution</h4>
-                        </div>
-                    </div>
-                </div>
-                <p>Some text.</p>
-                <div class="row align-items-start">
-                    <div class="col text-center ">
-                        <div class="border border-dark border-2">
-                            <img src="/images/case-bottom-wiring.png" alt="ESP32-C3 Board" class="img-fluid ms-0 me-0">
-                            <hr class="opacity-100 mt-0">
-                            <h4>Wiring Complete</h4>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <p>Some text</p>
-                    </div>
-                </div>
-
             </div>
-        </div>
+            <span class="fs-4 fw-normal">
+                <p class="mt-3">The cases for the 3-Output and 6-Output builds are 128mmx85mmx38mm and 128mmx98mmx38mm
+                    (WxDXH),
+                    respectively.
+                    Both consist of a bottom and top piece with slots that hold a front and back panel. The bottom
+                    pieces
+                    are designed to hold the modules used in each build and allow them to be screwed down. The panels
+                    are
+                    designed to hold the jacks, switches and LEDs. The front panel is referred to as the 
+                    <span class="fst-italic">switch-panel</span> and the
+                    back panel as the <span class="fst-italic">output-panel</span> in the build description. The top and bottom pieces are held together
+                    with
+                    4 M3x6mm screws.
+                </p>
+                <p>Besides the top, bottom and panels there are some additional pieces:
+                <ul>
+                    <li>The 3-Output switch-panel has an opening to expose the USB port on the ESP32-C3. A 3D printable
+                        press
+                        fit plug is available.</li>
+                    <li>The LEDs that are mounted in the panels are held in place by a 3D printable holder with a press
+                        fit
+                        backing piece. There's also a printable tool to drive the backing piece onto the LED holder.
+                    </li>
+                    <li>There are two sets of panels for the 6-Outlet case. One set with LED holes for each output and
+                        one set without LED holes.
+                    </li>
+                    <li>There are two versions of the 6-Output case bottom. One which provides a mounting spot for the
+                        protoboard
+                        based ESP32-C3-board and one which provides an alternate mounting for the ESP32-C3 SuperMini
+                        Expansion board. </li>
+                    <li>The protoboard based Power-board requires a mounting ring to hold it to the case bottom. It
+                        is also 3D printable.
+                    </li>
+                </ul>
+                </p>
+                <p>Both STL and STEP files for the cases can be found in the <a
+                        href="https://github.com/hcomet/CheapoDC/tree/main/3D%20Printed%20Cases"
+                        class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                        target="_blank">CheapoDC GitHub repository</a> along with additional information about the
+                    cases.
+                </p>
+            </span>
+            <div class="d-none d-print-block" style="break-after:page"></div>
+            <h1 id="3-output-build">3&#8209;Output Build</h1>
+            <span class="fs-4 fw-normal">
+                <p>The 3&#8209;Output CheapoDC is significantly simpler to build than the 6&#8209;Output version due to the
+                    reduced number of outputs that need to be connected. This build has all three
+                    outputs set up for dew straps with RCA jacks. The third output could be changed over to a switched 12 volt
+                    barrel jack or left out completely if needed.
+                </p>
+                <p>Wiring requires a combination of 10cm female to female Dupont jumpers and 18 gauge silicone wire. If
+                    you
+                    plan to use the CheapoDC
+                    for more than a total of 72 Watts or 6 amps at 12 volts then you may want to use 16 gauge wire for
+                    the
+                    power
+                    harnesses. You may also want to use a PPTC resettable fuse with a higher rating or one per output.
+                </p>
+            </span>
+            <h2 id="3-output-assembly">3-Output Assembly Steps
+                <span class="dropdown d-print-none">
+                    <a class="text-black pt-0 mt-0" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-expanded="false"><i class="bi bi-list"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <span class="dropdown-header fs-4 fw-medium">Assembly Steps</span>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <ol>
+                            <li><a class="dropdown-item" href="#assembly-3-1">Solder pins to modules.</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#assembly-3-2">Mount modules to the case bottom.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-3-3">Create power harnesses.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-3-4">Install the Status LED.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-3-5">Install the switch and 12V barrel
+                                    jack.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-3-6">Connect the power harnesses.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-3-7">Adjust buck converter to 5 volts.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-3-8">Install the power output jacks.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-3-9">Install CheapoDC firmware.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-3-10">Finish the wiring.</a></li>
+                        </ol>
+                    </ul>
+                </span>
+            </h2>
+            <ol class="h4">
+                <li>
+                    <p id="assembly-3-1">Solder pins to modules.</p>
+                    <div class="fw-normal fs-4">
+                        <p>
+                            Solder 2.54mm header pins to the MOSFET and buck converter modules. The buck converter
+                            requires a
+                            single pin at each corner which can be a bit difficult to solder. I used a
+                            <a href="#" data-bs-toggle="popover" data-bs-container="body" data-bs-trigger="focus hover"
+                                data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
+                                data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/single-pin.png?11' alt='Single Pin tip' class='mx-auto' width='400px'>">piece
+                                of painter's tape pierced by a single pin and taped to the buck converter to hold the pin in place while I
+                                soldered it</a>. The tape is removed after soldering.
+                            <a href="#" data-bs-toggle="popover" data-bs-container="body" data-bs-trigger="focus hover"
+                                data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
+                                data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/mosfet-pins.png?11' alt='MOSFET trigger pins' class='mx-auto' width='400px'>">
+                                The MOSFET modules each get a 4 pin header which provides for 2 trigger and 2 ground
+                                pins</a>.
+                            This allows the ground connection to be daisy chained between the modules. One of the trigger pins
+                            on each MOSFET module must be connected to one GPIO pin on the ESP32-C3 expansion board.
+                        </p>
+                        <p>If your ESP32-C3 came without the header pins soldered to the board, solder those header
+                            pins onto the module board at this time.</p>
+                    </div>
+                </li>
+                <li class="mt-3">
+                    <p id="assembly-3-2">Mount modules to the case bottom.</p>
+                    <div class="row align-items-start fw-normal fs-4">
+                        <div class="col">
+                            <p>Mount the MOSFET modules, buck converter module and ESP32-C3 expansion module in the
+                                case bottom. This is shown in the image to the right. The ESP32-C3 expansion board
+                                should be screwed down to
+                                the case bottom before the ESP32-C3 is installed. Mounting the modules now will help
+                                with the next step.</p>
+                        </div>
+                        <div class="col text-center ">
+                            <div class="border border-dark border-2">
+                                <img src="/images/case-bottom-3-populated.png?11"
+                                    alt="3-Output Build - Modules Installed" class="img-fluid ms-0 me-0">
+                                <hr class="opacity-100 mt-0 mb-0">
+                                <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">3&#8209;Output Build -
+                                    Modules Installed</figcaption>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <p id="assembly-3-3">Create power harnesses.</p>
+                    <div class="clearfix mt-3">
+                        <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
+                            <img src="/images/case-bottom-3-power.png?11" alt="3-Output Build - Power Harness Routing"
+                                class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">3&#8209;Output Build - Power
+                                Harness Routing</figcaption>
+                        </div>
+                        <span class="fw-normal fs-4">
+                            <p>There are two power harnesses, one for 12V and one for ground. Use the
+                                populated case bottom to measure the lengths of wire needed for the harnesses.
+                            </p>
+                            <p>The 12V harness is connected to one pole of the SPST rocker switch and feeds to the
+                                left around the end of the MOSFET modules. See the image to the right. Cut a single
+                                wire
+                                long enough to reach the farthest right MOSFET module plus at least 5cm. Then splice in
+                                two shorter pieces of wire for the first two MOSFET modules. Keep the wires long, we'll
+                                cut them
+                                down later. Cover the splices with tape or heat shrink tubing.
+                            <p>Make the ground harness in a similar manner except that it routes from the negative lead
+                                of the
+                                5.5mm x 2.1mm barrel jack around the other end of the MOSFET modules.
+                            </p>
+                            <p class="text-warning">Do not attach the wiring harnesses, they will be attached in a future step.</p>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <p id="assembly-3-4">Install the Status LED.</p>
+                    <span class="fw-normal fs-4">
+                        <p>First solder and then install the Status LED. Trim the
+                            <a href="#" data-bs-toggle="popover" data-bs-container="body" data-bs-trigger="focus hover"
+                                data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
+                                data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/red-led.png?11' alt='Single Pin tip' class='mx-auto' width='400px'>">
+                                longer positive (anode) lead</a> of the red LED and then solder
+                            the 3K resistor to the positive lead. Trim the negative (cathode) lead. Cut the ends off a
+                            couple of Dupont jumpers and strip the ends. Cut and solder the Dupont jumpers to the resistor and negative lead. 
+                            The 3D files for the case include an LED holder which is used to mount the LED to the case switch-panel. 
+                            The LED holder is a tight press fit and a
+                            3D printable tool is also provided for pressing it in place. This should be done before
+                            the switch and barrel jack are installed.
+                        </p>
+                        <p>The positive LED lead connects to GPIO pin 8 on the ESP32-C3 while the ground lead should
+                            be
+                            connected to a ground pin on the ESP32-C3 expansion board.</p>
+                    </span>
+                </li>
+                <li>
+                    <p id="assembly-3-5">Install and Solder the switch and 12V barrel jack.</p>
+                    <span class="fw-normal fs-4">
+                        <p>Note that the switch and barrel jack may need to be installed in the switch-panel first since they 
+                            may not be be able to be installed after the these connections are made. Solder the connections 
+                            between the rocker switch and the barrel jack. 
+                        </p>
+                        <p>The positive lead of the barrel jack is connected to the switch through the PPTC fuse. First solder a couple
+                            of leads onto the PPTC then solder one lead to the positive lead of the barrel jack and the other leade to
+                            one of the pole leads of the rocker switch.
+                        </p>
+                    </span>
+                </li>
+                <li>
+                    <p id="assembly-3-6">Connect the power harnesses and buck converter to the switch and barrel
+                        jack.</p>
+                    <span class="fw-normal fs-4">
+                        <p>Cut the end off a Dupont jumper and strip the wire. Solder the Dupont jumper and the
+                            ground harness to
+                            the negative lead of the barrel jack. The Dupont jumper connects to the
+                            <span class="fw-medium">IN-</span> pin on the buck
+                            converter.
+                        </p>
+                        <p>Similar to the ground connections, cut the end off another Dupont jumper and strip the
+                            wire. Solder the
+                            Dupont jumper and the 12V harness to the other free pole of the SPST switch. The Dupont
+                            jumper connects
+                            to the <span class="fw-medium">IN+</span> pin on the buck converter.
+                        </p>
+                        <p><strong class="text-warning">DO NOT CONNECT THE OUTPUTS OF THE BUCK CONVERTER TO THE
+                                ESP32-C3 UNTIL THE OUTPUT IS
+                                ADJUSTED
+                                IN THE NEXT STEP.
+                            </strong></p>
+                    </span>
+                </li>
 
-        </div>
+                <li>
+                    <p id="assembly-3-7">Adjust buck converter to 5 volts.</p>
+                    <span class="fw-normal fs-4">
+                        <p>This is done by connecting a voltmeter to the
+                            output of the buck converter and adjusting the potentiometer on the buck converter until the
+                            meter
+                            reads 5 volts. Since the wiring for power was completed in the previous step you should be
+                            able
+                            to plug in
+                            a 12 volt supply to the barrel jack and switch on the buck converter. With a small screw
+                            driver adjust the
+                            potentiometer on the buck converter by turning the small screw until your voltmeter reads 5
+                            volts. Assuming you have
+                            not previously adjusted the buck converter, it should be set to maximum and show about 12
+                            volts.
+                            Turning the screw
+                            counter clockwise will reduce the output voltage. It may take quite a few turns before you
+                            see
+                            any change in the output
+                            and then it will change quickly.</p>
+                        <p>You can now connect the buck converter to the ESP32-C3 expansion board with a couple of
+                            Dupont
+                            jumpers. The
+                            <span class="fw-medium">Out+</span> buck converter pin connects to the <span class="fw-medium">5V</span>
+                            ESP32-C3 pin
+                            while
+                            the <span class="fw-medium">Out-</span>
+                            buck converter pin connects to the <span class="fw-medium">G</span> ESP32-C3 pin.
+                        </p>
+                    </span>
+                </li>
+                <li>
+                    <p id="assembly-3-8">Install the power output jacks.
+                    </p>
+
+                    <div class="clearfix mt-3">
+                        <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
+                            <img src="/images/3-output-panel.png?11" alt="3-Output Build - Output-panel"
+                                class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">3&#8209;Output Build - Output
+                                Panel</figcaption>
+                        </div>
+                        <span class="fw-normal fs-4">
+                            <p>
+                                If using RCA jacks similar to ones shown then all the soldered connections to the jacks can be completed
+                                before they are mounted in the case output-panel. Cut six pieces of wire long enough to reach from the 
+                                output-panel, over the MOSFET modules and then around to the MOSFET output screw block connecters. Leave
+                                enough length to bend and insert the ends of the wires into the screw terminals. Solder the wires to the 
+                                positive and negative leads on the RCA jacks. The center of the jack is positive (12V) while the outer barrel is 
+                                negative (ground).
+                            </p>
+                            <p>Note that polarity doesn't usually matter for Dew Straps since they are simple resistive loads. But,
+                                keeping the polarity correct for these outputs is good practice. In particular if you
+                                plan to use the third output for a different purpose then you should definitely keep the polarity
+                                correct.
+                            </p>
+                        </span>
+                    </div>
+                </li>
+
+                <li>
+                    <p id="assembly-3-9">Install CheapoDC firmware.
+                    </p>
+                    <span class="fw-normal fs-4">
+                        <p>If you have not installed the CheapoDC firmware onto the ESP32-C3 then do it now. The easiest
+                            way
+                            to do
+                            this is to connect the ESP32-C3 to your computer using a USB cable and then use the
+                            <a href="/CheapoDC/CheapoDCFlash.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">WebFlash</a> tool to upload the latest firmware. After the firmware is
+                            uploaded, follow
+                            the steps outlined in <a
+                                href="https://github.com/hcomet/CheapoDC/tree/main/CheapoDC#first-time-device-configuration"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">First Time Device Configuration</a> to setup your CheapoDC:
+                        <ul>
+                            <li>Configure the WiFi settings for your network.</li>
+                            <li>Set Output GPIO pins as follows: 
+                                <ul class="list-unstyled">
+                                    <li>Output 0 = GPIO 0</li>
+                                    <li>Output 1 = GPIO 1</li>
+                                    <li>Output 2 = GPIO 3</li>
+                                    <li>Output 3 = -1 (Disabled)</li>
+                                    <li>Output 4 = -1 (Disabled)</li>
+                                    <li>Output 5 = -1 (Disabled)</li>
+                                </ul>
+                            </li>
+                            <li>Set the Mode for Outputs 0, 1 and 2 to <span class="fw-medium">Controller</span>.</li>
+                            <li>Leave the Status LED GPIO pin at the default of 8.</li>
+                            <li>Also, go to the Controller Configuration page and set the Controller Mode to
+                                <span class="fw-medium">Off</span>.
+                            </li>
+                        </ul>
+                        </p>
+                    </span>
+                </li>
+                <li>
+                    <p id="assembly-3-10">Finish the wiring.
+                    </p>
+                    <div class="clearfix mt-3">
+                        <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
+                            <img src="/images/case-bottom-3-final.png?11" alt="3-Output Build - Wiring Complete"
+                                class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">3&#8209;Output Build - Wiring
+                                Complete</figcaption>
+                        </div>
+                        <span class="fw-normal fs-4">
+                            <p>Connect everything together as shown in the image. Make sure to install the ESP32-C3
+                                module
+                                into the expansion
+                                board before connecting all the wiring. It will be harder to insert the module once all
+                                the
+                                wiring is in place.
+                            </p>
+                            <p>First connect the power harnesses to the MOSFET modules. Insert the case switch-panel
+                                into the base and route the ground harness to right and around the end of the MOSFET modules. Cut the
+                                ground wires to length so that they will reach the appropriate <span class="fw-medium">VIN-</span> connection
+                                on each module. Strip the ends, insert into the terminals and tighten the screws. Repeat for the 12V 
+                                power harness, routing it to the left and around the end of the MOSFET modules. Cut the wires to length 
+                                so that they will reach the appropriate
+                                <span class="fw-medium">VIN+</span> connection on each module. Strip the ends, insert
+                                the ends into the terminals and tighten the screws.
+                            </p>
+                            <p> Use two Dupont jumpers to daisy chain the ground pin connections between the MOSFET modules. These will be routed
+                                under the RCA jacks on the output-panel.
+                            </p>
+                            <p>Insert the output-panel into the slot on the case bottom and route the wires from the RCA jacks to the MOSFET
+                                modules. Cut the wires to length so that they will reach the appropriate <span class="fw-medium">OUT+</span> and
+                                <span class="fw-medium">OUT-</span> connections on each module. Strip the ends, insert the ends into the terminals
+                                and tighten the screws.
+                            </p>
+                            <p>Connect the ESP32-C3 to the MOSFET modules. Use one Dupont jumper to connect the ground pin on the left-most MOSFET
+                                module to any of the ground pins on the ESP32-C3 expansion board (black pins). Use two more Dupont jumpers to
+                                connect the trigger pins on the left-most MOSFET module and center MOSFET MODULE to GPIO pins 0 and 1 on the
+                                ESP32-C3 expansion board (yellow pins). If using 10cm long Dupont jumpers then you will need to cut the ends off two
+                                of them and splice them together to make a longer wire. This will then be used to connect the trigger pin on the
+                                right-most MOSFET module to GPIO pin 3 on the ESP32-C3 expansion board (yellow pin).
+                            </p>
+                            <p>The wiring is now complete but before you put the top of the case on we need to test that the outputs work properly.
+                            </p>
+                        </span>
+                    </div>
+                </li>
+            </ol>
+            <h2 id="3-output-testing" class="text-warning">Do Hardware Verification</h2>
+            <span class="fw-normal fs-4">
+                <p>Before putting the top on the case verify that everything works. This can be done fairly easily by
+                    following the steps in the <a href="#hardware-verification"
+                        class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Hardware
+                        Verification</a> section.
+                </p>
+            </span>
+            <div class="d-none d-print-block" style="break-after:page"></div>
+            <h1 id="6-output-build">6-Output Build</h1>
+            <span class="fw-normal fs-4">
+                <p>This 6 output device was built for firmware testing and demonstration purposes, not to be used on an
+                    actual astrophotography rig and as such this affected some aspects of the design. If you are building
+                    a 6-Output CheapoDC for personal use on your astrophotography rig, consider the following:
+                <ul>
+                    <li>There is an external LED for each output to help with testing. In general,
+                        having a lot of flashing red LEDs on an astrophotography rig is not a good idea. Only the status
+                        LED should be needed on a 'production' CheapoDC.
+                    </li>
+                
+                    <li>The CheapoDC firmware will support from one to 6&#8209;Outputs. The first two are assumed to be dew controller
+                        outputs but the additional four may be configured as dew controller, PWM or boolean (on/off) outputs. This design
+                        supports the maximum 6&#8209;Outputs supported by CheapoDC firmware. Four outputs have RCA jacks, commonly used for
+                        dew straps, and two outputs have 5.5mm X 2.1mm barrel jacks. The number of outputs and balance of RCA versus barrel
+                        jacks can be configured based on personal need.</li>
+                    <li>I used crimp connectors for connections between the modules to allow for more flexible testing. Crimping Molex or 
+                        Dupont jumpers is not hard but it requires patience and a crimping tool. If you don't wish to invest in a crimping 
+                        tool and connectors, soldering the wires is an alternative. The <a href="#3-output-build" 
+                        class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
+                        3&#8209;Output build</a> shows how to use soldering with off-the-shelf Dupont jumper wires.
+                    </li>
+                </ul>
+                </p>
+            </span>
+            <h2 id="6-output-protoboards">Protoboards</h2>
+            <span class="fw-normal fs-4">
+                <p>The primary difference between the 6&#8209;Output build and the 3&#8209;Output build, besides the
+                    number
+                    of outputs, is that
+                    the 6&#8209;Output build requires the two protoboard based boards. Building the ESP32-C3-board and
+                    the
+                    Power-board should be
+                    completed before assembling your 6&#8209;Output CheapoDC.</p>
+            </span>
+            <h3>ESP32-C3-board</h3>
+            <div class="clearfix">
+                <div class="col-sm-6 float-sm-end mb-3 ms-sm-3 ps-2">
+                    <div class="border border-dark border-2 text-center">
+                        <img src="/images/esp32-c3-board.png?11" alt="ESP32-C3-board" class="img-fluid mx-auto">
+                        <img src="/images/esp32-c3-board-schematic.png?11" alt="ESP32-C3-board Schematic" class="img-fluid mx-auto">
+                        <hr class="opacity-100 mt-0 mb-0">
+                        <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">ESP32-C3-board</figcaption>
+                    </div>
+                </div>
+                <span class="fw-normal fs-4">
+                    <p>The ESP32-C3-board provides a socket for the ESP32-C3 SuperMini as well as pin headers for power and GPIOs. An image
+                        of the board is shown to the right. The schematic below the image shows the connections between the female headers
+                        for the ESP32-C3 SuperMini and the male headers for power and GPIO pins. Theres also a row of ground pins on either
+                        side.
+                    </p>
+                    <p>The board is made by cutting down some protoboard to fit the 30mmx25mm mounting area in the case bottom. The piece
+                        should come from the edge of the protoboard where there is a 3mm edging as shown at the top of the image. The
+                        orientation of the board is important so that it lines up properly with the screw holes in the base. The board
+                        should be 11 holes wide by 8 deep. You'll need to use a small drill bit (3mm) to drill out the mounting holes as
+                        shown in the image. Drill the holes before soldering the pin headers. The board image and schematic are both
+                        oriented with the ESP32-C3 SuperMini USB socket at the bottom.
+                    </p>
+                    <p>The board pin to pin connections are all soldered on the underside of the board. When connecting the two rows of
+                        ground pins together the connecting wire needs to cross through the middle of the bottom of the board or across the
+                        top otherwise the board will not mount properly into the case bottom.
+                    </p>
+                    <p>Soldering all the pins together on the bottom of the board can take a lot of patience and you must be careful not to
+                        short pins together that should not be connected. Once done its good to test all the pins with a multimeter to make
+                        sure that they are all connected properly. If you don't want to spend the time putting this board together then an
+                        alternative is to use an <a href="#" data-bs-toggle="popover" data-bs-container="body" data-bs-trigger="focus hover"
+                            data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                            class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            data-bs-content="<img src='/images/esp32-c3-xboard.png?11' alt='ESP32-C3 SuperMini Expansion Board' class='mx-auto' width='400px'>">
+                            ESP32-C3 SuperMini Expansion Board</a> as was used in the 3-Output build. A version of 6-Output build case
+                        bottom that supports mounting the ESP32-C3 SuperMini expansion board is available in the GitHub repository. The
+                        expansion board is a little larger than the protoboard based board and will make routing the power harnesses a
+                        little tighter.
+                    </p>
+                </span>
+            </div>
+            <h3>Power-board</h3>
+            <div class="clearfix">
+                <div class="col-sm-6 float-sm-end mb-3 ms-sm-3 ps-2">
+                    <div class="border border-dark border-2 text-center">
+                        <img src="/images/power-board.png?11" alt="Power-board" class="img-fluid mx-auto">
+                        <img src="/images/power-board-schematic.png?11" alt="Power-board Schematic" class="img-fluid mx-auto">
+                        <hr class="opacity-100 mt-0 mb-0">
+                        <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">Power-board</figcaption>
+                    </div>
+                </div>
+                <span class="fw-normal fs-4">
+                    <p>The Power-board provides a place to connect the input power to the two resettable fuses and then to the two MOSFET
+                        power lines. It also has the 2N2222 transistor used to switch the LED light in the power switch. The image includes
+                        both a completed Power-board as well as the schematic. The screw terminal blocks, J1 and J2, have 5.08mm spaced
+                        pins. J3 is a 2 pin male 2.54mm header while J4 is a 2 pin Molex KK-254 male jack. The terminal blocks could be
+                        replaced with direct soldering to the Power-board. Male 2.54mm pin headers could be used for both J3 and J4 instead
+                        of using a Molex KK-254 jack.
+                    </p>
+                    <p> This piece of protoboard is 27 mm wide by 32 mm deep. The size is important for it to fit in the spot reserved for
+                        it in the case bottom. Unlike the ESP32-C3-board, the Power-board is held down to the case bottom using a screwed in
+                        3D-printed hold down ring. Similar to the ESP32-C3-board, solder the connections on the underside of the board.
+                    </p>
+                </span>
+            </div>
+            <h2 id="6-output-assembly">6-Output Build Assembly
+                <span class="dropdown  d-print-none">
+                    <a class="text-black pt-0 mt-0" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-expanded="false"><i class="bi bi-list"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <p class="dropdown-header fs-4 fw-medium">Assembly Steps</p>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <ol>
+                            <li><a class="dropdown-item" href="#assembly-6-1">Solder pins to modules.</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#assembly-6-2">Mount modules to case bottom.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-6-3">Create power harnesses.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-6-4">Connect the power harnesses.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-6-5">Assemble the Switch-panel.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-6-6">Install the Switch-panel.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-6-7">Adjust buck converter to 5 volts.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-6-8">Install CheapoDC firmware.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-6-9">Build Output-panel.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-6-10">Install Output-panel.</a></li>
+                            <li><a class="dropdown-item" href="#assembly-6-11">Finish the wiring.</a></li>
+                        </ol>
+                    </ul>
+                </span>
+            </h2>
+
+            <p class="fw-normal fs-4">
+                Once the ESP32-C3 and Power-boards are completed, its time to move on to the assembly steps. These build
+                steps are very similar to the 3-Output
+                build steps.
+            </p>
+            <ol class="h4">
+                <li>
+                    <p id="assembly-6-1">Solder pins to modules.</p>
+                    <div class="fw-normal fs-4">
+                        <p> Solder 2.54mm header pins to the buck converter module. The buck converter requires a single pin at each corner
+                            which can be a bit difficult to solder. I used a <a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
+                                data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/single-pin.png?11' alt='Single Pin tip' class='mx-auto' width='400px'>">piece
+                                of painters tape with pierced with a single pin and taped to the buck converter to hold the pin in place while I
+                                soldered it</a>. The tape is removed after soldering.
+                        </p>
+                        <p>For the 6-Output build I used 2-pin Molex KK-254 headers instead of the 2.54mm male pin headers used in th the
+                            3-Output build. The Molex KK-254 headers have a friction lock that helps to hold the female connector in place while
+                            the many wires in the 6-Output build are compressed into the case. If you want to avoid crimping your own wires then
+                            use the pin headers used in the 3-Output build with Dupont jumpers.
+                        </p>
+                        <p>If your ESP32-C3 came without the header pins soldered to the board, also solder those header
+                            pins at this time.</p>
+                    </div>
+                </li>
+                <li class="mt-3">
+                    <p id="assembly-6-2">Mount modules to case bottom.</p>
+                    <div class="clearfix mt-3">
+                        <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
+                            <img src="/images/case-bottom-6-populated.png?11" alt="6-Output Build - Modules Installed"
+                                class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - Modules
+                                Installed</figcaption>
+                        </div>
+
+                        <span class="fw-normal fs-4">
+                            <p>Mount the MOSFET modules, buck converter module, ESP32-C3-board and Power-board in the case bottom as shown in the
+                                image. The ESP32-C3-board should only fit in one orientation. The ESP32-C3 SuperMini USB port should face to the
+                                inside of the case to keep it accessible. Use the 3D-printed mounting ring (red in the image) to hold down the
+                                Power-board so that the power input (bottom in the image) and output (top in the image) connection blocks are on the
+                                correct side. Mount the buck converter so that the input pins are next to the Power-board.
+                            </p>
+                        </span>
+                    </div>
+                </li>
+
+                <li>
+                    <p id="assembly-6-3">Create power harnesses.</p>
+                    <div class="clearfix mt-3">
+                        <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
+                            <img src="/images/case-bottom-6-power.png?11" alt="6-Output Build - Power Harness Routing"
+                                class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - Power
+                                Harness Routing</figcaption>
+                        </div>
+
+                        <span class="fw-normal fs-4">
+                            <p>There are three power harnesses, one 12V harness for each of the two sets of MOSFET
+                                modules and one ground harness.
+                                Use the populated case bottom to measure the lengths of wire needed for the harnesses
+                                using
+                                the routing
+                                indicated in the image. Red lines are 12V and dark grey lines are ground. The 12V
+                                harnesses use 18 gauge wire while the ground
+                                harness uses acombination of 16 and 18 gauge wire.</p>
+                            <p>The 12V harnesses are each connected to one of the 12V output terminals on the Power-board. 
+                                Using the image cut a single
+                                wire for each long enough to reach from the 12V output terminal to the farthest MOSFET
+                                module on the route plus at least 5cm. Then splice in
+                                two shorter pieces of wire for the first two MOSFET modules on each harness. Keep the
+                                wires
+                                long, we'll
+                                cut them down later. Cover the splices with tape or heat shrink tubing.
+                            <p>Make the ground harness in a similar manner except that it routes from the negative
+                                terminal
+                                of the Power-board. There is a shorter piece
+                                of 16 gauge wire that goes from the Power-board ground terminal to the first splice that
+                                splits the ground into two 18 gauge wires running
+                                to three MOSFET modules each.
+                            </p>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <p id="assembly-6-4">Connect the power harnesses.</p>
+                    <div class="clearfix mt-3">
+                        <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
+                            <img src="/images/case-bottom-6-wiring.png?11"
+                                alt="6-Output Build - Installed Power Harness" class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - Installed
+                                Power Harness</figcaption>
+                        </div>
+                        <span class="fw-normal fs-4">
+                            <p>Connect the power harnesses to the Power-board. The image shows the installed power
+                                harnesses.
+                                Install the ground harness first routing it to the left and around the end of the MOSFET
+                                modules. Cut the
+                                spliced wires to length so that they will reach the appropriate <span
+                                    class="fw-medium">VIN-</span>
+                                connection on each module.
+                                Strip the ends, insert and tighten the screws.
+                            </p>
+                            <p>
+                                Repeat for the two 12V power harnesses, which are routed to the right and around the
+                                end of the MOSFET modules.
+                                Cut the spliced wires to length so that they will reach the appropriate
+                                <span class="fw-medium">VIN+</span> connection on each
+                                module. Strip the ends, insert and tighten the screws.
+                            </p>
+                            <p>Keep the power harnesses tight to the MOSFET modules on the case panel sides. The space
+                                between the panels and the
+                                MOSFET modules is tight and the wires will be compressed when the case top is installed.
+                                The RCA jacks and barrel jacks
+                                also stick out over the MOSFET modules leaving very little room.
+                            </p>
+                        </span>
+                    </div>
+                </li>
+
+                <li>
+                    <p id="assembly-6-5">Assemble the Switch-panel</p>
+                    <div class="clearfix mt-3">
+                        <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
+                            <img src="/images/6-switch-panel.png?11" alt="6-Output Build - Switch-panel"
+                                class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - Switch
+                                Panel</figcaption>
+                        </div>
+                        <span class="fw-normal fs-4">
+                            <p>The 6-Output switch-panel the power switch and power input jack as well as two RCA jacks
+                                for
+                                for CheapoDC outputs 0 and 1. If building with the output LEDs then there is also one
+                                LED
+                                for each of the two outputs. The image shows the switch-panel assembled with connections
+                                attached.
+                            </p>
+                            <p>Note that shrink tubing has been used to cover and insulate the solder joints. If using
+                                the output LEDs then the RCA jack
+                                threaded barrel should also be insulated with either shrink tubing or electrical tape. The RCA
+                                jacks are very close to the tops of
+                                the MOSFETs in the MOSFET modules and the threaded barrels can short out the MOSFETs if
+                                they touch. The shrink tubing or tape will
+                                help to prevent this. This is not an issue when NOT using output LEDs because the RCA
+                                jacks are mounted higher on the switch-panel.
+                            </p>
+                            <p class="text-warning">Remember to slide heat shrink tubing onto wires before soldering since
+                                many of the solder joints create closed loops
+                                that will not allow the shrink tubing to be placed on the wires after soldering. Keep
+                                the tubing back from the joint while soldering
+                                and then slide it over the joint and heat it to shrink it.
+                            </p>
+                            <ol type="I">
+                                <li>If using output LEDs install the two 12V LEDs into the smaller holes above the RCA
+                                    jack holes using the 3D-printed holder and
+                                    backer. Trim the LED wires down to about 5cm and strip the ends.
+                                </li>
+                                <li>Cut 4 pieces of 22 gauge wire long enough to reach from the switch-panel RCA jack
+                                    holes over the MOSFET modules and then
+                                    around to the MOSFET output screw block connecters. If using RCA jacks similar to
+                                    those shown in the parts list then solder
+                                    one of the pieces of wire and a black LED wire to the tabs of each of the two RCA
+                                    jack ground washers. Now mount the RCA jacks
+                                    into the switch-panel, in the holes under the LEDs, and tighten their holding nuts.
+                                    A red LED wire and piece of 22 gauge wire should
+                                    now be soldered to the positive terminal of the RCA jacks.</li>
+                                <li>Install the rocker switch and barrel jack into the switch-panel. Solder a piece of
+                                    16 gauge wire to the negative lead of the barrel
+                                    jack leaving the wire long enough to reach the IN GND terminal of J1 on the Power-board.
+                                    Solder a piece of 16 gauge wire to the positive lead of the barrel jack and leave it
+                                    long enough to reach the switch.
+                                    Solder the other end to one of the pole tabs for the single pole of the switch.
+                                    Solder a piece of 16 gauge wire to the other tab of
+                                    of the single pole and leave it long enough to reach the IN 12V terminal of J1 on the
+                                    Power-board.
+                                </li>
+                                <li>Solder a piece of 22 gauge wire to the switch LED ground tab and leave it long
+                                    enough to reach the Switch LED terminal of J1 on the Power-board.
+                                </li>
+                            </ol>
+                            </p>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <p id="assembly-6-6">Install the Switch-panel.</p>
+                    <div class="clearfix mt-3">
+                        <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
+                            <img src="/images/6-switch-panel-install.png?11"
+                                alt="6-Output Build - Switch-panel Installed" class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - Switch
+                                Panel installed</figcaption>
+                        </div>
+                        <span class="fw-normal fs-4">
+                            <p>The switch-panel is installed in the slot in the case bottom, as shown bottom of the power
+                                harness image. When cutting wires to reach the Power-board and MOSFET modules make sure
+                                they are long enough to allow the switch-panel to be removed and/or inserted into the
+                                case bottom panel slot.
+                            </p>
+                            <p>Connect the 12V and ground wires from the rocker switch and barrel jack to the Power-board. Cut the
+                                wires to length and strip the ends. Then insert the 12V wire into IN 12V terminal of J1
+                                and tighten down the terminal screw. Do the same with the ground wire connecting it to IN GND
+                                terminal of J1. The switch LED ground wire can also be connected to the Switch LED terminal of J1.
+                            </p>
+                            <p>Connect the two RCA jacks to the MOSFET modules with the right RCA jack connecting to the
+                                right most MOSFET module and the left RCA jack connecting to the middle MOSFET module.
+                                Connect the positive leads from the RCA jacks to <span class="fw-medium">VOUT+</span> on the
+                                MOSFET modules while the negative leads connect to <span class="fw-medium">VOUT-</span>.
+                            </p>
+                            <p><strong class="text-warning">DO NOT CONNECT THE OUTPUTS OF THE BUCK CONVERTER TO THE ESP32-C3 UNTIL THE 
+                                OUTPUT IS ADJUSTED IN THE NEXT STEP.</strong>
+                            </p>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <p id="assembly-6-7">Adjust buck converter to 5 volts.</p>
+                    <span class="fw-normal fs-4">
+                        <p>This is done by connecting a voltmeter to the
+                            output of the buck converter and adjusting the potentiometer on the buck converter until the
+                            meter
+                            reads 5 volts. The Power-board was connected to the switch-panel in the previous step, now
+                            connect
+                            jumper wires from J3 on the Power-board to the buck converter. Connect <strong>OUT
+                                12V-3</strong> from the
+                            Power-board to <span class="fw-medium">IN+</span> on the buck converter and <span
+                                class="fw-medium">OUT GND-3</span> to
+                            <span class="fw-medium">IN-</span> on the buck converter.
+                        </p>
+                        <p>Connect a voltmeter to the <span class="fw-medium">OUT+</span> and <span class="fw-medium">OUT-</span> pins 
+                            on the buck converter then plug in
+                            a 12 volt supply to the barrel jack on the switch-panel and turn on the switch. The buck
+                            converter should be powered with a power LED on. With a small screw driver adjust the
+                            potentiometer on the buck converter by turning the small screw until your voltmeter reads 5
+                            volts. Assuming you have
+                            not previously adjusted the buck converter, it should be set to maximum and show about 12
+                            volts. Turning the screw
+                            counter clockwise will reduce the output voltage. It may take quite a few turns before you
+                            see any change in the output and then it will change quickly.</p>
+                        <p>You can now connect the buck converter to the ESP32-C3-board with a couple of
+                            jumpers with female Dupont connectors on each end. The <span class="fw-medium">Out+</span>
+                            buck converter pin connects to the <span class="fw-medium">5V</span> ESP32-C3 pin while the 
+                            <span class="fw-medium">Out-</span> buck converter pin connects to the <span class="fw-medium">G</span> 
+                            ESP32-C3 pin.
+                        </p>
+                    </span>
+                </li>
+                <li>
+                    <p id="assembly-6-8">Install CheapoDC firmware.
+                    </p>
+                    <span class="fw-normal fs-4">
+                        <p>If you have not installed the CheapoDC firmware onto the ESP32-C3 then do it now. The easiest
+                            way
+                            to do
+                            this is to connect the ESP32-C3 to your computer using a USB cable and then use the
+                            <a href="/CheapoDC/CheapoDCFlash.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">WebFlash</a> tool to upload the latest firmware. After the firmware is
+                            uploaded, follow
+                            the steps outlined in <a
+                                href="https://github.com/hcomet/CheapoDC/tree/main/CheapoDC#first-time-device-configuration"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">First Time Device Configuration</a> to setup your CheapoDC:
+                        <ul>
+                            <li>Configure the WiFi settings for your network.</li>
+                            <li>Set Output GPIO Pins as follows:
+                                <ul class="list-unstyled">
+                                    <li>Output 0 = GPIO 0</li>
+                                    <li>Output 1 = GPIO 1</li>
+                                    <li>Output 2 = GPIO 3</li>
+                                    <li>Output 3 = GPIO 4</li>
+                                    <li>Output 4 = GPIO 5</li>
+                                    <li>Output 5 = GPIO 7</li>
+                                </ul>
+                            </li>
+                            <li>Set all of the Outputs to Controller mode.</li>
+                            <li>Leave the Status LED GPIO pin at the default of 8.</li>
+                            <li>Also, go to the Controller Configuration page and set the Controller Mode to
+                                <span class="fw-medium">Off</span>.
+                            </li>
+                        </ul>
+                        </p>
+                    </span>
+                </li>
+
+                <li>
+                    <p id="assembly-6-9">Build Output-panel.
+                    </p>
+                    <div class="clearfix mt-3">
+                        <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
+                            <img src="/images/6-output-panel.png?11" alt="6-Output - Output-panel"
+                                class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - Output
+                                Panel</figcaption>
+                        </div>
+                        <span class="fw-normal fs-4">
+                            <p>The output-panel has the four additional outputs supported by CheapoDC firmware, which may be configured to be either
+                                dew controller, independent PWM or Boolean (On/Off) outputs via the Web UI. Two of the outputs have the RCA jacks
+                                commonly used by dew straps while two have 5.5mmx2.1mm 12v barrel jacks. The RCA jacks go in the larger holes with
+                                LEDs holders in the holes above them. The other four holes are for the barrel jacks and their LEDs. LED holders are
+                                stacked to the outside (left) of the panel while the barrel jacks go in the two holes stacked to the inside (right).
+                                Picking the right holes is important because they are placed to allow the jacks to fit with the MOSFETs and tight
+                                space in the case.
+                            </p>
+                            <p>
+                                If using output LEDs then all four should be mounted in the case first using the 3D
+                                printed LED mounts.
+                                The jacks will also need to be inserted in the panel holes before soldering. The
+                                soldering instructions for the RCA jacks are the same as in the switch-panel build step.
+                            </p>
+                            <p>The barrel jack soldering is very similar to the steps for the RCA jacks. The only difference is that the wires for
+                                the bottom barrel jack must be long enough to reach diagonally across the case to the furthest MOSFET module.
+                            </p>
+                            <p>Note that polarity doesn't usually matter for Dew Straps since they are simple resistive loads. But, keeping the
+                                polarity correct for the RCA jack outputs as well as the barrel jack outputs is good practice. In particular, any
+                                output that may be used for a purpose other than dew straps should definitely keep the polarity correct. 
+                            </p>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <p id="assembly-6-10">Install Output-panel.
+                    </p>
+                    <div class="clearfix mt-3">
+                        <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
+                            <img src="/images/6-output-panel-install.png?11" alt="6-Output - Output-panel Installed"
+                                class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - Output
+                                Panel Installed</figcaption>
+                        </div>
+                        <span class="fw-normal fs-4">
+                            <p>This is where the build becomes significantly less easy. Installing the output-panel requires that the wire leads for
+                                the jacks in the output-panel be trimmed to length, the ends stripped and then inserted into the appropriate MOSFET
+                                module terminals. There is very little room and inserting the tips of the stripped wires into the terminal blocks
+                                can be very frustrating.
+                            </p>
+                            <p>It is easiest to start with the bottom 12V barrel jack, upper right of the image, which connects to the MOSFET module
+                                diagonally opposite it in the lower left of the image. The space between the Power-board input J1 terminal block and
+                                the MOSFET module terminal block is very tight. You may need to disconnect the J1 Power-board connections before
+                                doing the MOSFET module connections. Then reconnect the Power-board connections.
+                            </p>
+                            <p>Work your way, using the image, right to left with the upper barrel jack connecting to the right Mosfet module, the
+                                right RCA jack connecting to the middle MOSFET module and then the left RCA jack connecting to the left-most MOSFET
+                                module.
+                            </p>
+                        </span>
+                    </div>
+
+                </li>
+
+                <li>
+                    <p id="assembly-6-11">Finish the wiring.
+                    </p>
+                    <div class="row align-items-center">
+                        <div class="col text-center">
+                            <div class="border border-dark border-2">
+                                <img src="/images/case-bottom-6-control.png?11" alt="6-Output Build - GPIO Connections"
+                                    class="img-fluid mx-auto">
+                                <hr class="opacity-100 mt-0 mb-0">
+                                <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - GPIO
+                                    Connections</figcaption>
+                            </div>
+                        </div>
+                        <div class="col text-center">
+                            <div class="border border-dark border-2">
+                                <img src="/images/case-bottom-6-final.png?11" alt="6-Output Build - Wiring Complete"
+                                    class="img-fluid mx-auto">
+                                <hr class="opacity-100 mt-0 mb-0">
+                                <h4>6&#8209;Output Build - Wiring Complete</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="fw-normal fs-4">
+                        <p class="mt-3">All that is left is to connect up the GPIO pins to the MOSFET module triggers
+                            and then the status
+                            LED. Follow the connections as indicated in the GPIO Connections image. It shows which
+                            MOSFET modules will
+                            be controlled by specific GPIO pins. Hover your cursor <a href="#" data-bs-toggle="popover"
+                                data-bs-container="body" data-bs-trigger="focus hover"
+                                data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
+                                data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/6-control-zoom.png' alt='Single Pin tip' class='mx-auto' width='400px'>">
+                                here</a> to see a zoomed in view of the ESP32-C3 pin connections.
+                        </p>
+                        <p>If you are crimping your own jumpers then cut them to length. If using Dupont jumpers then
+                            10cm should work for
+                            the four MOSFET modules closest to ESP32-C3. For the two farthest modules you'll need longer
+                            jumpers or will need
+                            to splice a couple of 10cm jumpers together to reach. Similarly a longer jumper is required
+                            for the status LED
+                            connection from GPIO 8 to the Power-board.
+                        </p>
+                        <p>The wiring is now complete but before you put the top of the case on we need to test that
+                            the outputs work properly.
+                        </p>
+                    </span>
+                </li>
+            </ol>
+            <h2 id="6-output-testing" class="text-warning">Do Hardware Verification</h2>
+            <p class="fw-normal fs-4">Before putting the top on the case verify that everything works. This can be done
+                fairly easily by
+                following the steps in the next section, <a href="#hardware-verification"
+                    class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">Hardware
+                    Verification</a>.
+            </p>
+            <div class="d-none d-print-block" style="break-after:page"></div>
+            <h1 id="hardware-verification">Hardware Verification</h1>
+            <span class="fw-normal fs-4">
+                <p>Before putting the top on the case verify that everything works. This can be done fairly easily and
+                    the
+                    process is
+                    roughly the same for both the 6-Output and 3-Output builds. Having the output LEDs helps with visual
+                    verification of the output of the MOSFET modules but you will still need to check each output jack
+                    to
+                    confirm the
+                    connections to the jacks. There are a couple of ways to verify the outputs are working:
+                <ol>
+                    <li>Using a voltmeter or multimeter to measure the voltage output. This works well if you have a
+                        multimeter. Using an RCA plug with a couple of leads makes this easier. The 6-Outlet build also
+                        has
+                        12V barrel jacks which will require a matching barrel plug with test leads.
+                    </li>
+                    <li>Making and using a simple LED test lead. This uses an LED set up for 12 volts soldered to an RCA
+                        plug and/or 12V barrel plug. Moving the LED from output to output is easy and both On/Off and
+                        different PWM settings are
+                        easy to visibly observe.
+                    </li>
+                </ol>
+                </p>
+            </span>
+            <h2>Make an LED Test Lead</h2>
+            <span class="fw-normal fs-4">
+                <p>To make a simple LED test lead, solder a 12 volt LED to an RCA plug. The LED should be rated for 12
+                    volts by having a current limiting resistor. If you do not have a pre-made 12 volt LED you can make
+                    one following the steps for <a href="#assembly-3-4"
+                        class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
+                        3-Output status LED</a> while using a 3K&#8486; resistor instead of a 510&#8486;
+                    resistor. The LED positive lead should be connected to the center pin of the RCA plug and
+                    the ground lead should be connected to the outer sleeve of the RCA plug.</p>
+                <p>If you have a 6-Output CheapoDC with 12V barrel jacks then build a second LED test lead with a barrel
+                    plug.</p>
+            </span>
+            <h2>Connection Verification Steps</h2>
+            <p class="fw-normal fs-4">As mentioned this should be done with the case top removed so that you can see the
+                LEDs that are built
+                into the buck
+                converter and MOSFET modules. Note that the case panels are quite thin and flexible when not supported
+                by the top
+                and bottom case halves. Be gentle while inserting and removing RCA plugs and 12V barrel plugs.
+            </p>
+            <ol class="h4">
+                <li>
+                    <p>Confirm basic ESP32-C3 power connection.</p>
+                    <span class="fw-normal fs-4">
+                        <p>Connect a 12 volt supply to the barrel jack on the switch-panel then switch your CheapoDC on.
+                            The Status LED should turn on then off quickly, then after a few seconds start a slow blink
+                            as the WiFi
+                            connection is established. The status LED should turn off once the WiFi connection is
+                            established. If it
+                            goes into a fast blink and then stays on there's a WiFi issue and the CheapoDC is in AP
+                            mode. You'll need to
+                            check the WiFi settings using the steps in <a
+                                href="https://github.com/hcomet/CheapoDC/tree/main/CheapoDC#first-time-device-configuration"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">First Time Device Configuration</a>.
+                        </p>
+                        <h4>Trouble shooting:</h4>
+                        <p>If the status LED does not blink at all then there may be a connection issue:
+                        <ul>
+                            <li>Confirm that the ESP32-C3 is getting power. The red power LED on the ESP32-C3 SuperMini
+                                should be on when power is on. There is also an LED on the buck converter that should be
+                                On. If
+                                either of these are not On then there is a power connection issue.
+                            </li>
+                            <li>If using an ESP32-C3 SuperMini expansion board, the board also has a green LED that
+                                flashes when
+                                the board is powered. If it is not flashing then the expansion board is not getting
+                                power. Check the
+                                5V and ground connections.
+                            </li>
+                            <li>The ESP32-C3 SuperMini has a blue LED connected to GPIO8. If it does not blink and
+                                then remain on then there may be an issue with the ESP32-C3 SuperMini. Pull the ESP32-C3
+                                SuperMini from the expansion board. Then power it from a USB connection on its own. If
+                                the power LED is on but the blue light remains off try uploading the firmware again
+                                using
+                                <a href="/CheapoDC/CheapoDCFlash.html"
+                                    class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                    target="_blank">WebFlash</a>.
+                            </li>
+                        </ul>
+                        </p>
+                    </span>
+                </li>
+                <li>
+                    <p>Check GPIO and Output jack connections.</p>
+                    <span class="fw-normal fs-4">
+                        <p class="fst-italic">The following section will ask you to check the output LEDs. If you do not
+                            have
+                            output LEDs in your build then use either an LED test lead or voltmeter on the output jacks.
+                            You will need to repeat the tests for each output with the LED test lead or voltmeter.
+                        </p>
+                        <p>Using your browser, go to the Controller Configuration page in the CheapoDC Web UI at
+                            <a href="http://cheapodc.local/config" target="_blank"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
+                                http://cheapodc.local/config</a> and log in.
+                        <ul>
+                            <li>Change the Controller Mode to <span class="fw-medium">Manual</span> and click
+                                <span class="fw-medium">Update</span>.
+                            </li>
+                            <li>If the Controller Output is not set to <span class="fw-medium">0</span> then set it to
+                                <span class="fw-medium">0</span>.
+                                The MOSFET
+                                modules each have an LED on them. That LED should be off. If using output LEDs then they
+                                should
+                                also be off.
+                            </li>
+                            <li>Set the Controller Output to <span class="fw-medium">10</span>. The MOSFET LEDs and
+                                Output LEDs should now be dimly
+                                lit. A voltmeter should read between 1 and 2 volts.</li>
+                            <li>Set the Controller Output to <span class="fw-medium">50</span>. The MOSFET LEDs and
+                                Output LEDs should now visibly
+                                brighten. A voltmeter should read around 6 volts.</li>
+                            <li>Set the Controller Output to <span class="fw-medium">100</span>. The MOSFET LEDs and
+                                Output LEDs should visibly
+                                brighten again. A voltmeter should read 12 volts.</li>
+                            <li>Leave the CheapDC powered on for 10 minutes with the Controller Output at 100. There
+                                should
+                                be no
+                                flickering of the MOSFET LEDs and Output LEDs. If there is flickering then there may be
+                                a loose connection
+                                or a
+                                bad solder joint. Check the connections to the MOSFET module with the flickering LED and
+                                replace the
+                                Dupont jumpers or re-solder if necessary.
+                            </li>
+                        </ul>
+                        </p>
+                        <h4>Trouble shooting:</h4>
+                        <p>If a MOSFET module LED does not light up then then there is likely an issue with the GPIO
+                            connection. This
+                            could be:
+                        <ul>
+                            <li>A bad jumper wire. Try an alternate.</li>
+                            <li>Reversed jumper connection. Make sure the ground and GPIO pin are connected correctly to
+                                the ground and
+                                trigger input on the MOSFET module.</li>
+                            <li>Bad solder joint for the trigger connection. Try re-soldering.</li>
+                        </ul>
+                        </p>
+                        <p>If all output LEDs do not light up but the MOSFET LEDs do, then there is likely an issue with
+                            you Power-board or
+                            power harnesses. You'll
+                            need to check all the 12V and ground screw terminals with a voltmeter to find where the
+                            issue is.
+                        </p>
+                        <p>If an individual output LED is not lighting up but the MOSFET LED is then:
+                        <ul>
+                            <li>Verify that power is getting to the MOSFET module by using a voltmeter with probes on
+                                the VIN+ and VIN-
+                                terminal screw heads. If it is not reading 12 volts then there is either an issue with
+                                the terminal connection
+                                to the power harness or the harness itself. Use the voltmeter to check the harness. You
+                                may need to check back to
+                                the Power-board.</li>
+                            <li>With Output set to 100% for the MOSFET module (MOSFET module LED should be on), check
+                                the VOUT+ and VOUT-
+                                screw heads with a voltmeter. If it shows 12V then the output connection needs to be
+                                checked. If it doesn't
+                                then there may be an issue with the MOSFET module and you'll need to replace it.</li>
+                        </ul>
+                        </p>
+                    </span>
+                </li>
+            </ol>
+            
+            <div class="d-none d-print-block" style="break-after:page"></div>
+            <h1 id="reporting-issues">Reporting Issues</h1>
+            <p class="fs-4 fw-normal">Please review the <a href="https://github.com/hcomet/CheapoDC/issues?q=is%3Aissue"
+                    class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                    target="_blank">reported issues<a> in the CheapoDC GitHub repository to see if your problem or question 
+                        has been previously reported. If not, report your issues or ask your question using the GitHub 
+                        <a href="https://github.com/hcomet/CheapoDC/issues/new"
+                            class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            target="_blank">New Issue</a> mechanism.
+            </p>
+
+
         </div>
     </main>
 
@@ -325,11 +1793,14 @@
     </footer>
 
 
-
-    <script>window.onload = function () { document.querySelector('esp-web-install-button').manifest = `./webFlashManifest.json`; };</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script>var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        })</script>
+
 </body>
 
 </html>

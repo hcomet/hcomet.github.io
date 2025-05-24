@@ -115,22 +115,24 @@
                 <ul>
                     <li>Low cost off the shelf components including an ESP32-C3 SuperMini, ESP32-C3 SuperMini expansion board,
                         a dual MOSFET module for each output and a 12V to 5V buck converter, plus some protoboard, RCA jacks, 12V barrel
-                        jacks and wire.</li>
+                        jacks and wire.
+                    </li>
                     <li>No coding or Arduino IDE experience necessary with both <a href="/CheapoDC/CheapoDCFlash.html"
                             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                             target="_blank">WebFlash</a> and <a href="/CheapoDC/CheapoDCWebUpdate.html"
                             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                            target="_blank">Web OTA Update</a> support.</li>
+                            target="_blank">Web OTA Update</a> support.
+                    </li>
                     <li>Comprehensive Web UI for configuration of dew controller operation and management of the device
-                        setup.</li>
+                        setup.
+                    </li>
                     <li>Flexibility to support from two to six power outputs, four of which may be used as additional
-                        dew
-                        controller outputs or independently configured and controlled as PWM or On/Off outputs.</li>
+                        dew controller outputs or independently configured and controlled as PWM or On/Off outputs.
+                    </li>
                     <li><a href="/CheapoDC/indi/CheapoDC.html"
                             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                             target="_blank">INDI</a> and StellarMate support 'out-of-the-box' and an open API for any
-                        third
-                        party integrations.
+                        third party integrations.
                     </li>
                     <li>Build cost of US$30.00 to US$50.00 depending on the number outputs.</li>
                 </ul>
@@ -150,30 +152,27 @@
                     and wires for the outputs. Fairly easy and manageable. A controller with the maximum six outputs
                     requires three dozen connections and wires for the outputs. Not particularly complex, but fitting all those
                     wires in a small case can be a lot less easy and manageable.</p>
-                <p>I use devices with two RCA outputs since I only have need to control two dew straps on
-                    my rigs. The basics of the original CheapoDC 2-Output build is shown on the main
-                    <a href="https://github.com/hcomet/CheapoDC#basic-wiring-diagram"
+                <p>I use devices with two RCA outputs since I only have need to control two dew straps on my rigs.
+                    The basics of the original CheapoDC 2-Output build is shown on the main <a
+                        href="https://github.com/hcomet/CheapoDC#basic-wiring-diagram"
                         class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                        target="_blank">CheapoDC repository page</a>. However, many astrophotographers require more than two
-                        dew controller outputs and would also like the option to control other accessories.
+                        target="_blank">CheapoDC repository page</a>. However, many astrophotographers require more
+                    than two dew controller outputs and would also like the option to control other accessories.
                 </p>
-                <p>
-                    This document provides details, including parts list, assembly steps and 3D case, for building a 3&#8209;Output CheapoDC and a 6&#8209;Output CheapoDC.
-                Control of three outputs should cover almost all situations where dew heater straps are required while continuing
-                    to be very easy to build. Six outputs provides the flexibility to control several dew heater straps as well as
-                    some 12V accessories such as a camera cooler. 
+                <p>This document provides details, including parts list, assembly steps and 3D case, for building a
+                    3&#8209;Output CheapoDC and a 6&#8209;Output CheapoDC. Control of three outputs should cover
+                    almost all situations where dew heater straps are required while continuing to be very easy to
+                    build. Six outputs provides the flexibility to control several dew heater straps as well as some
+                    12V accessories such as a camera cooler.
                 </p>
             </span>
             <h2 id="parts-list">Parts List</h2>
             <span class="fs-4 fw-normal">
-                <p>The following table lists the parts used in the builds and the number of each item required for each
-                    build
-                    version. The <span class="text-info">Item Names</span>
-                    support popovers with images of the item. The <span class="text-primary">Item Costs</span> provide
-                    links
-                    to examples on AliExpress. The links are for reference purposes and not an endorsement to purchase
-                    from
-                    the link.
+                <p>The following table lists the parts used in the builds and the number of each item required for
+                    each build version. The <span class="text-info">Item Names</span> support popovers with images
+                    of the item. The <span class="text-primary">Item Costs</span> provide links to examples on
+                    AliExpress. The links are for reference purposes and not an endorsement to purchase from the
+                    link.
                 </p>
             </span>
             <a href="/files/cheapodc-parts-list.csv" download data-bs-toggle="popover" data-bs-container="body"
@@ -242,14 +241,17 @@
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                 data-bs-content="<img src='/images/lm2596.png?11' alt='LM2596 Buck Converter' class='mx-auto' width='400px'>">
-                                LM2596</a></th>
+                                LM2596</a>
+                            </th>
                         <td class="text-center">1</td>
                         <td class="text-center">1</td>
                         <td><a href="https://www.aliexpress.com/item/1005007500404686.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                target="_blank">US$1.50</a></td>
+                                target="_blank">US$1.50</a>
+                            </td>
                         <td>DC to DC buck converter to reduce 12V input to 5V for the ESP32-C3. Needs to be set to
-                            correct output voltage before use.</td>
+                            correct output voltage before use.
+                        </td>
                     </tr>
 
                     <tr>
@@ -279,10 +281,10 @@
                         <td class="text-center">4</td>
                         <td><a href="https://www.aliexpress.com/item/1005006635645522.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                target="_blank">US$1.00</a></td>
+                                target="_blank">US$1.00</a>
+                            </td>
                         <td>Commonly used for dew heater straps. An extra one is used for the 3&#8209;Output build to
-                            make a
-                            test LED.</td>
+                            make a test LED.
                         </td>
                     </tr>
                     <tr>
@@ -317,25 +319,24 @@
                     </tr>
                     <tr>
                         <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
-                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
-                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover" data-bs-position="top"
+                                data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                 data-bs-content="<img src='/images/female-header.png?11' alt='Female Pin Header' class='mx-auto' width='400px'>">
-                                Female Pin Header</a></th>
+                                Female Pin Header</a>
+                        </th>
                         <td class="text-center">0</td>
                         <td class="text-center">2</td>
                         <td><a href="https://www.aliexpress.com/item/4000696234162.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                 target="_blank">US$0.50</a></td>
                         <td>2.54mm, 8-pin female headers used for the <a href="#" data-bs-toggle="popover"
-                                data-bs-container="body" data-bs-trigger="focus hover"
-                                data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
-                                data-bs-boundary="popper"
+                                data-bs-container="body" data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                 data-bs-content="<img src='/images/esp32-c3-board.png?11' alt='ESP32-C3-board' class='mx-auto' width='400px'>">
-                                ESP32-C3-board</a> in the 6&#8209;Output build. You can also use longer female headers
-                            (seen in the
-                            male header link below) and cut them down.
+                                ESP32-C3-board</a> in the 6&#8209;Output build. You can also use longer female headers (seen
+                            in the male header link below) and cut them down.
                         </td>
                     </tr>
                     <tr>
@@ -564,12 +565,11 @@
             <span class="fs-4 fw-normal">
                 <ul>
                     <li>
-                        <p>Silicone wire. Silicone wire is very flexible and much easier to work with in small
-                            spaces,
-                            especially with the tight 6-Outlet build. You will need to pick the gauge of wire used based on your
-                            application and expected current handling. My dew straps are 15 to 18 watts or 1.25 to 1.5 amps
-                            at 12 volts.
-                            Current ratings by wire gauge shown below.</p>
+                        <p>Silicone wire. Silicone wire is very flexible and much easier to work with in small spaces,
+                            especially with the tight 6-Outlet build. You will need to pick the gauge of wire used based on
+                            your application and expected current handling. My dew straps are 15 to 18 watts or 1.25 to 1.5
+                            amps at 12 volts. Current ratings by wire gauge shown below.
+                        </p>
                         <h4>Silicone Wire Current Ratings</h4>
                         <table class="table table-sm table-striped border border-dark border-2 fs-5">
                             <thead>
@@ -603,60 +603,56 @@
                             </tbody>
                         </table>
                     </li>
-                    <li>3D-printed cases discussed in the next section.</li>
+                    <li>3D-printed cases discussed in the next section.
+
+                    </li>
                     <li>An assortment of <a href="#" data-bs-toggle="popover" data-bs-container="body"
                             data-bs-trigger="focus hover" data-bs-custom-class="custom-popover" data-bs-position="top"
                             data-bs-html="true" data-bs-boundary="popper"
                             class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                             data-bs-content="<img src='/images/screws.png?11' alt='self-tapping screws' class='mx-auto' width='400px'>">
                             self-tapping pan head screws</a> are required to attach the different modules to the 3D
-                        printed case bottom and to hold
-                        the case together.
+                        printed case bottom and to hold the case together.
                         <ul class="list-unstyled ms-5">
                             <li><span class="fw-medium">M2x5mm Screws:</span> 2 for each MOSFET module, 2 for the
                                 ESP32-C3 expansion
-                                board.</li>
+                                board.
+                            </li>
                             <li><span class="fw-medium">M3x5mm Screws:</span> 2 for each of the 6-Output Power-board and
                                 ESP32-C3-boards.
                             </li>
                             <li><span class="fw-medium">M3x6mm Screws:</span> 4 to hold the case top and bottom
-                                together.</li>
+                                together.
+                            </li>
                         </ul>
                     </li>
                     <li><a href="https://www.aliexpress.com/item/1005001393566382.html"
                             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                             target="_blank">Heat shrink tubing</a> to cover soldered connections and wire splices. There
-                        are
-                        a lot of wires pressed into a small space with these builds and exposed connections should be
-                        minimized
-                        to prevent shorts. Electrical tape may also be used but heat shrink tubing is much easer to use
-                        and more resilient.</li>
+                        are a lot of wires pressed into a small space with these builds and exposed connections should
+                        be minimized to prevent shorts. Electrical tape may also be used but heat shrink tubing is much
+                        easer to use and more resilient.
+                    </li>
                     <li>The 6-Outlet build uses a couple of extra connectors that are used to make the wiring easier.
-                        These
-                        include <a href="https://www.aliexpress.com/item/4001129080280.html"
+                        These include <a href="https://www.aliexpress.com/item/4001129080280.html"
                             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                            target="_blank">Dupont connectors</a>,
-                        <a href="https://www.aliexpress.com/item/32782704195.html"
+                            target="_blank">Dupont connectors</a>, <a
+                            href="https://www.aliexpress.com/item/32782704195.html"
                             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                             target="_blank">Molex KK-254 connectors</a> and <a
                             href="https://www.aliexpress.com/item/1005007558623950.html"
                             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                             target="_blank">screw terminal blocks</a>. These require a crimping tool and some patience
-                        so
-                        you may choose to use direct soldering of the wires or pre-made Dupont jumpers instead.
+                        so you may choose to use direct soldering of the wires or pre-made Dupont jumpers instead.
                     </li>
                 </ul>
             </span>
             <h2 id="cost">Cost</h2>
             <span class="fs-4 fw-normal">
-                <p>Costing is just an estimate but for the 3-Output build there's less than US$20.00 in core parts and
-                    for
-                    the 6-Output build there's about US$25.00 in core parts. Each of them need a case and some screws
-                    which
-                    should be less than US$25.00 or cheaper if you can print your own case. The next section discusses
-                    the
-                    two 3D-printed 
-                    cases designed for these builds. 
+                <p>Costing is just an estimate but for the 3-Output build there's less than US$20.00 in core parts
+                    and for the 6-Output build there's about US$25.00 in core parts. Each of them need a case and
+                    some screws which should be less than US$25.00 or cheaper if you can print your own case. The
+                    next section discusses the two 3D-printed cases designed for these builds.
                 </p>
             </span>
             <h2 id="3d-printed-cases">3D-printed Cases</h2>
@@ -677,35 +673,29 @@
                 </div>
             </div>
             <span class="fs-4 fw-normal">
-                <p class="mt-3">The cases for the 3-Output and 6-Output builds are 128mmx85mmx38mm and 128mmx98mmx38mm
-                    (WxDXH),
-                    respectively.
-                    Both consist of a bottom and top piece with slots that hold a front and back panel. The bottom
-                    pieces
-                    are designed to hold the modules used in each build and allow them to be screwed down. The panels
-                    are
-                    designed to hold the jacks, switches and LEDs. The front panel is referred to as the 
-                    <span class="fst-italic">switch-panel</span> and the
-                    back panel as the <span class="fst-italic">output-panel</span> in the build description. The top and bottom pieces are held together
-                    with
-                    4 M3x6mm screws.
+                <p class="mt-3">The cases for the 3-Output and 6-Output builds are 128mmx85mmx38mm and
+                    128mmx98mmx38mm (WxDXH), respectively. Both consist of a bottom and top piece with slots that
+                    hold a front and back panel. The bottom pieces are designed to hold the modules used in each
+                    build and allow them to be screwed down. The panels are designed to hold the jacks, switches and
+                    LEDs. The front panel is referred to as the <span class="fst-italic">switch-panel</span> and the
+                    back panel as the <span class="fst-italic">output-panel</span> in the build description. The top
+                    and bottom pieces are held together with 4 M3x6mm screws.
                 </p>
                 <p>Besides the top, bottom and panels there are some additional pieces:
                 <ul>
                     <li>The 3-Output switch-panel has an opening to expose the USB port on the ESP32-C3. A 3D printable
-                        press
-                        fit plug is available.</li>
+                        press fit plug is available.
+                    </li>
                     <li>The LEDs that are mounted in the panels are held in place by a 3D printable holder with a press
-                        fit
-                        backing piece. There's also a printable tool to drive the backing piece onto the LED holder.
+                        fit backing piece. There's also a printable tool to drive the backing piece onto the LED holder.
                     </li>
                     <li>There are two sets of panels for the 6-Outlet case. One set with LED holes for each output and
                         one set without LED holes.
                     </li>
                     <li>There are two versions of the 6-Output case bottom. One which provides a mounting spot for the
-                        protoboard
-                        based ESP32-C3-board and one which provides an alternate mounting for the ESP32-C3 SuperMini
-                        Expansion board. </li>
+                        protoboard based ESP32-C3-board and one which provides an alternate mounting for the ESP32-C3
+                        SuperMini Expansion board.
+                    </li>
                     <li>The protoboard based Power-board requires a mounting ring to hold it to the case bottom. It
                         is also 3D printable.
                     </li>
@@ -721,18 +711,15 @@
             <div class="d-none d-print-block" style="break-after:page"></div>
             <h1 id="3-output-build">3&#8209;Output Build</h1>
             <span class="fs-4 fw-normal">
-                <p>The 3&#8209;Output CheapoDC is significantly simpler to build than the 6&#8209;Output version due to the
-                    reduced number of outputs that need to be connected. This build has all three
-                    outputs set up for dew straps with RCA jacks. The third output could be changed over to a switched 12 volt
+                <p>The 3&#8209;Output CheapoDC is significantly simpler to build than the 6&#8209;Output version due
+                    to the reduced number of outputs that need to be connected. This build has all three outputs set
+                    up for dew straps with RCA jacks. The third output could be changed over to a switched 12 volt
                     barrel jack or left out completely if needed.
                 </p>
-                <p>Wiring requires a combination of 10cm female to female Dupont jumpers and 18 gauge silicone wire. If
-                    you
-                    plan to use the CheapoDC
-                    for more than a total of 72 Watts or 6 amps at 12 volts then you may want to use 16 gauge wire for
-                    the
-                    power
-                    harnesses. You may also want to use a PPTC resettable fuse with a higher rating or one per output.
+                <p>Wiring requires a combination of 10cm female to female Dupont jumpers and 18 gauge silicone wire.
+                    If you plan to use the CheapoDC for more than a total of 72 Watts or 6 amps at 12 volts then you
+                    may want to use 16 gauge wire for the power harnesses. You may also want to use a PPTC
+                    resettable fuse with a higher rating or one per output.
                 </p>
             </span>
             <h2 id="3-output-assembly">3-Output Assembly Steps
@@ -767,40 +754,39 @@
                 <li>
                     <p id="assembly-3-1">Solder pins to modules.</p>
                     <div class="fw-normal fs-4">
-                        <p>
-                            Solder 2.54mm header pins to the MOSFET and buck converter modules. The buck converter
-                            requires a
-                            single pin at each corner which can be a bit difficult to solder. I used a
-                            <a href="#" data-bs-toggle="popover" data-bs-container="body" data-bs-trigger="focus hover"
+                        <p>Solder 2.54mm header pins to the MOSFET and buck converter modules. The buck converter requires a
+                            single pin at each corner which can be a bit difficult to solder. I used a <a href="#"
+                                data-bs-toggle="popover" data-bs-container="body" data-bs-trigger="focus hover"
                                 data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
                                 data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                 data-bs-content="<img src='/images/single-pin.png?11' alt='Single Pin tip' class='mx-auto' width='400px'>">piece
-                                of painter's tape pierced by a single pin and taped to the buck converter to hold the pin in place while I
-                                soldered it</a>. The tape is removed after soldering.
-                            <a href="#" data-bs-toggle="popover" data-bs-container="body" data-bs-trigger="focus hover"
+                                of painter's tape pierced by a single pin and taped to the buck converter to hold the pin in
+                                place while I soldered it</a>. The tape is removed after soldering. <a href="#"
+                                data-bs-toggle="popover" data-bs-container="body" data-bs-trigger="focus hover"
                                 data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
                                 data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                 data-bs-content="<img src='/images/mosfet-pins.png?11' alt='MOSFET trigger pins' class='mx-auto' width='400px'>">
                                 The MOSFET modules each get a 4 pin header which provides for 2 trigger and 2 ground
-                                pins</a>.
-                            This allows the ground connection to be daisy chained between the modules. One of the trigger pins
-                            on each MOSFET module must be connected to one GPIO pin on the ESP32-C3 expansion board.
+                                pins</a>. This allows the ground connection to be daisy chained between the modules. One of
+                            the trigger pins on each MOSFET module must be connected to one GPIO pin on the ESP32-C3
+                            expansion board.
                         </p>
                         <p>If your ESP32-C3 came without the header pins soldered to the board, solder those header
-                            pins onto the module board at this time.</p>
+                            pins onto the module board at this time.
+                        </p>
                     </div>
                 </li>
                 <li class="mt-3">
                     <p id="assembly-3-2">Mount modules to the case bottom.</p>
                     <div class="row align-items-start fw-normal fs-4">
                         <div class="col">
-                            <p>Mount the MOSFET modules, buck converter module and ESP32-C3 expansion module in the
-                                case bottom. This is shown in the image to the right. The ESP32-C3 expansion board
-                                should be screwed down to
-                                the case bottom before the ESP32-C3 is installed. Mounting the modules now will help
-                                with the next step.</p>
+                            <p>Mount the MOSFET modules, buck converter module and ESP32-C3 expansion module in the case bottom.
+                                This is shown in the image to the right. The ESP32-C3 expansion board should be screwed down to
+                                the case bottom before the ESP32-C3 is installed. Mounting the modules now will help with the
+                                next step.
+                            </p>
                         </div>
                         <div class="col text-center ">
                             <div class="border border-dark border-2">
@@ -827,18 +813,18 @@
                             <p>There are two power harnesses, one for 12V and one for ground. Use the
                                 populated case bottom to measure the lengths of wire needed for the harnesses.
                             </p>
-                            <p>The 12V harness is connected to one pole of the SPST rocker switch and feeds to the
-                                left around the end of the MOSFET modules. See the image to the right. Cut a single
-                                wire
-                                long enough to reach the farthest right MOSFET module plus at least 5cm. Then splice in
-                                two shorter pieces of wire for the first two MOSFET modules. Keep the wires long, we'll
-                                cut them
-                                down later. Cover the splices with tape or heat shrink tubing.
-                            <p>Make the ground harness in a similar manner except that it routes from the negative lead
-                                of the
-                                5.5mm x 2.1mm barrel jack around the other end of the MOSFET modules.
+                            <p>The 12V harness is connected to one pole of the SPST rocker switch and feeds to the left around
+                                the end of the MOSFET modules. See the image to the right. Cut a single wire long enough to
+                                reach the farthest right MOSFET module plus at least 5cm. Then splice in two shorter pieces of
+                                wire for the first two MOSFET modules. Keep the wires long, we'll cut them down later. Cover the
+                                splices with tape or heat shrink tubing.
                             </p>
-                            <p class="text-warning">Do not attach the wiring harnesses, they will be attached in a future step.</p>
+                            <p>Make the ground harness in a similar manner except that it routes from the negative lead
+                                of the 5.5mm x 2.1mm barrel jack around the other end of the MOSFET modules.
+                            </p>
+                            <p class="text-warning">Do not attach the wiring harnesses, they will be attached in a future step.
+
+                            </p>
                         </span>
                     </div>
                 </li>
@@ -860,8 +846,8 @@
                             the switch and barrel jack are installed.
                         </p>
                         <p>The positive LED lead connects to GPIO pin 8 on the ESP32-C3 while the ground lead should
-                            be
-                            connected to a ground pin on the ESP32-C3 expansion board.</p>
+                            be connected to a ground pin on the ESP32-C3 expansion board.
+                        </p>
                     </span>
                 </li>
                 <li>
@@ -881,54 +867,35 @@
                     <p id="assembly-3-6">Connect the power harnesses and buck converter to the switch and barrel
                         jack.</p>
                     <span class="fw-normal fs-4">
-                        <p>Cut the end off a Dupont jumper and strip the wire. Solder the Dupont jumper and the
-                            ground harness to
-                            the negative lead of the barrel jack. The Dupont jumper connects to the
-                            <span class="fw-medium">IN-</span> pin on the buck
-                            converter.
+                        <p>Cut the end off a Dupont jumper and strip the wire. Solder the Dupont jumper and the ground
+                            harness to the negative lead of the barrel jack. The Dupont jumper connects to the <span
+                                class="fw-medium">IN-</span> pin on the buck converter. </p>
+                        <p>Similar to the ground connections, cut the end off another Dupont jumper and strip the wire.
+                            Solder the Dupont jumper and the 12V harness to the other free pole of the SPST switch. The
+                            Dupont jumper connects to the <span class="fw-medium">IN+</span> pin on the buck converter.
                         </p>
-                        <p>Similar to the ground connections, cut the end off another Dupont jumper and strip the
-                            wire. Solder the
-                            Dupont jumper and the 12V harness to the other free pole of the SPST switch. The Dupont
-                            jumper connects
-                            to the <span class="fw-medium">IN+</span> pin on the buck converter.
+                        <p><strong class="text-warning">DO NOT CONNECT THE OUTPUTS OF THE BUCK CONVERTER TO THE ESP32-C3
+                                UNTIL THE OUTPUT IS ADJUSTED IN THE NEXT STEP. </strong>
                         </p>
-                        <p><strong class="text-warning">DO NOT CONNECT THE OUTPUTS OF THE BUCK CONVERTER TO THE
-                                ESP32-C3 UNTIL THE OUTPUT IS
-                                ADJUSTED
-                                IN THE NEXT STEP.
-                            </strong></p>
                     </span>
                 </li>
 
                 <li>
                     <p id="assembly-3-7">Adjust buck converter to 5 volts.</p>
                     <span class="fw-normal fs-4">
-                        <p>This is done by connecting a voltmeter to the
-                            output of the buck converter and adjusting the potentiometer on the buck converter until the
-                            meter
-                            reads 5 volts. Since the wiring for power was completed in the previous step you should be
-                            able
-                            to plug in
-                            a 12 volt supply to the barrel jack and switch on the buck converter. With a small screw
-                            driver adjust the
-                            potentiometer on the buck converter by turning the small screw until your voltmeter reads 5
-                            volts. Assuming you have
-                            not previously adjusted the buck converter, it should be set to maximum and show about 12
-                            volts.
-                            Turning the screw
-                            counter clockwise will reduce the output voltage. It may take quite a few turns before you
-                            see
-                            any change in the output
-                            and then it will change quickly.</p>
-                        <p>You can now connect the buck converter to the ESP32-C3 expansion board with a couple of
-                            Dupont
-                            jumpers. The
-                            <span class="fw-medium">Out+</span> buck converter pin connects to the <span class="fw-medium">5V</span>
-                            ESP32-C3 pin
-                            while
-                            the <span class="fw-medium">Out-</span>
-                            buck converter pin connects to the <span class="fw-medium">G</span> ESP32-C3 pin.
+                        <p>This is done by connecting a voltmeter to the output of the buck converter and adjusting the
+                            potentiometer on the buck converter until the meter reads 5 volts. Since the wiring for power
+                            was completed in the previous step you should be able to plug in a 12 volt supply to the barrel
+                            jack and switch on the buck converter. With a small screw driver adjust the potentiometer on the
+                            buck converter by turning the small screw until your voltmeter reads 5 volts. Assuming you have
+                            not previously adjusted the buck converter, it should be set to maximum and show about 12 volts.
+                            Turning the screw counter clockwise will reduce the output voltage. It may take quite a few
+                            turns before you see any change in the output and then it will change quickly.
+                        </p>
+                        <p>You can now connect the buck converter to the ESP32-C3 expansion board with a couple of Dupont
+                            jumpers. The <span class="fw-medium">Out+</span> buck converter pin connects to the <span
+                                class="fw-medium">5V</span> ESP32-C3 pin while the <span class="fw-medium">Out-</span> buck
+                            converter pin connects to the <span class="fw-medium">G</span> ESP32-C3 pin.
                         </p>
                     </span>
                 </li>
@@ -1085,12 +1052,10 @@
             <h2 id="6-output-protoboards">Protoboards</h2>
             <span class="fw-normal fs-4">
                 <p>The primary difference between the 6&#8209;Output build and the 3&#8209;Output build, besides the
-                    number
-                    of outputs, is that
-                    the 6&#8209;Output build requires the two protoboard based boards. Building the ESP32-C3-board and
-                    the
-                    Power-board should be
-                    completed before assembling your 6&#8209;Output CheapoDC.</p>
+                    number of outputs, is that the 6&#8209;Output build requires the two protoboard based boards.
+                    Building the ESP32-C3-board and the Power-board should be completed before assembling your
+                    6&#8209;Output CheapoDC.
+                </p>
             </span>
             <h3>ESP32-C3-board</h3>
             <div class="clearfix">
@@ -1210,7 +1175,8 @@
                             use the pin headers used in the 3-Output build with Dupont jumpers.
                         </p>
                         <p>If your ESP32-C3 came without the header pins soldered to the board, also solder those header
-                            pins at this time.</p>
+                            pins at this time.
+                        </p>
                     </div>
                 </li>
                 <li class="mt-3">
@@ -1225,11 +1191,12 @@
                         </div>
 
                         <span class="fw-normal fs-4">
-                            <p>Mount the MOSFET modules, buck converter module, ESP32-C3-board and Power-board in the case bottom as shown in the
-                                image. The ESP32-C3-board should only fit in one orientation. The ESP32-C3 SuperMini USB port should face to the
-                                inside of the case to keep it accessible. Use the 3D-printed mounting ring (red in the image) to hold down the
-                                Power-board so that the power input (bottom in the image) and output (top in the image) connection blocks are on the
-                                correct side. Mount the buck converter so that the input pins are next to the Power-board.
+                            <p>Mount the MOSFET modules, buck converter module, ESP32-C3-board and Power-board in the case
+                                bottom as shown in the image. The ESP32-C3-board should only fit in one orientation. The
+                                ESP32-C3 SuperMini USB port should face to the inside of the case to keep it accessible. Use the
+                                3D-printed mounting ring (red in the image) to hold down the Power-board so that the power input
+                                (bottom in the image) and output (top in the image) connection blocks are on the correct side.
+                                Mount the buck converter so that the input pins are next to the Power-board.
                             </p>
                         </span>
                     </div>
@@ -1247,28 +1214,22 @@
                         </div>
 
                         <span class="fw-normal fs-4">
-                            <p>There are three power harnesses, one 12V harness for each of the two sets of MOSFET
-                                modules and one ground harness.
-                                Use the populated case bottom to measure the lengths of wire needed for the harnesses
-                                using
-                                the routing
-                                indicated in the image. Red lines are 12V and dark grey lines are ground. The 12V
-                                harnesses use 18 gauge wire while the ground
-                                harness uses acombination of 16 and 18 gauge wire.</p>
-                            <p>The 12V harnesses are each connected to one of the 12V output terminals on the Power-board. 
-                                Using the image cut a single
-                                wire for each long enough to reach from the 12V output terminal to the farthest MOSFET
-                                module on the route plus at least 5cm. Then splice in
-                                two shorter pieces of wire for the first two MOSFET modules on each harness. Keep the
-                                wires
-                                long, we'll
-                                cut them down later. Cover the splices with tape or heat shrink tubing.
-                            <p>Make the ground harness in a similar manner except that it routes from the negative
-                                terminal
-                                of the Power-board. There is a shorter piece
-                                of 16 gauge wire that goes from the Power-board ground terminal to the first splice that
-                                splits the ground into two 18 gauge wires running
-                                to three MOSFET modules each.
+                            <p>There are three power harnesses, one 12V harness for each of the two sets of MOSFET modules and
+                                one ground harness. Use the populated case bottom to measure the lengths of wire needed for the
+                                harnesses using the routing indicated in the image. Red lines are 12V and dark grey lines are
+                                ground. The 12V harnesses use 18 gauge wire while the ground harness uses a combination of 16
+                                and 18 gauge wire.
+                            </p>
+                            <p>The 12V harnesses are each connected to one of the 12V output terminals on the Power-board. Using
+                                the image cut a single wire for each long enough to reach from the 12V output terminal to the
+                                farthest MOSFET module on the route plus at least 5cm. Then splice in two shorter pieces of wire
+                                for the first two MOSFET modules on each harness. Keep the wires long, we'll cut them down
+                                later. Cover the splices with tape or heat shrink tubing.
+                            </p>
+                            <p>Make the ground harness in a similar manner except that it routes from the negative terminal of
+                                the Power-board. There is a shorter piece of 16 gauge wire that goes from the Power-board ground
+                                terminal to the first splice that splits the ground into two 18 gauge wires running to three
+                                MOSFET modules each.
                             </p>
                         </span>
                     </div>
@@ -1284,27 +1245,21 @@
                                 Power Harness</figcaption>
                         </div>
                         <span class="fw-normal fs-4">
-                            <p>Connect the power harnesses to the Power-board. The image shows the installed power
-                                harnesses.
+                            <p>Connect the power harnesses to the Power-board. The image shows the installed power harnesses.
                                 Install the ground harness first routing it to the left and around the end of the MOSFET
-                                modules. Cut the
-                                spliced wires to length so that they will reach the appropriate <span
-                                    class="fw-medium">VIN-</span>
-                                connection on each module.
-                                Strip the ends, insert and tighten the screws.
+                                modules. Cut the spliced wires to length so that they will reach the appropriate <span
+                                    class="fw-medium">VIN-</span> connection on each module. Strip the ends, insert and tighten
+                                the screws.
                             </p>
-                            <p>
-                                Repeat for the two 12V power harnesses, which are routed to the right and around the
-                                end of the MOSFET modules.
-                                Cut the spliced wires to length so that they will reach the appropriate
-                                <span class="fw-medium">VIN+</span> connection on each
-                                module. Strip the ends, insert and tighten the screws.
+                            <p>Repeat for the two 12V power harnesses, which are routed to the right and around the end of the
+                                MOSFET modules. Cut the spliced wires to length so that they will reach the appropriate <span
+                                    class="fw-medium">VIN+</span> connection on each module. Strip the ends, insert and tighten
+                                the screws.
                             </p>
-                            <p>Keep the power harnesses tight to the MOSFET modules on the case panel sides. The space
-                                between the panels and the
-                                MOSFET modules is tight and the wires will be compressed when the case top is installed.
-                                The RCA jacks and barrel jacks
-                                also stick out over the MOSFET modules leaving very little room.
+                            <p>Keep the power harnesses tight to the MOSFET modules on the case panel sides. The space between
+                                the panels and the MOSFET modules is tight and the wires will be compressed when the case top is
+                                installed. The RCA jacks and barrel jacks also stick out over the MOSFET modules leaving very
+                                little room.
                             </p>
                         </span>
                     </div>
@@ -1321,49 +1276,38 @@
                                 Panel</figcaption>
                         </div>
                         <span class="fw-normal fs-4">
-                            <p>The 6-Output switch-panel the power switch and power input jack as well as two RCA jacks
-                                for
-                                for CheapoDC outputs 0 and 1. If building with the output LEDs then there is also one
-                                LED
-                                for each of the two outputs. The image shows the switch-panel assembled with connections
-                                attached.
+                            <p>The 6-Output switch-panel the power switch and power input jack as well as two RCA jacks for for
+                                CheapoDC outputs 0 and 1. If building with the output LEDs then there is also one LED for each
+                                of the two outputs. The image shows the switch-panel assembled with connections attached.
                             </p>
-                            <p>Note that shrink tubing has been used to cover and insulate the solder joints. If using
-                                the output LEDs then the RCA jack
-                                threaded barrel should also be insulated with either shrink tubing or electrical tape. The RCA
-                                jacks are very close to the tops of
-                                the MOSFETs in the MOSFET modules and the threaded barrels can short out the MOSFETs if
-                                they touch. The shrink tubing or tape will
-                                help to prevent this. This is not an issue when NOT using output LEDs because the RCA
+                            <p>Note that shrink tubing has been used to cover and insulate the solder joints. If using the
+                                output LEDs then the RCA jack threaded barrel should also be insulated with either shrink tubing
+                                or electrical tape. The RCA jacks are very close to the tops of the MOSFETs in the MOSFET
+                                modules and the threaded barrels can short out the MOSFETs if they touch. The shrink tubing or
+                                tape will help to prevent this. This is not an issue when NOT using output LEDs because the RCA
                                 jacks are mounted higher on the switch-panel.
                             </p>
-                            <p class="text-warning">Remember to slide heat shrink tubing onto wires before soldering since
-                                many of the solder joints create closed loops
-                                that will not allow the shrink tubing to be placed on the wires after soldering. Keep
-                                the tubing back from the joint while soldering
-                                and then slide it over the joint and heat it to shrink it.
+                            <p class="text-warning">Remember to slide heat shrink tubing onto wires before soldering since many
+                                of the solder joints create closed loops that will not allow the shrink tubing to be placed on
+                                the wires after soldering. Keep the tubing back from the joint while soldering and then slide it
+                                over the joint and heat it to shrink it.
                             </p>
                             <ol type="I">
-                                <li>If using output LEDs install the two 12V LEDs into the smaller holes above the RCA
-                                    jack holes using the 3D-printed holder and
-                                    backer. Trim the LED wires down to about 5cm and strip the ends.
+                                <li>If using output LEDs install the two 12V LEDs into the smaller holes above the RCA jack holes
+                                    using the 3D-printed holder and backer. Trim the LED wires down to about 5cm and strip the ends.
                                 </li>
-                                <li>Cut 4 pieces of 22 gauge wire long enough to reach from the switch-panel RCA jack
-                                    holes over the MOSFET modules and then
-                                    around to the MOSFET output screw block connecters. If using RCA jacks similar to
-                                    those shown in the parts list then solder
-                                    one of the pieces of wire and a black LED wire to the tabs of each of the two RCA
-                                    jack ground washers. Now mount the RCA jacks
-                                    into the switch-panel, in the holes under the LEDs, and tighten their holding nuts.
-                                    A red LED wire and piece of 22 gauge wire should
-                                    now be soldered to the positive terminal of the RCA jacks.</li>
-                                <li>Install the rocker switch and barrel jack into the switch-panel. Solder a piece of
-                                    16 gauge wire to the negative lead of the barrel
-                                    jack leaving the wire long enough to reach the IN GND terminal of J1 on the Power-board.
-                                    Solder a piece of 16 gauge wire to the positive lead of the barrel jack and leave it
-                                    long enough to reach the switch.
-                                    Solder the other end to one of the pole tabs for the single pole of the switch.
-                                    Solder a piece of 16 gauge wire to the other tab of
+                                <li>Cut 4 pieces of 22 gauge wire long enough to reach from the switch-panel RCA jack holes over the
+                                    MOSFET modules and then around to the MOSFET output screw block connecters. If using RCA jacks
+                                    similar to those shown in the parts list then solder one of the pieces of wire and a black LED
+                                    wire to the tabs of each of the two RCA jack ground washers. Now mount the RCA jacks into the
+                                    switch-panel, in the holes under the LEDs, and tighten their holding nuts. A red LED wire and
+                                    piece of 22 gauge wire should now be soldered to the positive terminal of the RCA jacks.
+                                </li>
+                                <li>Install the rocker switch and barrel jack into the switch-panel. Solder a piece of 16 gauge wire
+                                    to the negative lead of the barrel jack leaving the wire long enough to reach the IN GND
+                                    terminal of J1 on the Power-board. Solder a piece of 16 gauge wire to the positive lead of the
+                                    barrel jack and leave it long enough to reach the switch. Solder the other end to one of the
+                                    pole tabs for the single pole of the switch. Solder a piece of 16 gauge wire to the other tab of
                                     of the single pole and leave it long enough to reach the IN 12V terminal of J1 on the
                                     Power-board.
                                 </li>
@@ -1410,27 +1354,22 @@
                 <li>
                     <p id="assembly-6-7">Adjust buck converter to 5 volts.</p>
                     <span class="fw-normal fs-4">
-                        <p>This is done by connecting a voltmeter to the
-                            output of the buck converter and adjusting the potentiometer on the buck converter until the
-                            meter
-                            reads 5 volts. The Power-board was connected to the switch-panel in the previous step, now
-                            connect
-                            jumper wires from J3 on the Power-board to the buck converter. Connect <strong>OUT
-                                12V-3</strong> from the
-                            Power-board to <span class="fw-medium">IN+</span> on the buck converter and <span
-                                class="fw-medium">OUT GND-3</span> to
-                            <span class="fw-medium">IN-</span> on the buck converter.
+                        <p>This is done by connecting a voltmeter to the output of the buck converter and adjusting the
+                            potentiometer on the buck converter until the meter reads 5 volts. The Power-board was connected
+                            to the switch-panel in the previous step, now connect jumper wires from J3 on the Power-board to
+                            the buck converter. Connect <strong>OUT 12V-3</strong> from the Power-board to <span
+                                class="fw-medium">IN+</span> on the buck converter and <span class="fw-medium">OUT
+                                GND-3</span> to <span class="fw-medium">IN-</span> on the buck converter.
                         </p>
-                        <p>Connect a voltmeter to the <span class="fw-medium">OUT+</span> and <span class="fw-medium">OUT-</span> pins 
-                            on the buck converter then plug in
-                            a 12 volt supply to the barrel jack on the switch-panel and turn on the switch. The buck
-                            converter should be powered with a power LED on. With a small screw driver adjust the
-                            potentiometer on the buck converter by turning the small screw until your voltmeter reads 5
-                            volts. Assuming you have
-                            not previously adjusted the buck converter, it should be set to maximum and show about 12
-                            volts. Turning the screw
-                            counter clockwise will reduce the output voltage. It may take quite a few turns before you
-                            see any change in the output and then it will change quickly.</p>
+                        <p>Connect a voltmeter to the <span class="fw-medium">OUT+</span> and <span
+                                class="fw-medium">OUT-</span> pins on the buck converter then plug in a 12 volt supply to
+                            the barrel jack on the switch-panel and turn on the switch. The buck converter should be powered
+                            with a power LED on. With a small screw driver adjust the potentiometer on the buck converter by
+                            turning the small screw until your voltmeter reads 5 volts. Assuming you have not previously
+                            adjusted the buck converter, it should be set to maximum and show about 12 volts. Turning the
+                            screw counter clockwise will reduce the output voltage. It may take quite a few turns before you
+                            see any change in the output and then it will change quickly.
+                        </p>
                         <p>You can now connect the buck converter to the ESP32-C3-board with a couple of
                             jumpers with female Dupont connectors on each end. The <span class="fw-medium">Out+</span>
                             buck converter pin connects to the <span class="fw-medium">5V</span> ESP32-C3 pin while the 
@@ -1443,15 +1382,12 @@
                     <p id="assembly-6-8">Install CheapoDC firmware.
                     </p>
                     <span class="fw-normal fs-4">
-                        <p>If you have not installed the CheapoDC firmware onto the ESP32-C3 then do it now. The easiest
-                            way
-                            to do
-                            this is to connect the ESP32-C3 to your computer using a USB cable and then use the
-                            <a href="/CheapoDC/CheapoDCFlash.html"
+                        <p>If you have not installed the CheapoDC firmware onto the ESP32-C3 then do it now. The easiest way
+                            to do this is to connect the ESP32-C3 to your computer using a USB cable and then use the <a
+                                href="/CheapoDC/CheapoDCFlash.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                 target="_blank">WebFlash</a> tool to upload the latest firmware. After the firmware is
-                            uploaded, follow
-                            the steps outlined in <a
+                            uploaded, follow the steps outlined in <a
                                 href="https://github.com/hcomet/CheapoDC/tree/main/CheapoDC#first-time-device-configuration"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                 target="_blank">First Time Device Configuration</a> to setup your CheapoDC:
@@ -1567,25 +1503,20 @@
                         </div>
                     </div>
                     <span class="fw-normal fs-4">
-                        <p class="mt-3">All that is left is to connect up the GPIO pins to the MOSFET module triggers
-                            and then the status
-                            LED. Follow the connections as indicated in the GPIO Connections image. It shows which
-                            MOSFET modules will
-                            be controlled by specific GPIO pins. Hover your cursor <a href="#" data-bs-toggle="popover"
-                                data-bs-container="body" data-bs-trigger="focus hover"
+                        <p class="mt-3">All that is left is to connect up the GPIO pins to the MOSFET module triggers and
+                            then the status LED. Follow the connections as indicated in the GPIO Connections image. It shows
+                            which MOSFET modules will be controlled by specific GPIO pins. Hover your cursor <a href="#"
+                                data-bs-toggle="popover" data-bs-container="body" data-bs-trigger="focus hover"
                                 data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
                                 data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                 data-bs-content="<img src='/images/6-control-zoom.png' alt='Single Pin tip' class='mx-auto' width='400px'>">
                                 here</a> to see a zoomed in view of the ESP32-C3 pin connections.
                         </p>
-                        <p>If you are crimping your own jumpers then cut them to length. If using Dupont jumpers then
-                            10cm should work for
-                            the four MOSFET modules closest to ESP32-C3. For the two farthest modules you'll need longer
-                            jumpers or will need
-                            to splice a couple of 10cm jumpers together to reach. Similarly a longer jumper is required
-                            for the status LED
-                            connection from GPIO 8 to the Power-board.
+                        <p>If you are crimping your own jumpers then cut them to length. If using Dupont jumpers then 10cm
+                            should work for the four MOSFET modules closest to ESP32-C3. For the two farthest modules you'll
+                            need longer jumpers or will need to splice a couple of 10cm jumpers together to reach. Similarly
+                            a longer jumper is required for the status LED connection from GPIO 8 to the Power-board.
                         </p>
                         <p>The wiring is now complete but before you put the top of the case on we need to test that
                             the outputs work properly.
@@ -1604,59 +1535,55 @@
             <h1 id="hardware-verification">Hardware Verification</h1>
             <span class="fw-normal fs-4">
                 <p>Before putting the top on the case verify that everything works. This can be done fairly easily and
-                    the
-                    process is
-                    roughly the same for both the 6-Output and 3-Output builds. Having the output LEDs helps with visual
-                    verification of the output of the MOSFET modules but you will still need to check each output jack
-                    to
-                    confirm the
-                    connections to the jacks. There are a couple of ways to verify the outputs are working:
-                <ol>
-                    <li>Using a voltmeter or multimeter to measure the voltage output. This works well if you have a
-                        multimeter. Using an RCA plug with a couple of leads makes this easier. The 6-Outlet build also
-                        has
+                the process is roughly the same for both the 6-Output and 3-Output builds. Having the output LEDs
+                helps with visual verification of the output of the MOSFET modules but you will still need to check
+                each output jack to confirm the connections to the jacks. There are a couple of ways to verify the
+                outputs are working:
+                    <ol>
+                        <li>Using a voltmeter or multimeter to measure the voltage output. This works well if you have a
+                        multimeter. Using an RCA plug with a couple of leads makes this easier. The 6-Outlet build also has
                         12V barrel jacks which will require a matching barrel plug with test leads.
-                    </li>
-                    <li>Making and using a simple LED test lead. This uses an LED set up for 12 volts soldered to an RCA
-                        plug and/or 12V barrel plug. Moving the LED from output to output is easy and both On/Off and
-                        different PWM settings are
-                        easy to visibly observe.
-                    </li>
-                </ol>
+                        </li>
+                        <li>Making and using a simple LED test lead. This uses an LED set up for 12 volts soldered to an RCA
+                            plug and/or 12V barrel plug. Moving the LED from output to output is easy and both On/Off and
+                            different PWM settings are easy to visibly observe.
+                        </li>
+                    </ol>
                 </p>
             </span>
-            <h2>Make an LED Test Lead</h2>
+            <h2><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='/images/test-led.png' alt='Test LED' class='mx-auto' width='400px'>">
+                                Make an LED Test Lead</a></h2>
             <span class="fw-normal fs-4">
-                <p>To make a simple LED test lead, solder a 12 volt LED to an RCA plug. The LED should be rated for 12
-                    volts by having a current limiting resistor. If you do not have a pre-made 12 volt LED you can make
-                    one following the steps for <a href="#assembly-3-4"
+                <p>To make a simple LED test lead, solder a 12 volt LED to an RCA plug. An LED can be configured for 12
+                    volts by using a current limiting resistor. If you do not have a pre-made 12 volt LED you can make
+                    one following the steps to solder up the <a href="#assembly-3-4"
                         class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
-                        3-Output status LED</a> while using a 3K&#8486; resistor instead of a 510&#8486;
+                        3-Output status LED</a> except with a 3K&#8486; resistor instead of a 510&#8486;
                     resistor. The LED positive lead should be connected to the center pin of the RCA plug and
-                    the ground lead should be connected to the outer sleeve of the RCA plug.</p>
+                    the ground lead should be connected to the outer sleeve of the RCA plug.
+                </p>
                 <p>If you have a 6-Output CheapoDC with 12V barrel jacks then build a second LED test lead with a barrel
                     plug.</p>
             </span>
             <h2>Connection Verification Steps</h2>
-            <p class="fw-normal fs-4">As mentioned this should be done with the case top removed so that you can see the
-                LEDs that are built
-                into the buck
-                converter and MOSFET modules. Note that the case panels are quite thin and flexible when not supported
-                by the top
-                and bottom case halves. Be gentle while inserting and removing RCA plugs and 12V barrel plugs.
+            <p class="fw-normal fs-4">As mentioned this should be done with the case top removed so that you can
+                see the LEDs that are built into the buck converter and MOSFET modules. Note that the case
+                panels are quite thin and flexible when not supported by the top and bottom case halves. Be
+                gentle while inserting and removing RCA plugs and 12V barrel plugs.
             </p>
             <ol class="h4">
                 <li>
                     <p>Confirm basic ESP32-C3 power connection.</p>
                     <span class="fw-normal fs-4">
-                        <p>Connect a 12 volt supply to the barrel jack on the switch-panel then switch your CheapoDC on.
-                            The Status LED should turn on then off quickly, then after a few seconds start a slow blink
-                            as the WiFi
-                            connection is established. The status LED should turn off once the WiFi connection is
-                            established. If it
-                            goes into a fast blink and then stays on there's a WiFi issue and the CheapoDC is in AP
-                            mode. You'll need to
-                            check the WiFi settings using the steps in <a
+                        <p>Connect a 12 volt supply to the barrel jack on the switch-panel then switch your CheapoDC on. The
+                            Status LED should turn on then off quickly, then after a few seconds start a slow blink as the
+                            WiFi connection is established. The status LED should turn off once the WiFi connection is
+                            established. If it goes into a fast blink and then stays on there's a WiFi issue and the
+                            CheapoDC is in AP mode. You'll need to check the WiFi settings using the steps in <a
                                 href="https://github.com/hcomet/CheapoDC/tree/main/CheapoDC#first-time-device-configuration"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                 target="_blank">First Time Device Configuration</a>.
@@ -1664,23 +1591,19 @@
                         <h4>Trouble shooting:</h4>
                         <p>If the status LED does not blink at all then there may be a connection issue:
                         <ul>
-                            <li>Confirm that the ESP32-C3 is getting power. The red power LED on the ESP32-C3 SuperMini
-                                should be on when power is on. There is also an LED on the buck converter that should be
-                                On. If
-                                either of these are not On then there is a power connection issue.
+                            <li>Confirm that the ESP32-C3 is getting power. The red power LED on the ESP32-C3 SuperMini should
+                                be on when power is on. There is also an LED on the buck converter that should be On. If either
+                                of these LEDs are not lit then there is a power connection issue.
                             </li>
-                            <li>If using an ESP32-C3 SuperMini expansion board, the board also has a green LED that
-                                flashes when
-                                the board is powered. If it is not flashing then the expansion board is not getting
-                                power. Check the
-                                5V and ground connections.
+                            <li>If using an ESP32-C3 SuperMini expansion board, the board also has a green LED that flashes when
+                                the board is powered. If it is not flashing then the expansion board is not getting power. Check
+                                the 5V and ground connections.
                             </li>
                             <li>The ESP32-C3 SuperMini has a blue LED connected to GPIO8. If it does not blink and
                                 then remain on then there may be an issue with the ESP32-C3 SuperMini. Pull the ESP32-C3
                                 SuperMini from the expansion board. Then power it from a USB connection on its own. If
                                 the power LED is on but the blue light remains off try uploading the firmware again
-                                using
-                                <a href="/CheapoDC/CheapoDCFlash.html"
+                                using <a href="/CheapoDC/CheapoDCFlash.html"
                                     class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                     target="_blank">WebFlash</a>.
                             </li>
@@ -1692,78 +1615,62 @@
                     <p>Check GPIO and Output jack connections.</p>
                     <span class="fw-normal fs-4">
                         <p class="fst-italic">The following section will ask you to check the output LEDs. If you do not
-                            have
-                            output LEDs in your build then use either an LED test lead or voltmeter on the output jacks.
-                            You will need to repeat the tests for each output with the LED test lead or voltmeter.
+                            have output LEDs in your build then use either an LED test lead or voltmeter on the output
+                            jacks. You will need to repeat the tests for each output with the LED test lead or voltmeter.
                         </p>
                         <p>Using your browser, go to the Controller Configuration page in the CheapoDC Web UI at
                             <a href="http://cheapodc.local/config" target="_blank"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
                                 http://cheapodc.local/config</a> and log in.
-                        <ul>
-                            <li>Change the Controller Mode to <span class="fw-medium">Manual</span> and click
-                                <span class="fw-medium">Update</span>.
-                            </li>
-                            <li>If the Controller Output is not set to <span class="fw-medium">0</span> then set it to
-                                <span class="fw-medium">0</span>.
-                                The MOSFET
-                                modules each have an LED on them. That LED should be off. If using output LEDs then they
-                                should
-                                also be off.
-                            </li>
-                            <li>Set the Controller Output to <span class="fw-medium">10</span>. The MOSFET LEDs and
-                                Output LEDs should now be dimly
-                                lit. A voltmeter should read between 1 and 2 volts.</li>
-                            <li>Set the Controller Output to <span class="fw-medium">50</span>. The MOSFET LEDs and
-                                Output LEDs should now visibly
-                                brighten. A voltmeter should read around 6 volts.</li>
-                            <li>Set the Controller Output to <span class="fw-medium">100</span>. The MOSFET LEDs and
-                                Output LEDs should visibly
-                                brighten again. A voltmeter should read 12 volts.</li>
-                            <li>Leave the CheapDC powered on for 10 minutes with the Controller Output at 100. There
-                                should
-                                be no
-                                flickering of the MOSFET LEDs and Output LEDs. If there is flickering then there may be
-                                a loose connection
-                                or a
-                                bad solder joint. Check the connections to the MOSFET module with the flickering LED and
-                                replace the
-                                Dupont jumpers or re-solder if necessary.
-                            </li>
-                        </ul>
+                            <ul>
+                                <li>Change the Controller Mode to <span class="fw-medium">Manual</span> and click
+                                    <span class="fw-medium">Update</span>.
+                                </li>
+                                <li>If the Controller Output is not set to <span class="fw-medium">0</span> then set it to <span
+                                        class="fw-medium">0</span>. The MOSFET modules each have an LED on them. That LED should be
+                                    off. If using output LEDs then they should also be off.
+                                </li>
+                                <li>Set the Controller Output to <span class="fw-medium">10</span>. The MOSFET LEDs and Output LEDs
+                                    should now be dimly lit. A voltmeter should read between 1 and 2 volts.
+                                </li>
+                                <li>Set the Controller Output to <span class="fw-medium">50</span>. The MOSFET LEDs and Output LEDs
+                                    should now visibly brighten. A voltmeter should read around 6 volts.
+                                </li>
+                                <li>Set the Controller Output to <span class="fw-medium">100</span>. The MOSFET LEDs and Output LEDs
+                                    should visibly brighten again. A voltmeter should read 12 volts.
+                                </li>
+                            </ul>
                         </p>
                         <h4>Trouble shooting:</h4>
+                        <p>Note that a MOSFET module's LEDs will light up when there is voltage applied to the ground and trigger inputs.</p>
                         <p>If a MOSFET module LED does not light up then then there is likely an issue with the GPIO
-                            connection. This
-                            could be:
+                            connection. This could be:
                         <ul>
-                            <li>A bad jumper wire. Try an alternate.</li>
+                            <li>A bad jumper wire. Try an alternate.
+                            </li>
                             <li>Reversed jumper connection. Make sure the ground and GPIO pin are connected correctly to
-                                the ground and
-                                trigger input on the MOSFET module.</li>
-                            <li>Bad solder joint for the trigger connection. Try re-soldering.</li>
+                                the ground and trigger input on the MOSFET module.
+                            </li>
+                            <li>Bad solder joint for the trigger connection. Try re-soldering.
+                            </li>
                         </ul>
                         </p>
                         <p>If all output LEDs do not light up but the MOSFET LEDs do, then there is likely an issue with
-                            you Power-board or
-                            power harnesses. You'll
-                            need to check all the 12V and ground screw terminals with a voltmeter to find where the
-                            issue is.
+                            your Power-board or power harnesses. You'll need to check all the 12V and ground screw terminals
+                            with a voltmeter to find where the issue is.
                         </p>
                         <p>If an individual output LED is not lighting up but the MOSFET LED is then:
                         <ul>
-                            <li>Verify that power is getting to the MOSFET module by using a voltmeter with probes on
-                                the VIN+ and VIN-
-                                terminal screw heads. If it is not reading 12 volts then there is either an issue with
-                                the terminal connection
-                                to the power harness or the harness itself. Use the voltmeter to check the harness. You
-                                may need to check back to
-                                the Power-board.</li>
-                            <li>With Output set to 100% for the MOSFET module (MOSFET module LED should be on), check
-                                the VOUT+ and VOUT-
-                                screw heads with a voltmeter. If it shows 12V then the output connection needs to be
-                                checked. If it doesn't
-                                then there may be an issue with the MOSFET module and you'll need to replace it.</li>
+                            <li>Verify that power is getting to the MOSFET module by using a voltmeter with probes on the VIN+
+                                and VIN- terminal screw heads. If it is not reading 12 volts then there is either an issue with
+                                the terminal connection to the power harness or the harness itself. Use the voltmeter to check
+                                the harness. You may need to check back to the Power-board.
+                            </li>
+                            <li>With Output set to 100% for the MOSFET module (MOSFET module LED should be on), check the VOUT+
+                                and VOUT- screw heads with a voltmeter. If it shows 12V then the output jack connections need to
+                                be checked. If it doesn't then there may be an issue with the MOSFET module and you'll need to
+                                replace it.
+                            </li>
                         </ul>
                         </p>
                     </span>

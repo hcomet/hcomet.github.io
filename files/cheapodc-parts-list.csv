@@ -1,0 +1,25 @@
+﻿Item,3‑Output Number,6‑Output Number,Item Cost,Link,Comments
+ESP32-C3 SuperMini,1,1,US$3.00,https://www.aliexpress.com/item/1005007560784307.html,Often comes with the pin headers needing to be soldered.
+ESP32-C3 SuperMini Expansion Board,1,0,US$3.00,https://www.aliexpress.com/item/1005007446928015.html,Used in 3‑Output build to simplify the build.
+Dual MOSFET Module,3,6,US$1.00,https://www.aliexpress.com/item/1005006478302624.html,One required per output.
+LM2596,1,1,US$1.50,https://www.aliexpress.com/item/1005007500404686.html,DC to DC buck converter to reduce 12V input to 5V for the ESP32-C3. Needs to be set to correct output voltage before use.
+12V Barrel Jack,1,3,US$1.00,https://www.aliexpress.com/item/32799292477.html,5.5mm x 2.1mm barrel jack. Used to connect 12V power supply to the CheapoDC and for 2 outputs on the 6‑Output version.
+RCA Jack,4,4,US$1.00,https://www.aliexpress.com/item/1005006635645522.html,Commonly used for dew heater straps. An extra one is used for the 3‑Output build to make a test LED.
+Rocker Switch,1,1,US$0.50,https://www.aliexpress.com/item/1005006365905448.html,SPST rocker switch. This one has an LED integrated into the switch which will be used in the 6-Outlet build.
+RUEF500 PPTC,1,2,US$0.10,https://www.aliexpress.com/item/1005005586939219.html,5A PPTC resettable fuse.
+Female Pin Header,0,2,US$0.50,https://www.aliexpress.com/item/4000696234162.html,"2.54mm, 8-pin female headers used for the ESP32-C3-board in the  6-Output build. You can also use longer female headers (seen in the male header link below) and cut them down."
+Male Pin Header,2,2,US$0.20,https://www.aliexpress.com/item/1005007528068254.html,"2.54mm, male pin header used for Dupont jumper connection points. 40-pin headers are easily cut to size."
+Protoboard,0,1,US$1.00,https://www.aliexpress.com/item/1005005819162727.html,Used in the 6‑Output build for ESP32-C3 board and power board. A single 6cm X 8cm piece should be enough for both boards.
+Red LED,1,0,US$0.05,https://www.aliexpress.com/item/1005003323707856.html,5mm red LEDs used in the 3‑Output build for the Status LED and a test LED.
+12V Red LED,0,6,US$0.10,https://www.aliexpress.com/item/1005006526203359.html,5mm with pre-wired resistor for 12v. Optional for the 6‑Output build. See comments on these LEDs in the 6-Outlet build notes.
+3KΩ resistor,1,1,US$0.10,https://www.aliexpress.com/item/1005007714306585.html,Used for the status LED. Used directly with the status LED in the 3‑Output build and used with the 2N2222 transistor in the 6‑Output build. Getting a kit with an assortment of ¼W resistors may be an option.
+Dupont jumpers,1,0,US$2.00,https://www.aliexpress.com/item/1005004647016228.html,"Package of 20, Female to Female Dupont jumpers, 10cm long . Used with in the 3‑Output build to connect between pin headers. May also optionally be used in the 6‑Output build."
+2N2222,0,1,US$0.10,https://www.aliexpress.com/item/1005005990965554.html,Used on the power board for the 6-Outlet build. Allows the ESP32-C3 to control the Switch LED as a Status LED.
+,,,,,
+Additional Items,,,,,
+Item,3‑Output Number,6‑Output Number,Item Cost,Link,Comments
+ESP32-C3 SuperMini Expansion Board,0,1,US$3.00,https://www.aliexpress.com/item/1005007446928015.html,Instead of creating your own ESP32-C3-board an expansion board may be used instead. Requires an alternate case bottom.
+Red LED,1,2,US$0.05,https://www.aliexpress.com/item/1005003323707856.html,5mm red LED used to make a test LED for output verification instead of using a voltmeter.
+510Ω resistor,1,3,US$0.10,https://www.aliexpress.com/item/1005007714306585.html,Used with the Red LED to make a test LED for output verification instead of using a voltmeter. Getting a kit with an assortment of ¼W resistors may be an option.
+RCA Plug,1,1,US$1.00,https://www.aliexpress.com/item/1005005222350895.html,Used to make the LED test tool for output verification. Also useful if using a voltmeter for verification.
+12V 5.5x2.1mm Barrel Plug,1,0,US$1.00,https://www.aliexpress.com/item/1005001842323383.html,Used to make the LED test tool for output verification. The 6-Output build uses both RCA and Barrel jacks.

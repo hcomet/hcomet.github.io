@@ -7,7 +7,7 @@
 	<meta name="color-scheme" content="dark light" />
 	<meta name="description" content="Information about the CheapoDC INDI driver." />
 	<title>CheapoDC INDI Driver</title>
-    <link rel="icon" type="image/png" href="../../images/favicon.png">
+	<link rel="icon" type="image/png" href="../../images/favicon.png">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -26,33 +26,48 @@
 				</div>
 				<ul class="navbar-nav">
 					<li class="nav-item">
-				<span class="navbar-text fs-4 fw-medium">CheapoDC INDI Driver
-				</span>
+						<span class="navbar-text fs-4 fw-medium">CheapoDC INDI Driver
+						</span>
 					</li>
 					<li class="nav-item">
-				<span class="nav-item dropdown">
-					<a class="nav-link fs-3 fw-medium pt-0 mt-0" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="bi bi-list"></i></a>
-					<ul class="dropdown-menu dropdown-menu-end">
-						<li><h6 class="dropdown-header fs-3 fw-medium">Contents</h6></li>
-						<li><hr class="dropdown-divider"></li>
-					  <li><a class="dropdown-item" href="#indi-driver">INDI Driver</a></li>
-					  <li><a class="dropdown-item" href="#installation">Installation</a></li>
-					  <li><a class="dropdown-item" href="#features">Features</a></li>
-					  <li><a class="dropdown-item" href="#controller-power-output-calculation">Controller Power Output Calculation</a></li>
-					  <li><a class="dropdown-item" href="#operation">Operation</a></li>
-					  <ul style="list-style-type: none;"><li><a class="dropdown-item" href="#connection">Connection Tab</a></li>
-						<li><a class="dropdown-item" href="#options">Options Tab</a></li>
-						<li><a class="dropdown-item" href="#site-management">Site Management Tab</a></li>
-						<li><a class="dropdown-item" href="#main-control">Main Control Tab</a></li></ul>
-					  <li><a class="dropdown-item" href="#issues">Issues</a></li>
-					</ul>
-				</span></li>
+						<span class="nav-item dropdown">
+							<a class="nav-link fs-3 fw-medium pt-0 mt-0" data-bs-toggle="dropdown" href="#"
+								role="button" aria-expanded="false"><i class="bi bi-list"></i></a>
+							<ul class="dropdown-menu dropdown-menu-end">
+								<li>
+									<h6 class="dropdown-header fs-3 fw-medium">Contents</h6>
+								</li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" href="#indi-driver">INDI Driver</a></li>
+								<li><a class="dropdown-item" href="#installation">Installation</a></li>
+								<li><a class="dropdown-item" href="#features">Features</a></li>
+								<li><a class="dropdown-item" href="#controller-power-output-calculation">Controller
+										Power Output Calculation</a></li>
+								<li><a class="dropdown-item" href="#operation">Operation</a></li>
+								<ul style="list-style-type: none;">
+									<li><a class="dropdown-item" href="#connection">Connection Tab</a></li>
+									<li><a class="dropdown-item" href="#options">Options Tab</a></li>
+									<li><a class="dropdown-item" href="#site-management">Site Management Tab</a></li>
+									<li><a class="dropdown-item" href="#main-control">Main Control Tab</a></li>
+								</ul>
+								<li><a class="dropdown-item" href="#issues">Issues</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#top-of-page">Top of Page</a></li>
+							</ul>
+						</span>
+					</li>
+				</ul>
 			</div>
 		</nav>
 	</header>
 	<main class="h-80 overflow-y-auto">
 		<div class="container-md fs-5 fw-medium">
-			<h2 class="mt-5" id="indi-driver"><i class="text-primary bi bi-info-circle-fill"></i> INDI Driver</h2>
+            <br id="top-of-page">
+			<h2 id="indi-driver"><i class="text-primary bi bi-info-circle-fill"></i> INDI Driver</h2>
 			<div class="ms-5">
 				<p>The CheapoDC is listed in the supported devices for both <a
 						href="https://www.indilib.org/aux/cheapodc-dew-controller.html"
@@ -132,66 +147,68 @@ sudo apt-get install libindi1
 					After connecting successfully go to the <strong>Options</strong> tab and
 					save the settings.</p>
 			</div>
-			<h2 id="controller-power-output-calculation"><i class="text-primary bi bi-calculator-fill"></i> Controller Power Output Calculation</h2>
+			<h2 id="controller-power-output-calculation"><i class="text-primary bi bi-calculator-fill"></i> Controller
+				Power Output Calculation</h2>
 			<div class="ms-5">
 				<p>Controller output is calculated by determining the position of a reference temperature withing a
 					tracking
 					range. This is outlined below.</p>
 			</div>
 			<h3 class="ms-5">Output Calculation Variables:</H3>
-				<div class="ms-5">
-			<ul style="list-style-type: none;" class="ps-0">
-				<li><b>Set Point</b> = <b><em>SP</em></b></li>
-				<ul>
-					<li>a temperature point set using the <b>Set Point Mode</b> selection.</li>
-				</ul>
-				<li><b>Reference Temperature</b> = <b><em>RT</em></b></li>
-				<ul>
-					<li>as set using the <b>Temperature Mode</b> selection.</li>
-				</ul>
-				<li><b>Track Point</b> = <b><em>TP</em></b></li>
-				<ul>
-					<li>the calculated temperature point where the <b>Tracking Range</b> starts. A <b>Reference
-							Temperature</b> less than or
-						equal
-						to the <b>Track Point</b> will cause the controller to use <b>Maximum Output</b>. </li>
-				</ul>
-				<li><b>Track Point Offset</b> = <b><em>TPO</em></b></li>
-				<ul>
-					<li>a temperature offset applied to the <b>Set Point</b> when calculating the <b>Track Point</b>
-						relative to the <b>Set
-							Point</b>. The <b>Track Point Offset</b> may be set from -5.0&deg;C to 5.0&deg;C. The
-						default is 0.0&deg;C.</li>
-				</ul>
+			<div class="ms-5">
+				<ul style="list-style-type: none;" class="ps-0">
+					<li><b>Set Point</b> = <b><em>SP</em></b></li>
+					<ul>
+						<li>a temperature point set using the <b>Set Point Mode</b> selection.</li>
+					</ul>
+					<li><b>Reference Temperature</b> = <b><em>RT</em></b></li>
+					<ul>
+						<li>as set using the <b>Temperature Mode</b> selection.</li>
+					</ul>
+					<li><b>Track Point</b> = <b><em>TP</em></b></li>
+					<ul>
+						<li>the calculated temperature point where the <b>Tracking Range</b> starts. A <b>Reference
+								Temperature</b> less than or
+							equal
+							to the <b>Track Point</b> will cause the controller to use <b>Maximum Output</b>. </li>
+					</ul>
+					<li><b>Track Point Offset</b> = <b><em>TPO</em></b></li>
+					<ul>
+						<li>a temperature offset applied to the <b>Set Point</b> when calculating the <b>Track Point</b>
+							relative to the <b>Set
+								Point</b>. The <b>Track Point Offset</b> may be set from -5.0&deg;C to 5.0&deg;C. The
+							default is 0.0&deg;C.</li>
+					</ul>
 
-				<li><b>Tracking Range</b> = <b><em>TR</em></b></li>
-				<ul>
-					<li>the temperature range, with the lower end starting at the <b>Track Point</b>. The controller
-						output ramps up from <b>Minimum
-							Output</b> at the high end of the range to <b>Maximum Output</b> at the low end of the
-						range. The range may be set to
-						values from 4.0&deg;C to 10.0&deg;C. The default is 4.0&deg;C.</li>
+					<li><b>Tracking Range</b> = <b><em>TR</em></b></li>
+					<ul>
+						<li>the temperature range, with the lower end starting at the <b>Track Point</b>. The controller
+							output ramps up from <b>Minimum
+								Output</b> at the high end of the range to <b>Maximum Output</b> at the low end of the
+							range. The range may be set to
+							values from 4.0&deg;C to 10.0&deg;C. The default is 4.0&deg;C.</li>
+					</ul>
+					<li><b>Power Output</b> = <b><em>PO</em></b></li>
+					<ul>
+						<li>the percentage of power the controller is outputting to the dew straps. It varies from the
+							<b>Minimum
+								Output</b> setting to the <b>Maximum Output</b> setting.
+						</li>
+					</ul>
+					<li><b>Minimum Output</b> = <b><em>MinO</em></b></li>
+					<ul>
+						<li>the minimum percent power setting for the controller to output when not in the
+							<b>Off</b><b>Controller
+								Mode</b>. Defaults to 0&percnt;.
+						</li>
+					</ul>
+					<li><b>Maximum Output</b> = <b><em>MaxO</em></b></li>
+					<ul>
+						<li>the maximum percent power setting for the controller to output when at full output. Defaults
+							to
+							100&percnt;.</li>
+					</ul>
 				</ul>
-				<li><b>Power Output</b> = <b><em>PO</em></b></li>
-				<ul>
-					<li>the percentage of power the controller is outputting to the dew straps. It varies from the
-						<b>Minimum
-							Output</b> setting to the <b>Maximum Output</b> setting.
-					</li>
-				</ul>
-				<li><b>Minimum Output</b> = <b><em>MinO</em></b></li>
-				<ul>
-					<li>the minimum percent power setting for the controller to output when not in the
-						<b>Off</b><b>Controller
-							Mode</b>. Defaults to 0&percnt;.
-					</li>
-				</ul>
-				<li><b>Maximum Output</b> = <b><em>MaxO</em></b></li>
-				<ul>
-					<li>the maximum percent power setting for the controller to output when at full output. Defaults to
-						100&percnt;.</li>
-				</ul>
-			</ul>
 			</div>
 			<h3 class="ms-5">Output Calculation</h3>
 			<div class="ms-5">
@@ -237,8 +254,7 @@ sudo apt-get install libindi1
 					installed on
 					the controller. Only TCP/IP
 					network connections are supported.</p>
-				<p><img class="img-fluid border border-primary" src="./connection.jpg"
-						alt="Connection" /></p>
+				<p><img class="img-fluid border border-primary" src="./connection.jpg" alt="Connection" /></p>
 				<ul>
 					<li><strong>Network</strong>: Use TCP with the
 						default port number of 58000.
@@ -252,8 +268,7 @@ sudo apt-get install libindi1
 			<div class="ms-5">
 				<p>Under the Options tab, you can configure parameters to optimize the operation of the dew controller.
 				</p>
-				<p><img class="img-fluid border border-primary" src="./options.jpg"
-						alt="Options" />
+				<p><img class="img-fluid border border-primary" src="./options.jpg" alt="Options" />
 				</p>
 				<ul>
 					<li><strong>Debug</strong>: Not currently supported.</li>
@@ -381,8 +396,7 @@ sudo apt-get install libindi1
 					default the CheapoDC driver is configured to get location geographic coordinates from another device
 					such as a
 					telescope or mount. This the preferred configuration.</p>
-				<p><img class="img-fluid border border-primary" src="./sitemanagement.jpg"
-						alt="Site Management" /></p>
+				<p><img class="img-fluid border border-primary" src="./sitemanagement.jpg" alt="Site Management" /></p>
 				<ul>
 					<li><strong>Location</strong>:
 						<ul>
@@ -408,21 +422,25 @@ sudo apt-get install libindi1
 			<h3 class="ms-5" id="main-control">Main Control</h3>
 			<div class="ms-5">
 				<p>The Main Control tab is where the different CheapoDC operating modes may be set and current
-					controller power output may be set and monitored. CheapoDC supports up to 6 outputs numbered 0 through
-				5. The power to outputs 0 and 1 is always set based on the Controller Mode. Outputs 2 through 5 can each
-			be set to one of 4 Output Modes: 
-			<ul>
-				<li><strong>Disabled:</strong> Output is disabled. Disabled Outputs are not displayed in the tab. (Outputs 0 and 1 may also be Disabled).</li>
-				<li><strong>Controller:</strong> Output power is set based on the Controller Mode.</li>
-				<li><strong>PWM:</strong> Output power is manually settable from 0 to 100 percent.</li>
-				<li><strong>Boolean:</strong> Output power is manually settable to either 0 or 100 percent.</li>
-			</ul>
-			</p>
-			<p>The configuration of the 6 Outputs <strong>must</strong> be done through the CheapoDC Web UI on the
-			<a href="https://github.com/hcomet/CheapoDC/#cheapodc-device-management" class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-			target="_blank"> Device Management</a> page.</p>
-				<p><img class="img-fluid border border-primary" src="./maincontrol.jpg?123456789"
-						alt="Main Control" />
+					controller power output may be set and monitored. CheapoDC supports up to 6 outputs numbered 0
+					through
+					5. The power to outputs 0 and 1 is always set based on the Controller Mode. Outputs 2 through 5 can
+					each
+					be set to one of 4 Output Modes:
+				<ul>
+					<li><strong>Disabled:</strong> Output is disabled. Disabled Outputs are not displayed in the tab.
+						(Outputs 0 and 1 may also be Disabled).</li>
+					<li><strong>Controller:</strong> Output power is set based on the Controller Mode.</li>
+					<li><strong>PWM:</strong> Output power is manually settable from 0 to 100 percent.</li>
+					<li><strong>Boolean:</strong> Output power is manually settable to either 0 or 100 percent.</li>
+				</ul>
+				</p>
+				<p>The configuration of the 6 Outputs <strong>must</strong> be done through the CheapoDC Web UI on the
+					<a href="https://github.com/hcomet/CheapoDC/#cheapodc-device-management"
+						class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+						target="_blank"> Device Management</a> page.
+				</p>
+				<p><img class="img-fluid border border-primary" src="./maincontrol.jpg?123456789" alt="Main Control" />
 				</p>
 				<ul>
 					<li><strong>Connection</strong>: Shows current connection state as well as the ability to
@@ -498,7 +516,8 @@ sudo apt-get install libindi1
 					</li>
 					<li><strong>Dew Point</strong>: The dew point in &deg;C calculated from the current Weather Query
 						Temperature and Humidity.</li>
-					<li><strong>Output #</strong>: Output Mode and power setting for Output <strong>#</strong>. If an output
+					<li><strong>Output #</strong>: Output Mode and power setting for Output <strong>#</strong>. If an
+						output
 						has an Output Mode of Disabled then it will not be displayed.
 					</li>
 					<li><strong>Refresh</strong>: Force a weather service query and update of the driver property

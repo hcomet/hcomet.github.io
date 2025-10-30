@@ -8,11 +8,11 @@
 	<meta name="description" content="Information about the CheapoDC INDI driver." />
 	<title>CheapoDC INDI Driver</title>
 	<link rel="icon" type="image/png" href="../../images/favicon.png">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-	<script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+	<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">-->
+	    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+	<!--<script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>-->
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -48,9 +48,11 @@
 								<li><a class="dropdown-item" href="#operation">Operation</a></li>
 								<ul style="list-style-type: none;">
 									<li><a class="dropdown-item" href="#connection">Connection Tab</a></li>
-									<li><a class="dropdown-item" href="#options">Options Tab</a></li>
-									<li><a class="dropdown-item" href="#site-management">Site Management Tab</a></li>
 									<li><a class="dropdown-item" href="#main-control">Main Control Tab</a></li>
+									<li><a class="dropdown-item" href="#options">Options Tab</a></li>
+									<li><a class="dropdown-item" href="#dew">Dew Tab</a></li>
+									<li><a class="dropdown-item" href="#power">Power Tab</a></li>
+									<li><a class="dropdown-item" href="#site-management">Site Management Tab</a></li>
 								</ul>
 								<li><a class="dropdown-item" href="#issues">Issues</a></li>
                                 <li>
@@ -77,14 +79,14 @@
 						target="_blank"
 						class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">StellarMate</a>.
 					This page
-					is maintained to provide up to date documentation for the drive.
+					is maintained to provide up to date documentation for the driver.
 				</p>
-				The latest driver is Version 1.2 available in libindi 2.1.3+.
+				<p>The latest driver is Version 2.0, refactored for the INDI::Power Interface and is available in libindi 2.1.6+.</p>
 			</div>
 			<h2 class="mt-2"><i class="text-primary bi bi-star-fill" id="installation"></i> Installation</h2>
 			<div class="ms-5">
-				<p>INDI CheapoDC driver was originally included with libindi 2.0.7+.</p>
-				</p>To Install the driver under Ubuntu:</p>
+				<p>The INDI CheapoDC driver was originally included with libindi 2.0.7+.</p>
+				<p>To Install the driver under Ubuntu:</p>
 				<pre class="border border-primary ps-2 pt-1 pb-1">sudo apt-add-repository ppa:mutlaqja/ppa
 sudo apt-get update 
 sudo apt-get install libindi1
@@ -92,17 +94,11 @@ sudo apt-get install libindi1
 			</div>
 			<h2 id="features"><i class="text-primary bi bi-check-circle-fill"></i> Features</h2>
 			<div class="ms-5">
-				<p>The Cheapo Dew Controller, or CheapoDC, is a low cost, low component count, easy to build DIY dew
-					controller based on
-					an ESP32-C3 mini.
-					Parts required include the ESP32-C3 mini, one or two MOSFET modules, a 12V to 5V buck converter,
-					some
-					protoboard,
-					a couple of RCA sockets, a 12V barrel socket and wire. Cost of the parts should be less than $20 for
-					a
-					unit that
-					controls 2 dew heater straps. Details for build and operation of CheapoDC can be found on the
-					<a href="https://github.com/hcomet/CheapoDC">project site</a>.
+				<p>The Cheapo Dew Controller, or CheapoDC, is a low cost, low component count, easy to build DIY dew controller based on an ESP32-C3 supermini.
+					Parts required include the ESP32-C3 supermini, one to five MOSFET modules, a 12V to 5V buck converter, some protoboard,
+					a couple of RCA sockets, a 12V barrel socket and wire. Optionally an SHT-30 humidity module may also be configured.
+					Cost of the parts should be less than $20 for a unit that controls 2 dew heater straps. Details for build and operation of CheapoDC 
+					can be found on the <a href="https://github.com/hcomet/CheapoDC">project site</a>.
 				</p>
 				<p>Current features include:</p>
 				<ul>
@@ -111,41 +107,34 @@ sudo apt-get install libindi1
 						dew
 						point.
 					</li>
+					<li>Support for an internal Humidity/Temperature sensor for autonomous operation (as of firmware V2.3.0).</li>
 					<li>Designed to work with INDI including the ability to leverage geographic coordinates from your
-						mount,
-						temperature/humidity from a weather device and temperature from your focuser temperature probe.
+						mount, temperature/humidity from a weather device and temperature from your focuser temperature probe.
 					</li>
 					<li>Controller modes supporting both Automated and Manual operation.</li>
 					<li>Flexible dew condition tracking modes supporting multiple methods to calculate output power to
-						the
-						two output channels.</li>
+						the dew controller output channels.</li>
 					<li>Can operate in WiFi Access Point mode in either a semi-Automated or Manual mode if no network or
-						Internet
-						connectivity is available. But the CheapoDC does work best with internet connectivity, </li>
+						Internet connectivity is available.</li>
 				</ul>
-				<p>A primary goal was to keep the build simple with minimal parts. This is done by leveraging the ESP32
-					WiFi
-					capability
-					to query one of the
-					open weather service APIs. API queries are used for ambient temperature, humidity and dew point.
-					This is
-					then used
-					for calculating CheapoDC's power output.
-					No additional integrated components, such as temperature or humidity probes, are required. Many
-					astrophotographers already have
-					temperature probes for their electronic focuser and these may be
-					leveraged through the INDI driver. The responsiveness and aggressiveness of the controller can be
-					adjusted through
+				<p>A primary goal was to keep the build simple with minimal parts for a minimal low complexity build while also 
+					supporting the ability to create a more fully featured autonomous build. This is done by leveraging an ESP32 C3 and
+					a set of off-the-shelf modules. The ESP32 WiFi capability to query one of the open weather service APIs. API 
+					queries are used for ambient temperature, humidity and dew point. This is then used for calculating CheapoDC's 
+					power output.</p> 
+				<p>Many astrophotographers already have a temperature probe for their electronic focuser and these may be
+					leveraged through the INDI driver. If using one of the INDI weather device drivers these may also be used instead of
+					directly querying an open weather service. However, some may not have internet access or a weather device at there 
+					astrophotography rig for weather information. In this case the CheapoDC can also be built with an optional SHT-30 humidity sensor.
+				</p>
+				<p>The responsiveness and aggressiveness of the controller can be adjusted through
 					the CheapoDC configuration settings. All temperature values reported in the driver interface are in
 					degrees celsius.</p>
 				<p>When running the driver for the first time, the default Server Address, <b>cheapodc.local</b>, should
-					work. If not,
-					go to the <b>Connection</b> tab to change the Server Address.
+					work. If not, go to the <b>Connection</b> tab to change the Server Address.
 					Enter your CheapoDC IP address or modified hostname then retry the connection using the Connect
-					button
-					on the <strong>Main Control</strong> tab.
-					After connecting successfully go to the <strong>Options</strong> tab and
-					save the settings.</p>
+					button on the <strong>Main Control</strong> tab.
+					After connecting successfully go to the <strong>Options</strong> tab and save the settings.</p>
 			</div>
 			<h2 id="controller-power-output-calculation"><i class="text-primary bi bi-calculator-fill"></i> Controller
 				Power Output Calculation</h2>
@@ -240,35 +229,123 @@ sudo apt-get install libindi1
 						the
 						Track Point
 						Offset
-						(TPO = 4°C), creating a Tack Point, TP = 2°C, plus the Tracking Range (TR = 5°C).</li>
+						(TPO = 4°C), creating a Track Point, TP = 2°C, plus the Tracking Range (TR = 5°C).</li>
 				</ul>
 				<p><strong>Note</strong> The Set Point and the Reference Temperature values may vary from one output
 					calculation to the next with
 					each weather update.</p>
 			</div>
 			<h2 id="operation"><i class="text-primary bi bi-tools"></i> Operation</h2>
-			<h3 class="ms-5" id="connection">Connection</h3>
+			<h3 class="ms-5" id="connection">Connection Tab</h3>
 			<div class="ms-5">
-				<p>Connection details are based on the configuration of the hostname set in the CheapoDC CDCWiFi.json
-					file
-					installed on
-					the controller. Only TCP/IP
-					network connections are supported.</p>
-				<p><img class="img-fluid border border-primary" src="./connection.jpg" alt="Connection" /></p>
+				<p>Connection details are based on the configuration of the hostname set in the CheapoDC CDCWiFi.json file
+					installed on the controller. Only TCP/IP network connections are supported.</p>
+				<p><img class="img-fluid border border-primary" src="./connection.jpg" alt="Connection Tab" /></p>
 				<ul>
-					<li><strong>Network</strong>: Use TCP with the
-						default port number of 58000.
-						CheapoDC uses mDNS with a default hostname of <b>cheapodc.local</b> which should allow for an
-						automatic
-						connection.
-						If you changed CheapoDC hostname you will need to update the server address. </li>
+					<li><strong>Connection Mode</strong>: Only Network is supported.</li>
+					<li><strong>Server</strong>: CheapoDC uses mDNS with a default hostname of <b>cheapodc.local</b> which should allow for an
+						automatic connection. If you changed your CheapoDC hostname you will need to update the server address. Use the default port number of 58000.</li>
+					<li><strong>Connection Type</strong>: Only TCP is supported.</li>
 				</ul>
 			</div>
-			<h3 class="ms-5" id="options">Options</h3>
+			<h3 class="ms-5" id="main-control">Main Control Tab</h3>
 			<div class="ms-5">
-				<p>Under the Options tab, you can configure parameters to optimize the operation of the dew controller.
+				<p>The Main Control tab is where the different parameters used by the CheapoDC dew controller power output calculation may be set. CheapoDC supports 
+					up to 6 outputs numbered 0 through 5. The power to outputs 0 and 1 is always managed by the dew controller settings. 
+					Power output or Duty Cycle details for the dew controller is shown in the Dew Tab. </p>	
+				<p>
+					If you can have upt to four additional outputs, numbered 2 through 5. Each output may be set to one of four Output Modes:
+				<ul>
+					<li><strong>Disabled:</strong> Output is disabled. Disabled Outputs will not be displayed.</li>
+					<li><strong>Controller:</strong> Output power is managed by the dew controller settings.</li>
+					<li><strong>PWM:</strong> Output power is manually settable from 0 to 100 percent. This is controlled on the Dew Tab.</li>
+					<li><strong>Boolean:</strong> Output power is either On or Off. This is controlled on the Power Tab.</li>
+				</ul>
 				</p>
-				<p><img class="img-fluid border border-primary" src="./options.jpg" alt="Options" />
+				<p>The configuration of the 6 Outputs <strong>must</strong> be done through the CheapoDC Web UI on the
+					<a href="https://github.com/hcomet/CheapoDC/#cheapodc-device-management"
+						class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+						target="_blank"> Device Management</a> page.
+				</p>
+				<p><strong>NOTE</strong>: The CheapoDC INDI driver must be stopped and restarted to pick up Output mode changes made through the 
+				Web UI.</p>
+				<p><img class="img-fluid border border-primary" src="./maincontrol.jpg?123456789" alt="Main Control Tab" />
+				</p>
+				<ul>
+					<li><strong>Connection</strong>: Shows current connection state as well as the ability to
+						<strong>Connect</strong>
+						or <strong>Disconnect</strong>.
+					</li>
+					<li><strong>Weather Source</strong>: The source used for getting the local weather temperature
+					and
+					humidity
+					which are used by the CheapoDC device to calculate the dew point and output power. The weather
+					source
+					may be:
+						<ul>
+							<li><strong>Open-Meteo</strong>: The CheapoDC will query the Open-Meteo service every Query
+								Weather seconds for weather updates. Open-Meteo is the default.</li>
+							<li><strong>OpenWeather</strong>: The CheapoDC will query the OpenWeather service every Query
+								Weather seconds for weather updates. An API Key is required for weather services from OpenWeather.</li>
+							<li><strong>Weather Device</strong>: The CheapoDC will NOT query a weather service but will use temperature and humidity
+								values pushed to it via it's API. A Weather Device must be configured ont the Options Tab in the Snoop Devices section for
+								this setting to work properly. The weather update period is defined by the weather device and
+								should be settable in the weather device driver's configuration tabs.</li>
+							<li><strong>CheapoDC Sensor</strong>: The CheapoDC will use temperature and humidity values read from it's internal humidity 
+								sensor. This requires CheapoDC firmware 2.3.0 or newer and a humidity sensor properly configured on the device.</li>
+						</ul>
+					</li> 
+					<li><strong>Temperature Mode</strong>: Sets the method used for determining the Reference
+						Temperature to use in power output calculations.
+						<ul>
+							<li><strong>Weather Source</strong>: When in Weather Source mode the Ambient Temperature retrieved
+								from the selected Weather Source will be used for the Reference Temperature.
+								(Default)</li>
+							<li><strong>Focuser Device</strong>: When in Focuser Device mode the focuser's temperature will be used for the Reference
+								Temperature. This is the mode to use when snooping temperature values from a Focuser device with a temperature probe.
+								A Focuser Device must be configured on the Options Tab in the Snoop Devices section for this setting to work properly.</li>
+						</ul>
+					</li>
+					<li><strong>Temperature</strong>: Temperature values that may be used for calculating power output.
+						<ul>
+							<li><strong>Weather Source (&deg;C)</strong>: Ambient temperature returned from the selected Weather Source.</li>
+							<li><strong>Focuser Device (&deg;C)</strong>: Temperature returned from a focuser device.</li>
+						</ul>
+					</li>
+					<li><strong>Set Point Mode</strong>: Selects which temperature set point to use in the dew controller output calculation: 
+						<ul>
+							<li><strong>Dew Point</strong>: Use the dew point temperature.</li>
+							<li><strong>Temperature</strong>: Use the set point temperature set below.</li>
+							<li><strong>Midpoint</strong>: Use a temperature set point calculated as the midpoint between </li>
+						</ul>
+					</li>
+					<li><strong>Humidity</strong>: The relative humidity in percent returned from the selected Weather Source.
+					</li>
+					<li><strong>Dew Point</strong>: The dew point in &deg;C returned from the selected Weather Source.</li>
+					<li><strong>Temperature - Set Point</strong>: The temperature to use as the set point when Set Point Mode is set to
+						Temperature.</li>
+					<li><strong>Controller Min</strong>: Minimum &percnt; duty cycle for controller outputs. 0 to
+						(Controller
+						Maximum - 1)
+						(Default 0).</li>
+					<li><strong>Controller Max</strong>: Maximum &percnt; duty cycle for controller outputs. (Controller
+						Minimum + 1) to 100
+						(Default 100).</li>
+					<li><strong>Track Point Offset</strong>: Number of degrees celsius to adjust the Track Point. -5.0
+						to
+						5.0 (Default
+						0.0).</li>
+					<li><strong>Tracking Range</strong>: Number of degrees celsius over which the Output Power will ramp
+						when the Reference
+						Temperature is in this range. 4.0 to 10.0 (Default 5.0).</li>
+					<li><strong>Refresh</strong>: Force a refresh of values retrieved from CheapDC.</li>
+				</ul>
+			</div>
+			<h3 class="ms-5" id="options">Options Tab</h3>
+			<div class="ms-5">
+				<p>Under the Options tab, you can configure options for the CheapoDC driver.
+				</p>
+				<p><img class="img-fluid border border-primary" src="./options.jpg" alt="Options Tab" />
 				</p>
 				<ul>
 					<li><strong>Debug</strong>: Not currently supported.</li>
@@ -282,105 +359,41 @@ sudo apt-get install libindi1
 						the dew controller. The default is 30,000 milliseconds
 						or 30 seconds. This is the recommended polling period with an Update Output period of 1 minute.
 					</li>
-					<li><strong>Output Min</strong>: Minimum &percnt; power level to output to both channels. 0 to
-						(Output
-						Maximum - 1)
-						(Default 0).</li>
-					<li><strong>Output Max</strong>: Maximum &percnt; power level to output to both channels. (Output
-						Minimum + 1) to 100
-						(Default 100).</li>
-					<li><strong>Track Point Offset</strong>: Number of degrees celsius to adjust the Track Point. -5.0
-						to
-						5.0 (Default
-						0.0).</li>
-					<li><strong>Tracking Range</strong>: Number of degrees celsius over which the Output Power will ramp
-						when the Reference
-						Temperature is in this range. 4.0 to 10.0 (Default 5.0).</li>
 					<li><strong>Update Output</strong>: Period for recalculation of the Output Power in minutes. 1 to 20
 						(Default
 						1).</li>
-					<li><strong>Query Weather</strong>: Period for weather service API queries in minutes. 1 to 20
+					<li><strong>Query Weather</strong>: Period for weather service API or CheapoDC internal sensor queries in minutes. 1 to 20
 						(Default
 						5).</li>
-					<li><strong>Weather Source</strong>:</li> The source used for getting the local weather temperature
-					and
-					humidity
-					which are used by the CheapoDC device to calculate the dew point and output power. The weather
-					source
-					may be:
-					<ul>
-						<li><strong>Open-Meteo</strong>: The CheapoDC will query the Open-Meteo service every Query
-							Weather
-							seconds for weather
-							updates. Open-Meteo is the default.</li>
-						<li><strong>OpenWeather</strong>: The CheapoDC will query the OpenWeather service every Query
-							Weather seconds for weather
-							updates. An API Key is required for weather services from OpenWeather.</li>
-						<li><strong>External Source</strong>: The CheapoDC will NOT query a weather service but will use
-							temperature and humidity
-							values pushed to it via it's API. A Weather Device must be set in the Snoop Devices section
-							for
-							this setting to work properly. The weather update period is defined by the weather device
-							and
-							should be settable in the
-							weather device's configuration tabs.</li>
-					</ul>
-					<li><strong>Weather API Key</strong>: An API key is required to use <a
-							href="https://openweathermap.org/">OpenWeather</a> which can be acquired after registering
-						for a
-						free
-						OpenWeather account. If <a href="https://open-meteo.com/">Open-Meteo</a> is used then no API key
-						is
-						required. This option field will only be displayed when the Weather Source is set to
-						OpenWeather.
+					<li><strong>Weather API Key</strong>: An API key is required to use <a href="https://openweathermap.org/">OpenWeather</a> 
+						which can be acquired after registering for a free OpenWeather account. If <a href="https://open-meteo.com/">Open-Meteo</a> 
+						is used then no API key is required. 
 					</li>
-					<li><strong>Weather Last Updated</strong>: The date and time of the last weather report update. For
-						Open-Meteo and OpenWeather
-						the update time is taken from service API response. For External Source the update time is set
-						every
-						time a weather device
-						value is pushed to the CheapoDC. The time is reported using local time based on the UTC Offset
-						shown
-						in the Site Management tab.</li>
+					<li><strong>Weather Last Updated</strong>: The date and time of the last weather report update. For Open-Meteo and OpenWeather
+						the update time is taken from service API response. For Weather Device the update time is set every
+						time a weather device value is pushed to the CheapoDC. For CheapoDC Sensor the update time is set on every query of the sensor.
+						The time is reported using local time based on the UTC Offset shown in the Site Management tab.</li>
 					<li><strong>Snoop Devices</strong>:Set the appropriate active device to be snooped for CheapoDC
 						configuration and updates. Snoop for any
 						of the devices can be disabled by setting the device to blank.
 						<ul>
 							<li>
 								<strong>Telescope</strong>: The telescope driver used to configure GEOGRAPHIC_COORD for
-								LAT
-								and LONG values shown on the
-								Site Management tab. The UTC Offset is also set from the telescope driver. It is
-								important
-								to configure this correctly so
-								that CheapoDC weather queries are made for the correct geolocation. Default device is
-								Telescope Simulator.
+								LAT and LONG values shown on the Site Management tab. The UTC Offset is also set from the telescope driver. It is
+								important to configure this correctly so that CheapoDC weather queries are made for the correct geolocation. 
+								Default device is Telescope Simulator.
 							</li>
 							<li>
-								<strong>Focuser</strong>: May be set to a focuser driver if the focuser has a
-								temperature
-								probe. When sent the probe temperature
-								will be sent to the CheapoDC and be shown on the Main Control tab in the Temperature -
-								External Input field. If the CheapoDC
-								Temperature Mode is set to External Input then the External Input temperature will be
-								used
-								as the Reference Temperature for
-								calculating output power. Default device is Focuser Simulator.
+								<strong>Focuser</strong>: May be set to a focuser driver if the focuser has a temperature probe. When set the probe temperature
+								will be sent to the CheapoDC and be shown on the Main Control tab in the Temperature - Focuser Device field. If the CheapoDC
+								Temperature Mode is set to Focuser Device then the focuser temperature will be used
+								as the Reference Temperature for calculating output power. Default device is Focuser Simulator.
 							</li>
 							<li>
-								<strong>Weather</strong>: May be set to a weather driver if if there is an indilib
-								weather
-								device such as a personal weather station
-								co-located with your observation location. When set, the temperature and humidity
-								reported
-								by the weather device will be used to update
-								CheapoDC's weather query temperature and humidity values for calculating dew point and
-								power
-								output.
-								The CheapoDC Weather Source must be set to External Source for these values to be pushed
-								to
-								the CheapoDC device and be used
-								for calculating output power. Default device is Weather Simulator.
+								<strong>Weather</strong>: May be set to a weather driver if there is an indilib weather device such as a personal weather station
+								co-located with your observation location. When set, the temperature and humidity reported by the weather device can be used by CheapoDC.
+								The CheapoDC Weather Source must be set to Weather Device for these values to be pushed to
+								the CheapoDC and be used for calculating output power. Default device is Weather Simulator.
 							</li>
 						</ul>
 					</li>
@@ -388,14 +401,51 @@ sudo apt-get install libindi1
 				<p>After setting up the device Options, save the configuration using the Configuration - Save button.
 				</p>
 			</div>
-			<h3 class="ms-5" id="site-management">Site Management</h3>
+			<h3 class="ms-5" id="dew">Dew Tab</h3>
 			<div class="ms-5">
-				<p>The site management tab may be used to configure the device location used by CheapoDC when making
-					weather
-					queries. By
-					default the CheapoDC driver is configured to get location geographic coordinates from another device
-					such as a
-					telescope or mount. This the preferred configuration.</p>
+				<p>The Dew Tab is generated as part of the IND::Power Interface. It allows for the enabling of automatic or manual 
+					control of dew channels.</p>
+				<p><img class="img-fluid border border-primary" src="./dew.jpg" alt="Dew Tab" /></p>
+			
+				<ul>
+					<li><strong>Over Voltage</strong>: Not applicable to CheapoDC.</li>
+					<li><strong>Power Off</strong>: Not applicable to CheapoDC.</li>
+					<li><strong>Auto Dew Control</strong>: Enables/Disables automatic dew control of the controller outputs. Disabling automatic dew will turn 
+						off the controller outputs. Enabling puts the controller outputs in automatic mode.</li>
+					<li><strong>Toggle Dew</strong>: Toggles Controller and PWM outputs between Manual control and off.</li>
+					<li><strong>Duty Cycles</strong>: Displays power output as percent of duty cycle (0% to 100%). Also allows for duty cycle adjustments for outputs that have 
+					been enabled in the Toggle Dew settings. The default labels are automatically generated by the Output Mode for each CheapoDC output. 
+					It is recommended that they not be changed in the Label setting below.
+					<p>There will always be at least one output channel, the Controller Output channel representing CheapoDC outputs 0 and 1. The duty cycle value will
+						show the current dew controller output. To place the controller in Manual mode, first Auto Dew Control must be disabled then Toggle Dew for 
+						Controller Output enabled.</p>
+					<p>If your CheapoDC has addtional outputs configured, outputs 2 to 5, then Controller and PWD mode outputs will also be displayed. The label for those
+						outputs will be "Output # (mode)" where # is the output number and mode is either Controller or PWM. Controller mode outputs are tied to the dew
+						controller and cannot be enabled or have their duty cycles modified independent of the Controller Output. PWM mode outputs may be enabled or
+						disabled individually. When disabled they are off and when enabled the Duty Cycle may be modified.
+					</p></li>
+					<li><strong>Labels</strong>: Allows for customization of the dew channel labels. Since the labels are automatically generated by the driver based on your
+					CheapoDC output configuration it is NOT recommended to modify the labels.</li>
+				</li>
+
+				</ul>
+			</div>
+			<h3 class="ms-5" id="power">Power Tab</h3>
+			<div class="ms-5">
+				<p>The Power tab is generated by the INDI::Power Interface. A Power tab will be present only if your CheapoDC has at least one of the additional outputs 
+					(2 to 5) configured in Boolean Output mode. This makes the outputs On/Off 12V power ports.</p>
+				<p><img class="img-fluid border border-primary" src="./power.jpg" alt="Power Tab" /></p>
+				<ul>
+					<li><strong>Toggle DC</strong>: Turn On/Off a 12V output.</li>
+					<li><strong>Labels</strong>: Allows for customization of the power channel labels. Since the labels are automatically generated by the driver based on your
+					CheapoDC output configuration it is NOT recommended to modify the labels.</li>
+				</ul>
+			</div>
+			<h3 class="ms-5" id="site-management">Site Management Tab</h3>
+			<div class="ms-5">
+				<p>The site management tab may be used to configure the device location used by CheapoDC when making weather
+					queries. By default the CheapoDC driver is configured to get location geographic coordinates from another device
+					such as a telescope or mount. This the preferred configuration.</p>
 				<p><img class="img-fluid border border-primary" src="./sitemanagement.jpg" alt="Site Management" /></p>
 				<ul>
 					<li><strong>Location</strong>:
@@ -405,10 +455,7 @@ sudo apt-get install libindi1
 							<li><strong>Lon (dd:mm:ss)</strong>: The Longitude in degrees, minutes and seconds. Values:
 								00:00:00 to 360:00:00.</li>
 						</ul>
-					<li><strong>Device Time</strong>: The local time on the CheapoDC device based on the devices NTP
-						server
-						configuration (set using
-						the devices Wed UI) and the UTC offset.
+					<li><strong>Device Time</strong>: The local time on the CheapoDC device.
 						<ul>
 							<li><strong>Local Time</strong>: Local date and time based on UTC offset.
 								Info - Name. (Default Telescope Simulator).</li>
@@ -416,112 +463,6 @@ sudo apt-get install libindi1
 								Telescope device. If no telescope device
 								is set then it will be pulled from the CheapoDC device settings.</li>
 						</ul>
-					</li>
-				</ul>
-			</div>
-			<h3 class="ms-5" id="main-control">Main Control</h3>
-			<div class="ms-5">
-				<p>The Main Control tab is where the different CheapoDC operating modes may be set and current
-					controller power output may be set and monitored. CheapoDC supports up to 6 outputs numbered 0
-					through
-					5. The power to outputs 0 and 1 is always set based on the Controller Mode. Outputs 2 through 5 can
-					each
-					be set to one of 4 Output Modes:
-				<ul>
-					<li><strong>Disabled:</strong> Output is disabled. Disabled Outputs are not displayed in the tab.
-						(Outputs 0 and 1 may also be Disabled).</li>
-					<li><strong>Controller:</strong> Output power is set based on the Controller Mode.</li>
-					<li><strong>PWM:</strong> Output power is manually settable from 0 to 100 percent.</li>
-					<li><strong>Boolean:</strong> Output power is manually settable to either 0 or 100 percent.</li>
-				</ul>
-				</p>
-				<p>The configuration of the 6 Outputs <strong>must</strong> be done through the CheapoDC Web UI on the
-					<a href="https://github.com/hcomet/CheapoDC/#cheapodc-device-management"
-						class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-						target="_blank"> Device Management</a> page.
-				</p>
-				<p><img class="img-fluid border border-primary" src="./maincontrol.jpg?123456789" alt="Main Control" />
-				</p>
-				<ul>
-					<li><strong>Connection</strong>: Shows current connection state as well as the ability to
-						<strong>Connect</strong>
-						or <strong>Disconnect</strong>.
-					</li>
-					<li><strong>Controller Mode</strong>: Sets the primary operating mode for the dew controller:
-						<ul>
-							<li><strong>Automatic</strong>: In this mode the controller will automatically calculate and
-								update the
-								output power based
-								on the Output Update period set in the Options tab. (Default)</li>
-							<li><strong>Manual</strong>: In this mode a user may manually set the output level with the
-								OutPut Power
-								setting. The Output Power setting is writable only when the controller is in this mode.
-							</li>
-							<li><Strong>Off</Strong>: The controller is off and output power is zero. Weather queries
-								will
-								continue and
-								update the weather values. If the CheapoDC comes up in WiFi AP mode then it will default
-								to
-								<strong>Off</strong>
-								until changed by the user.
-							</li>
-						</ul>
-					</li>
-					<li><strong>Output Power</strong>: Displays the current controller output power as a percentage from
-						0
-						to 100. May
-						also be used to enter output power values if Controller Mode is set to Manual.</li>
-					<li><strong>Temperature Mode</strong>: Sets the method used for determining the Reference
-						Temperature to
-						use in
-						output calculations.
-						<ul>
-							<li><strong>Weather Query</strong>: When in Weather Query mode the Ambient Temperature
-								retrieved
-								from the
-								weather service using the service query API will be used for the Reference Temperature.
-								(Default)</li>
-							<li><strong>External Input</strong>: When in External Input mode the External Input
-								temperature
-								will be used
-								for the Reference
-								Temperature. This is the mode to use when snooping temperature values from a Focuser
-								device
-								with a
-								temperature probe.</li>
-						</ul>
-					</li>
-					<li><strong>Temperature</strong>: Temperature values that may be used for calculating power output.
-						<ul>
-							<li><strong>Weather Query (&deg;C)</strong>: Ambient temperature returned from a weather
-								service
-								API
-								query. This value is used
-								for the output calculation when the Temperature Mode is set to Weather Query. If Weather
-								Source is set to
-								External Source then temperature values sent from a configured Weather device will be
-								seen
-								here.</li>
-							<li><strong>External Input (&deg;C)</strong>: Temperature returned from an external input
-								such
-								as a configured
-								Weather device.This value is used for the output calculation when the Temperature Mode
-								is
-								set to External Input.</li>
-						</ul>
-					</li>
-					<li><strong>Humidity</strong>: The relative humidity in percent returned from a weather service API
-						query. If Weather Source is set to
-						External Source then humidity values sent from a configured Weather device will be seen here.
-					</li>
-					<li><strong>Dew Point</strong>: The dew point in &deg;C calculated from the current Weather Query
-						Temperature and Humidity.</li>
-					<li><strong>Output #</strong>: Output Mode and power setting for Output <strong>#</strong>. If an
-						output
-						has an Output Mode of Disabled then it will not be displayed.
-					</li>
-					<li><strong>Refresh</strong>: Force a weather service query and update of the driver property
-						values.
 					</li>
 				</ul>
 			</div>
@@ -540,12 +481,12 @@ sudo apt-get install libindi1
 	<footer class="text-center footer mt-4 py-3" data-bs-theme="dark" style="background-color: #474c88;">
 		<div class="container-md mx-auto">
 			<span class=" text-white">CheapoDC by <a href="https://github.com/hcomet" class="link-light">hcomet</a>
-				&copy; 2025</a>.</span>
+				&copy; 2025.</span>
 		</div>
 	</footer>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-		crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

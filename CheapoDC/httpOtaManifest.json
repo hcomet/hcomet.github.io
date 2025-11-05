@@ -1,8 +1,8 @@
 {
     "type": "CheapoDC.ESP32-C3",
-    "version": "2.2.0",
+    "version": "2.3.0",
     "host": "hcomet.github.io",
     "port": 443,
-    "bin": "/CheapoDC/firmware/CheapoDCv2.2.0/CheapoDC.ESP32-C3.bin",
-    "littlefs": "/CheapoDC/firmware/CheapoDCv2.2.0/CheapoDC.littlefs.bin"
+    "bin": "/CheapoDC/firmware/CheapoDCv2.3.0/CheapoDC.ESP32-C3.bin",
+    "littlefs": "/CheapoDC/firmware/CheapoDCv2.3.0/CheapoDC.littlefs.bin"
 }

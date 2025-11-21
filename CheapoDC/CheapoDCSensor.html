@@ -7,32 +7,412 @@
   <meta name="color-scheme" content="dark light" />
   <meta name="description" content="Information about adding an SHT3x Humidity/Temperature sensor to CheapoDC." />
   <title>CheapoDC Humidity Sensor</title>
-  <link rel="icon" type="image/png" href="../images/favicon.png">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        .custom-popover {
+            --bs-popover-max-width: 430px;
+            --bs-popover-border-color: #484e89;
+            --bs-popover-header-bg: #484e89;
+            --bs-popover-header-color: var(--bs-white);
+            --bs-popover-body-padding-x: 1rem;
+            --bs-popover-body-padding-y: .5rem;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <style type="text/css" media="print">
+        @media print {
+            html {
+                font-size: 8pt;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+            }
+        }
+
+        @page {
+            -webkit-print-color-adjust: exact;
+        }
+    </style>
 </head>
 
 <body class="d-flex flex-column h-100">
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #474c88;">
-        <div class="container-md">
-            <div class="navbar-brand">
-                <a target="_blank" href="https://github.com/hcomet/CheapoDC/">
-                    <img src="../images/cheapo.png" alt="CheapoDC Logo" class="mx-auto float-end"></a>
+        <nav class="navbar navbar-expand navbar-dark d-print-block" style="background-color: #484e89;">
+            <div class="container-md">
+                <div class="navbar-brand">
+                    <a target="_blank" href="https://github.com/hcomet/CheapoDC/">
+                        <img src="../images/cheapo.png" alt="CheapoDC Logo" class="mx-auto float-end"></a>
+                </div>
+                <ul class="navbar-nav">
+                    <li class="nav-item  mb-0 mt-1 d-none d-sm-block">
+                        <span class="navbar-text fs-4 fw-medium">CheapoDC Humidity Sensor Guide
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-item dropdown  d-print-none">
+                            <a class="nav-link fs-3 fw-medium pt-0 mt-0" data-bs-toggle="dropdown" href="#"
+                                role="button" aria-expanded="false"><i class="bi bi-list"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li class="d-none d-sm-block">
+                                    <span class="dropdown-header fs-4 fw-medium">Contents</span>
+                                </li>
+                                <li class="d-sm-none">
+                                    <span class="dropdown-header fs-4 fw-medium">CheapoDC Humidity Sensor Guide</span>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#add-a-humidity-sensor">Add a Humidity Sensor to your CheapoDC</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#parts-list">Parts List</a></li>
+                                <li><a class="dropdown-item" href="#addtional-items">Additional Items</a></li>
+                                <li><a class="dropdown-item" href="#3d-printed-probe">3D-printed Probe</a></li>
+                                <li><a class="dropdown-item" href="#assembly-steps">Assembly Steps</a></li>
+                                <ul style="list-style-type: none;">
+                                    <li><a class="dropdown-item" href="#probe-assembly">Probe Assembly</a></li>
+                                    <li><a class="dropdown-item" href="#jack-installation">Jack Installation</a></li>
+                                </ul>
+                                <li><a class="dropdown-item" href="#configuration">Configuration</a></li>
+                                <li><a class="dropdown-item" href="#issue-resolution">Issue Resolution</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#top-of-page">Top of Page</a></li>
+                            </ul>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="h-80 overflow-y-auto">
+        <div id="top-of-page"></div>
+      <div class="container-md fs-5 fw-medium">
+        <h1 id="add-a-humidity-sensor" class="mt-4">Add a Humidity Sensor to your CheapoDC</h1>
+        <p class="fw-normal fs-4">CheapoDC support for an "Internal" Weather Source was added in firmware V2.3.0. This internal source is actually
+          a SHT3x sensor that can be added to the CheapoDC and used to provide ambient temperature and humidity readings. The 
+          SHT3x sensor connects to the ESP32-C3 in the CheapoDC via I2C as well as requiring a ground and 3.3V connection. This
+          document provides information on adding the sensor to the <a href="./CheapoDCBuild.html" 
+          class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+          target="_blank">3&#8209;Output and 6&#8209;Output CheapoDC example builds</a>.
+        </p>
+        <p class="fw-normal fs-4">The SHT3x sensor must be mounted outside the CheapoDC case to get ambient readings. The sensor should also be protected from 
+          dust, dirt, and any dew accumulation while still allowing air to circulate around the sensor. A SHT3x sensor may be purchased
+          with a suitable enclosure or you can 3-D print your own enclosure. This build guide uses a 3-D printed enclosure, some 4-core
+          cable along with a 4-pole audio jack and plug to create a detachable sensor assembly or probe.
+        </p>
+        <h2 id="parts-list">Parts List</h2>
+        <table class="table table-sm table-striped border border-dark border-2 fs-5">
+          <thead>
+              <tr>
+                  <th scope="col" class="col-md-2">Item</th>
+                  <th scope="col" class="col-md-1">Item Cost</th>
+                  <th scope="col" class="col-md-6">Comments</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                      data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                      data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                      class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                      data-bs-content="<img src='./images/sht3x.png' alt='SHT3x' class='mx-auto' width='400px'>">
+                      SHT3x Humidity Sensor</a></th>
+              <td><a href="https://www.aliexpress.com/item/32695064184.html"
+                      class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                      target="_blank">US$1.50</a></td>
+              <td>This is an SHT30 humidity sensor but any of the SHT3x series of sensors should be acceptable. The Sensirion
+                SHT3x library is used in the CheapoDC firmware. The <a href="https://github.com/Sensirion/arduino-i2c-sht3x"
+                      class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                      target="_blank">library repository</a> lists supported sensors. The 3-D probe cover
+                is designed for the module in the link. 
+                      <br><strong>Note:</strong> The probe cover will NOT accommodate pins soldered to the sensor module.
+              </td>
+              </td>
+          </tr>
+          <tr>
+              <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                      data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                      data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                      class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                      data-bs-content="<img src='./images/audio-plug.png' alt='3.5mm Audio Plug' class='mx-auto' width='400px'>">
+                      3.5mm Audio Plug</a></th>
+              <td><a href="https://www.aliexpress.com/item/1005006399336850.html"
+                      class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                      target="_blank">US$0.50</a></td>
+              <td>Plug/connector required for SHT30 sensor probe. <strong>Important:</strong> 4-pole required for VCC, GND,
+              SDA and SCL lines.</td>
+              </td>
+          </tr>
+          <tr>
+              <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                      data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                      data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                      class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                      data-bs-content="<img src='./images/audio-jack.png' alt='3.5mm Audio Jack' class='mx-auto' width='400px'>">
+                      3.5mm Audio Jack</a></th>
+              <td><a href="https://www.aliexpress.com/item/1005007486711391.html"
+                      class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                      target="_blank">US$1.25</a></td>
+              <td>Jack required for plugging sensor probe into CheapoDC. <strong>Important:</strong> 4-pole required for VCC, GND,
+              SDA and SCL lines.</td>
+              </td>
+          </tr>
+          <tr>
+              <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                      data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                      data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                      class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                      data-bs-content="<img src='./images/4-wire-cable.png' alt='4-wire Cable' class='mx-auto' width='400px'>">
+                      4-wire core cable</a></th>
+              <td><a href="https://www.aliexpress.com/item/1005008182721422.html"
+                      class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                      target="_blank">US$4.00</a></td>
+              <td>Cable used to connect sensor to plug. 28awg or 26awg cores. <strong>Important:</strong> 4 core wires required for VCC, GND,
+              SDA and SCL lines.</td>
+              </td>
+          </tr>
+          <tr>
+              <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                      data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                      data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                      class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                      data-bs-content="<img src='./images/dupont.png' alt='Dupont jumpers' class='mx-auto' width='400px'>">
+                      Dupont jumpers</th>
+              <td><a href="https://www.aliexpress.com/item/1005004647016228.html"
+                      class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                      target="_blank">US$2.00</a></a></td>
+              <td>4 needed from a package of 20, Female to Female Dupont jumpers, 20cm long. Used to connect the 3.5mm audio jack
+                to the ESP32-C3.
+              </td>
+              </td>
+          </tr><tr>
+          </tbody>
+        </table>
+        <h2 id="addtional-items">Additional Items</h2>
+          <ul class="fw-normal fs-4">
+              <li>Heat shrink tubing to insulate solder joints. Not strictly required but recommended. The steps below do not mention applying
+                heat shrink tubing but it is a good idea to do so after soldering connections. When assembling the probe plug, you'll need to remember 
+                to slide small pieces of tubing onto the wires before soldering them to the plug terminals.
+              </li> 
+              <li>Small, narrow cable tie (3.5mm wide or less). Can be used to help provide strain relief on the solder joints in the 
+                  sensor probe.</li>
+              <li>You can make your own Dupont cables. If so, you may want to use silicone wire. Silicone wire is very flexible
+                  and much easier to work with in small spaces, especially with the tight 6-Outlet build. 28awg or 26awg wire 
+                  is a good choice.</li>
+          </ul>
+        <h2 id="3d-printed-probe">3D-Printed Probe Case</h2>
+          <div class="row align-items-start fw-normal fs-4">
+            <div class="col">
+                <p>STL and STEP files are provided in the repository with <a href="https://github.com/hcomet/CheapoDC/tree/main/3D-Models"
+                          class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                          target="_blank">all the CheapoDC 3D models</a>. The probe case is designed to fit the SHT30
+                  sensor module linked in the parts list. The case consists of two parts, a back piece and a front piece. 
+                  The front piece is a friction fit to the back piece. The sensor is mounted to the back piece with the sensor facing forward with
+                  the 4 solder points for VCC, GND, SCL and SDA wires oriented downwards. Once the front piece is fitted to the back piece, with 
+                  the probe cable exiting downwards, the case allows ventilation while preventing dust and moisture accumulation on the sensor. 
+                </p>
+                <p>The mounting hole in the sensor module is 3mm in diameter. A 3mm or 2.5mm by 5mm long screw may be used to secure the sensor module 
+                to the back piece.
+                </p>
             </div>
 
-            <span class="navbar-text fs-4 fw-medium">CheapoDC Humidity Sensor
-            </span>
-        </div>
-    </nav>
-</header>
-    <main class="h-80 overflow-y-auto">
-      <div class="container-md fs-5 fw-medium">
-        <h2 class="mt-4">Coming soon....</h2>
-        <p>How to add and configure an SHT3x Humidity/Temperature sensor for the CheapoDC.</p>
-        
+            <div class="col w-auto text-center">
+                <div class="border border-dark border-2" style="background-color: #484e89;">
+                    <img src="./images/SHT30-with-case.png" alt="SHT30 Case" class="img-fluid ms-0 me-0">
+                    <figcaption class="figure-caption mt-1 mb-1 me-5 fs-6 text-end">
+                      <a href="https://grabcad.com/library/sht30-v2-1"
+                          class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                          target="_blank">SHT30 model from GRABCAD</a></figcaption>
+                </div>
+            </div>
+          </div>
+        <h2 id="assembly-steps">Assembly Steps</h2>
+        <p>Assembly consists of two main parts, assembly of the sensor probe and installation and wiring of the sensor jack.</p>
+        <h3 id="probe-assembly">Probe Assembly</h3>
+          <ol class="h4">
+            <li class="mt-3">
+                <p id="p-assembly-1">Solder Probe Cable to Audio Plug</p>
+                <div class="row align-items-start fw-normal fs-4">
+                    <div class="col">
+                        <p>Cut the 4-core cable to the desired length for your sensor probe. Strip about 25mm of the outer insulation
+                          from one end of the cable and then strip about 5mm of insulation from each of the 4 inner wires.
+                          Tin the exposed wire ends with solder.
+                        </p>
+                        <p>Solder the wires to the audio plug as follows:</p>
+                        <ul>
+                          <li>Tip - VCC (3.3V) Red wire.</li>
+                          <li>Ring 1 - SCL (Clock) Yellow wire.</li>
+                          <li>Ring 2 - SDA (Data) White wire.</li>
+                          <li>Sleeve - GND (Ground) Black wire.</li>
+                        </ul>
+                        <p class="mt-2">Note: The actual color of the wires is not important but keeping track of which color wire connects 
+                            to which sensor connection is critical.</p>
+                        <p>Finish assembling the audio plug. If your plug is the same as referenced in the parts list then slide the insulating tube on first, then the strain
+                            relief piece and then finally screw on the plug body.
+                        </p>
+                    </div>
+                    <div class="col text-center ">
+                        <div class="border border-dark border-2">
+                            <img src="./images/solder-audio-plug.png"
+                                alt="Solder Audio Plug Connections" class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">Solder Audio Plug Connections</figcaption>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="mt-3">
+                <p id="p-assembly-3">Solder Probe Cable to Sensor Module</p>
+                <div class="row align-items-start fw-normal fs-4">
+                    <div class="col">
+                        <p>Strip and tin the other end of the cable similar to what was done in the first step. Then solder the other end of the probe 
+                          cable to the SHT3x sensor module. The 3D-printed case is designed to hold the sensor module with the cable wires mounted on
+                          the back of the module. Feed the wires from the back of the module and solder them as follows:</p>
+                        <ul>
+                          <li>VCC (3.3V) - Red wire.</li>
+                          <li>SCL (Clock) - Yellow wire.</li>
+                          <li>SDA (Data) - White wire.</li>
+                          <li>GND (Ground) - Black wire.</li>
+                        </ul>
+                        <p class="mt-2">If your wires are a different color then make sure the you are following your pin to wire color mapping.</p>
+                    </div>
+                    <div class="col text-center ">
+                        <div class="border border-dark border-2">
+                            <img src="./images/solder-sht30.png"
+                                alt="Solder SHT3x Connections" class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">Solder SHT3x Connections</figcaption>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="mt-3">
+                <p id="p-assembly-2">Map Audio Plug and Audio Jack Connections</p>
+                <div class="row align-items-start fw-normal fs-4">
+                    <div class="col">
+                        <p>Now that the probe connections are all soldered it is a good time to map the plug connections to the jack connections.
+                          Insert the plug into the jack and wrap the jack in a piece of masking tape as shown in the image. Use a multimeter 
+                          in continuity mode to determine which connection on the jack corresponds to each connection on the sensor module. Record
+                          this information on the tape. Either use color coding or write the sensor pin names on the tape.
+                        </p>
+                    </div>
+                    <div class="col text-center ">
+                        <div class="border border-dark border-2">
+                            <img src="./images/jack-pin-mapping.png"
+                                alt="Mapping Jack Connections" class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">Mapping Audio Jack Connections</figcaption>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="mt-3">
+                <p id="p-assembly-4">Mount the Sensor and Assemble the Case</p>
+                <div class="row align-items-start fw-normal fs-4">
+                    <div class="col">
+                        <p>If you want to provide additional strain relief for the solder joints on the sensor then tightly wrap a small cable tie around
+                          the cable close to the sensor module. Trim off the excess length of the cable tie.
+                        </p>
+                        <p>Using a small screw, mount the sensor module to the case back. Then making sure to trap the cable tie inside the case, press the case 
+                          front onto the case back. The friction fit should hold the two pieces together securely.
+                        </p>
+                        <p>The sensor probe assembly is complete</p>
+                    </div>
+                    <div class="col text-center ">
+                        <div class="border border-dark border-2">
+                            <img src="./images/complete-probe.png"
+                                alt="Complete Probe" class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">Mounted SHT3x Sensor</figcaption>
+                        </div>
+                    </div>
+                </div>
+            </li>
+          </ol>
+          <h3 id="jack-installation">Jack Installation</h3>
+          <ol class="h4">
+            <li class="mt-3">
+                <p id="j-assembly-1">Solder Dupont Jumpers to the Audio Jack</p>
+                <div class="row align-items-start fw-normal fs-4">
+                    <div class="col">
+                        <p>Select 4 jumpers, preferably colored red, yellow, white, and black or matching your sensor probe wire colors. Cut the Dupont connector 
+                            off one end of 4 jumpers keeping enough length to reach from the audio jack to the ESP32-C3
+                          inside the CheapoDC case. Make sure to leave a female Dupont connector on the wires. Strip about 1/4 inch of insulation from 
+                          each of the 4 wires and tin the exposed wire ends with solder.
+                        </p>
+                        <p>Solder the wires to the audio jack making sure to match the pin to wire mapping you recorded earlier.</p>
+                    </div>
+                    <div class="col text-center ">
+                        <div class="border border-dark border-2">
+                            <img src="./images/soldered-jack.png"
+                                alt="Soldered Audio Jack" class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">Soldered Audio Jack</figcaption>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="mt-3">
+                <p id="j-assembly-2">Install the Jack</p>
+                <div class="row align-items-start fw-normal fs-4">
+                    <div class="col">
+                        <p>This assumes the use of one of the CheapoDC 3D-printed case switch-panels with an 8.5mm hole for the jack. Feed the Dupont 
+                          connectors through the 8.5mm hole. The feed them through the jack nut. Insert the jack into the panel hole and tighten the 
+                        the jack nut.</p>
+                        <p>Connect the Dupont jumpers to the ESP32-C3 as follows:</p>
+                        <ul>
+                          <li>Red wire (VCC) to ESP32-C3 pin 3V3.</li>
+                          <li>Yellow wire (SCL) to ESP32-C3 pin GPIO9.</li>
+                          <li>White wire (SDA) to ESP32-C3 pin GPIO10.</li>
+                          <li>Black wire (GND) to ESP32-C3 pin GND.</li>
+                        </ul>
+                    </div>
+                    <div class="col text-center ">
+                        <div class="border border-dark border-2">
+                            <img src="./images/mounted-audio-jack.png"
+                                alt="Installed Audio Jack" class="img-fluid ms-0 me-0">
+                            <hr class="opacity-100 mt-0 mb-0">
+                            <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">Jack installed in 3&#8209;Output Build</figcaption>
+                        </div>
+                    </div>
+                </div>
+            </li>
+           
+          </ol>
+          <h3 id="configuration">Configuration</h3>
+          <p class="fw-normal fs-4">After plugging the sensor probe into the jack, power up the CheapoDC. <strong>Do not</strong> insert or remove the sensor probe
+            while the CheapoDC is powered on as this may damage the SHT3x sensor or the ESP32-C3. Browse to the CheapoDC Web UI and go to the 
+            <a href="https://github.com/hcomet/CheapoDC/#cheapodc-device-management"
+            class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+            target="_blank">Device Management</a> page. Scroll down to the Humidity Sensor Configuration section. Set the SDA GPIO to 10, click update, 
+            then set the SCL GPIO to 9 and click update. Wait 10 seconds for the settings to be saved to the CheapoDC configuration file then scroll down
+            and reboot the device.</p>
+            <p class="fw-normal fs-4">After rebooting go to the <a href="https://github.com/hcomet/CheapoDC/#cheapodc-controller-configuration"
+            class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+            target="_blank">Controller Configuration</a> page. Set the Weather Source to Internal Source and Update. Scroll up to Temperature Mode. The 
+            Weather Source temperature should be displaying the temperature from the sensor. The Humidity entry should be showing the humidity from 
+            the sensor.</p>
+        <h3 id="issue-resolution">Issue Resolution</h3>
+        <ul class="fw-normal fs-4">
+            <li>If the Weather Source cannot be set to Internal Source then the I2C communications cannot be initialized. There may be an issue 
+                with the sensor or wiring. Double check all wiring and connections. Make sure the sensor probe is plugged in.
+            </li>
+            <li>If the temperature reading is showing -127.0&deg;C and the humidity reading is showing 0&percnt; then sensor readings are failing. 
+                There may be an issue with the sensor or wiring. Double check all wiring and connections. Make sure the sensor probe is properly 
+                plugged in.
+            </li>
+            <li>Temperature and humidity values do not look correct. It may be that the sensor needs a few minutes for the probe and the air in 
+                the probe case to stabilize. Wait 5 minutes and check the readings again.
+            </li>
+        </ul>
       </div>
     </main>
     <footer class="text-center footer mt-4 py-3" data-bs-theme="dark" style="background-color: #474c88;">
@@ -40,8 +420,13 @@
         <span class=" text-white">CheapoDC by <a href="https://github.com/hcomet" class="link-light">hcomet</a> &copy; 2025</a>.</span>
       </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
+    </script>
+    <script>var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        })
+    </script>
     </body>
 </html>

@@ -105,7 +105,7 @@
         <div class="container-md fs-4 fw-normal lh-sm">
             <br id="top-of-page">
             <div class="text-center">
-                <img src="/images/cheapodc-builds.png" alt="CheapoDC 6 Output"
+                <img src="./images/cheapodc-builds.png" alt="CheapoDC 6 Output"
                     class="img-fluid mx-auto border border-dark border-2">
             </div>
             <h1 class="mt-5" id="introducing-cheapodc">Introducing CheapoDC</h1>
@@ -117,9 +117,9 @@
                         a dual MOSFET module for each output and a 12V to 5V buck converter, plus some protoboard, RCA jacks, 12V barrel
                         jacks and wire.
                     </li>
-                    <li>No coding or Arduino IDE experience necessary with both <a href="/CheapoDC/CheapoDCFlash.html"
+                    <li>No coding or Arduino IDE experience necessary with both <a href="../CheapoDC/CheapoDCFlash.html"
                             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                            target="_blank">WebFlash</a> and <a href="/CheapoDC/CheapoDCWebUpdate.html"
+                            target="_blank">WebFlash</a> and <a href="../CheapoDC/CheapoDCWebUpdate.html"
                             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                             target="_blank">Web OTA Update</a> support.
                     </li>
@@ -129,7 +129,19 @@
                     <li>Flexibility to support from two to six power outputs, four of which may be used as additional
                         dew controller outputs or independently configured and controlled as PWM or On/Off outputs.
                     </li>
-                    <li><a href="/CheapoDC/indi/CheapoDC.html"
+                    <li>Dew Controller calculations driven by choice of weather information from one of:
+                        <ul>
+                            <li>Open weather api services, <a href="https://open-meteo.com/" class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            target="_blank">Open-Meteo</a> or <a href="https://openweathermap.org/" class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            target="_blank">OpenWeather</a>.</li>
+                            <li>Personal weather station integration via the <a href="https://github.com/hcomet/CheapoDC#cheapodc-api" class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            target="_blank">CheapoDC API</a> or <a href="./indi/CheapoDC.html"
+                            class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            target="_blank">INDI driver</a>.</li>
+                            <li>Optional SHT3x humidity sensor supported as of firmware V2.3.0.</li>
+                    </ul>
+                    </li>
+                    <li><a href="./indi/CheapoDC.html"
                             class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                             target="_blank">INDI</a> and StellarMate support 'out-of-the-box' and an open API for any
                         third party integrations.
@@ -165,6 +177,12 @@
                     build. Six outputs provides the flexibility to control several dew heater straps as well as some
                     12V accessories such as a camera cooler.
                 </p>
+                <p><strong>Note:</strong> Support for the optional SHT3x humidity sensor was added after these builds were 
+                documented. Basic information about adding the SHT3x sensor is included in this document but detailed information is 
+                included in supplemental <a
+                        href="./CheapoDCSensor.html"
+                        class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                        target="_blank">documentation on adding the sensor</a>.</p>
             </span>
             <h2 id="parts-list">Parts List</h2>
             <span class="fs-4 fw-normal">
@@ -175,7 +193,7 @@
                     link.
                 </p>
             </span>
-            <a href="/files/cheapodc-parts-list.csv" download data-bs-toggle="popover" data-bs-container="body"
+            <a href="../files/cheapodc-parts-list.csv" download data-bs-toggle="popover" data-bs-container="body"
                 data-bs-trigger="focus hover" data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover d-print-none"
                 data-bs-content="Download parts list CSV file.">
@@ -198,7 +216,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/esp32-c3.png' alt='ESP32-C3 SuperMini' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/esp32-c3.png' alt='ESP32-C3 SuperMini' class='mx-auto' width='400px'>">
                                 ESP32-C3 SuperMini</a></th>
                         <td class="text-center">1</td>
                         <td class="text-center">1</td>
@@ -212,7 +230,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/esp32-c3-xboard.png' alt='ESP32-C3 SuperMini Expansion Board' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/esp32-c3-xboard.png' alt='ESP32-C3 SuperMini Expansion Board' class='mx-auto' width='400px'>">
                                 ESP32-C3 SuperMini Expansion Board</a></th>
                         <td class="text-center">1</td>
                         <td class="text-center">0</td>
@@ -226,7 +244,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/mosfet-module.png' alt='Dual MOSFET Module' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/mosfet-module.png' alt='Dual MOSFET Module' class='mx-auto' width='400px'>">
                                 Dual MOSFET Module</a></th>
                         <td class="text-center">3</td>
                         <td class="text-center">6</td>
@@ -240,7 +258,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/lm2596.png' alt='LM2596 Buck Converter' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/lm2596.png' alt='LM2596 Buck Converter' class='mx-auto' width='400px'>">
                                 LM2596</a>
                             </th>
                         <td class="text-center">1</td>
@@ -259,7 +277,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/barrel-jack.png' alt='Barrel Jack' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/barrel-jack.png' alt='Barrel Jack' class='mx-auto' width='400px'>">
                                 12V Barrel Jack</a></th>
                         <td class="text-center">1</td>
                         <td class="text-center">3</td>
@@ -275,7 +293,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/rca-jack.png' alt='RCA Jack' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/rca-jack.png' alt='RCA Jack' class='mx-auto' width='400px'>">
                                 RCA Jack</a></th>
                         <td class="text-center">4</td>
                         <td class="text-center">4</td>
@@ -292,7 +310,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/rocker-switch.png' alt='Rocker Switch' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/rocker-switch.png' alt='Rocker Switch' class='mx-auto' width='400px'>">
                                 Rocker Switch</a></th>
                         <td class="text-center">1</td>
                         <td class="text-center">1</td>
@@ -308,7 +326,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/pptc.png' alt='RUEF500' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/pptc.png' alt='RUEF500' class='mx-auto' width='400px'>">
                                 RUEF500 PPTC</a></th>
                         <td class="text-center">1</td>
                         <td class="text-center">2</td>
@@ -322,7 +340,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover" data-bs-position="top"
                                 data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/female-header.png' alt='Female Pin Header' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/female-header.png' alt='Female Pin Header' class='mx-auto' width='400px'>">
                                 Female Pin Header</a>
                         </th>
                         <td class="text-center">0</td>
@@ -334,7 +352,7 @@
                                 data-bs-container="body" data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/esp32-c3-board.png' alt='ESP32-C3-board' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/esp32-c3-board.png' alt='ESP32-C3-board' class='mx-auto' width='400px'>">
                                 ESP32-C3-board</a> in the 6&#8209;Output build. You can also use longer female headers (seen
                             in the male header link below) and cut them down.
                         </td>
@@ -344,7 +362,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/male-header.png' alt='Male Pin Header' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/male-header.png' alt='Male Pin Header' class='mx-auto' width='400px'>">
                                 Male Pin Header</a></th>
                         <td class="text-center">2</td>
                         <td class="text-center">2</td>
@@ -360,7 +378,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/protoboard.png' alt='Protoboard' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/protoboard.png' alt='Protoboard' class='mx-auto' width='400px'>">
                                 Protoboard</a></th>
                         <td class="text-center">0</td>
                         <td class="text-center">1</td>
@@ -372,12 +390,12 @@
                                 data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
                                 data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/esp32-c3-board.png' alt='ESP32-C3-board' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/esp32-c3-board.png' alt='ESP32-C3-board' class='mx-auto' width='400px'>">
                                 ESP32-C3-board</a> and <a href="#" data-bs-toggle="popover" data-bs-container="body"
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/power-board.png' alt='Power-board' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/power-board.png' alt='Power-board' class='mx-auto' width='400px'>">
                                 Power-board</a>. A single 6cm X 8cm piece
                             should be enough
                             for both boards.
@@ -388,7 +406,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/red-led.png' alt='Red LED' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/red-led.png' alt='Red LED' class='mx-auto' width='400px'>">
                                 Red LED</a></th>
                         <td class="text-center">1</td>
                         <td class="text-center">0</td>
@@ -403,7 +421,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/12v-red-led.png' alt='12V Red LED' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/12v-red-led.png' alt='12V Red LED' class='mx-auto' width='400px'>">
                                 12V Red LED</a></th>
                         <td class="text-center">0</td>
                         <td class="text-center">6</td>
@@ -421,7 +439,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/3k-resistor.png' alt='3K Resistor' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/3k-resistor.png' alt='3K Resistor' class='mx-auto' width='400px'>">
                                 3K&#8486; resistor</th>
                         <td class="text-center">1</td>
                         <td class="text-center">1</td>
@@ -440,7 +458,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/dupont.png' alt='Dupont jumpers' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/dupont.png' alt='Dupont jumpers' class='mx-auto' width='400px'>">
                                 Dupont jumpers</th>
                         <td class="text-center">1</td>
                         <td class="text-center">0</td>
@@ -457,7 +475,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/2N2222.png' alt='2N2222' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/2N2222.png' alt='2N2222' class='mx-auto' width='400px'>">
                                 2N2222</th>
                         <td class="text-center">0</td>
                         <td class="text-center">1</td>
@@ -468,7 +486,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/power-board.png' alt='Power-board' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/power-board.png' alt='Power-board' class='mx-auto' width='400px'>">
                                 Power-board</a> for the 6-Outlet build. Allows the ESP32-C3 to control the Switch
                             LED as a
                             Status LED.
@@ -487,7 +505,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/esp32-c3-xboard.png' alt='ESP32-C3 SuperMini Expansion Board' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/esp32-c3-xboard.png' alt='ESP32-C3 SuperMini Expansion Board' class='mx-auto' width='400px'>">
                                 ESP32-C3 SuperMini Expansion Board</a></th>
                         <td class="text-center">0</td>
                         <td class="text-center">1</td>
@@ -503,7 +521,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/red-led.png' alt='Red LED' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/red-led.png' alt='Red LED' class='mx-auto' width='400px'>">
                                 Red LED</a></th>
                         <td class="text-center">1</td>
                         <td class="text-center">2</td>
@@ -518,7 +536,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/510-resistor.png' alt='510 Resistor' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/510-resistor.png' alt='510 Resistor' class='mx-auto' width='400px'>">
                                 510&#8486; resistor</th>
                         <td class="text-center">1</td>
                         <td class="text-center">2</td>
@@ -534,7 +552,7 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/rca-plug.png' alt='RCA Plug' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/rca-plug.png' alt='RCA Plug' class='mx-auto' width='400px'>">
                                 RCA Plug</a></th>
                         <td class="text-center">1</td>
                         <td class="text-center">1</td>
@@ -549,14 +567,59 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/barrel-plug.png' alt='RCA Plug' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/barrel-plug.png' alt='RCA Plug' class='mx-auto' width='400px'>">
                                 12V 5.5x2.1mm Barrel Plug</a></th>
                         <td class="text-center">1</td>
                         <td class="text-center">0</td>
                         <td><a href="https://www.aliexpress.com/item/1005001842323383.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                 target="_blank">US$1.00</a></td>
-                        <td>Used to make the LED test tool for output verification. The 6-Output build uses both RCA and Barrel jacks.</td>
+                        <td>Used to make the LED test tool for output verification. The 6&#8209;Output build uses both RCA and Barrel jacks.</td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='./images/barrel-plug.png' alt='RCA Plug' class='mx-auto' width='400px'>">
+                                SHT3x Humidity Sensor</a></th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">1</td>
+                        <td><a href="https://www.aliexpress.com/item/32695064184.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">US$1.50</a></td>
+                        <td>Optional SHT30 humidity sensor.</td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='./images/barrel-plug.png' alt='RCA Plug' class='mx-auto' width='400px'>">
+                                3.5mm 4-pole Audio Plug</a></th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">1</td>
+                        <td><a href="https://www.aliexpress.com/item/1005006399336850.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">US$0.50</a></td>
+                        <td>Connector required for optional SHT30 humidity sensor. <strong>4-pole required.</strong></td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='./images/barrel-plug.png' alt='RCA Plug' class='mx-auto' width='400px'>">
+                                3.5mm 4-pole Audio Jack</a></th>
+                        <td class="text-center">1</td>
+                        <td class="text-center">1</td>
+                        <td><a href="https://www.aliexpress.com/item/1005007486711391.html"
+                                class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                target="_blank">US$1.25</a></td>
+                        <td>Jack required for optional SHT30 humidity sensor. <strong>4-pole required.</strong></td>
                         </td>
                     </tr>
                 </tbody>
@@ -610,7 +673,7 @@
                             data-bs-trigger="focus hover" data-bs-custom-class="custom-popover" data-bs-position="top"
                             data-bs-html="true" data-bs-boundary="popper"
                             class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                            data-bs-content="<img src='/images/screws.png' alt='self-tapping screws' class='mx-auto' width='400px'>">
+                            data-bs-content="<img src='./images/screws.png' alt='self-tapping screws' class='mx-auto' width='400px'>">
                             self-tapping pan head screws</a> are required to attach the different modules to the 3D
                         printed case bottom and to hold the case together.
                         <ul class="list-unstyled ms-5">
@@ -618,7 +681,7 @@
                                 ESP32-C3 expansion
                                 board.
                             </li>
-                            <li><span class="fw-medium">M3x5mm Screws:</span> 2 for each of the 6-Output Power-board and
+                            <li><span class="fw-medium">M3x5mm Screws:</span> 2 for each of the 6&#8209;Output Power-board and
                                 ESP32-C3-boards.
                             </li>
                             <li><span class="fw-medium">M3x6mm Screws:</span> 4 to hold the case top and bottom
@@ -645,12 +708,19 @@
                             target="_blank">screw terminal blocks</a>. These require a crimping tool and some patience
                         so you may choose to use direct soldering of the wires or pre-made Dupont jumpers instead.
                     </li>
+                    <li>If adding support for the optional SHT3x humidity sensor, <a
+                            href="https://www.aliexpress.com/item/1005008182721422.html"
+                            class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            target="_blank">4 core cable</a> is needed to build a sensor 
+                        probe. See the <a href="./CheapoDCSensor.html" class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                        target="_blank">documentation on adding the sensor</a>.
+                    </li>
                 </ul>
             </span>
             <h2 id="cost">Cost</h2>
             <span class="fs-4 fw-normal">
-                <p>Costing is just an estimate but for the 3-Output build there's less than US$20.00 in core parts
-                    and for the 6-Output build there's about US$25.00 in core parts. Each of them need a case and
+                <p>Costing (based on mid-2025 numbers) is just an estimate but for the 3&#8209;Output build there's less than US$20.00 in core parts
+                    and for the 6&#8209;Output build there's about US$25.00 in core parts. Each of them need a case and
                     some screws which should be less than US$25.00 or cheaper if you can print your own case. The
                     next section discusses the two 3D-printed cases designed for these builds.
                 </p>
@@ -659,21 +729,21 @@
             <div class="row align-items-start">
                 <div class="col text-center ">
                     <div class="border border-dark border-2">
-                        <img src="/images/3-output-case.png" alt="3-Output Case" class="img-fluid ms-0 me-0">
+                        <img src="./images/3-output-case.png" alt="3-Output Case" class="img-fluid ms-0 me-0">
                         <hr class="opacity-100 mt-0 mb-0">
                         <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">3-Output Case</figcaption>
                     </div>
                 </div>
                 <div class="col text-center ">
                     <div class="border border-dark border-2">
-                        <img src="/images/6-output-case.png" alt="6-Output Case" class="img-fluid ms-0 me-0">
+                        <img src="./images/6-output-case.png" alt="6-Output Case" class="img-fluid ms-0 me-0">
                         <hr class="opacity-100 mt-0 mb-0">
                         <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6-Output Case</figcaption>
                     </div>
                 </div>
             </div>
             <span class="fs-4 fw-normal">
-                <p class="mt-3">The cases for the 3-Output and 6-Output builds are 128mmx85mmx38mm and
+                <p class="mt-3">The cases for the 3&#8209;Output and 6&#8209;Output builds are 128mmx85mmx38mm and
                     128mmx98mmx38mm (WxDXH), respectively. Both consist of a bottom and top piece with slots that
                     hold a front and back panel. The bottom pieces are designed to hold the modules used in each
                     build and allow them to be screwed down. The panels are designed to hold the jacks, switches and
@@ -681,9 +751,27 @@
                     back panel as the <span class="fst-italic">output-panel</span> in the build description. The top
                     and bottom pieces are held together with 4 M3x6mm screws.
                 </p>
+                <p>There are alternate versions of each of the switch-panels with added 8.5mm openings for the 3.5mm audio jack 
+                    used to connect the SHT3x humidity sensor.  One for the  
+                    <a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='./images/3-output-switch-panel-sht3x.png' alt='3-Output SHT3x' class='mx-auto' width='400px'>">
+                                3&#8209;Output build</a>  and one for the
+                    <a href="#" data-bs-toggle="popover" data-bs-container="body"
+                                data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
+                                data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
+                                class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                                data-bs-content="<img src='./images/6-output-switch-panel-sht3x.png' alt='6-Output SHT3x' class='mx-auto' width='400px'>">
+                                6&#8209;Output build</a>.
+                    If you wish to support the use of an SHT3x humidity sensor then these alternate switch panels are required.
+                    See the <a href="./CheapoDCSensor.html" class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                    target="_blank">documentation on adding the sensor</a> for more information.
+                </p>
                 <p>Besides the top, bottom and panels there are some additional pieces:
                 <ul>
-                    <li>The 3-Output switch-panel has an opening to expose the USB port on the ESP32-C3. A 3D printable
+                    <li>The 3&#8209;Output switch-panel has an opening to expose the USB port on the ESP32-C3. A 3D printable
                         press fit plug is available.
                     </li>
                     <li>The LEDs that are mounted in the panels are held in place by a 3D printable holder with a press
@@ -692,7 +780,7 @@
                     <li>There are two sets of panels for the 6-Outlet case. One set with LED holes for each output and
                         one set without LED holes.
                     </li>
-                    <li>There are two versions of the 6-Output case bottom. One which provides a mounting spot for the
+                    <li>There are two versions of the 6&#8209;Output case bottom. One which provides a mounting spot for the
                         protoboard based ESP32-C3-board and one which provides an alternate mounting for the ESP32-C3
                         SuperMini Expansion board.
                     </li>
@@ -750,6 +838,9 @@
                     </ul>
                 </span>
             </h2>
+            <p class="fw-normal fs-4"><strong>Note:</strong> The assembly steps below DO NOT include details about adding support for the SHT3x
+            humidity sensor. Read the <a href="./CheapoDCSensor.html" class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                target="_blank">documentation on adding the sensor</a> for more information.</p>
             <ol class="h4">
                 <li>
                     <p id="assembly-3-1">Solder pins to modules.</p>
@@ -760,14 +851,14 @@
                                 data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
                                 data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/single-pin.png' alt='Single Pin tip' class='mx-auto' width='400px'>">piece
+                                data-bs-content="<img src='./images/single-pin.png' alt='Single Pin tip' class='mx-auto' width='400px'>">piece
                                 of painter's tape pierced by a single pin and taped to the buck converter to hold the pin in
                                 place while I soldered it</a>. The tape is removed after soldering. <a href="#"
                                 data-bs-toggle="popover" data-bs-container="body" data-bs-trigger="focus hover"
                                 data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
                                 data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/mosfet-pins.png' alt='MOSFET trigger pins' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/mosfet-pins.png' alt='MOSFET trigger pins' class='mx-auto' width='400px'>">
                                 The MOSFET modules each get a 4 pin header which provides for 2 trigger and 2 ground
                                 pins</a>. This allows the ground connection to be daisy chained between the modules. One of
                             the trigger pins on each MOSFET module must be connected to one GPIO pin on the ESP32-C3
@@ -790,7 +881,7 @@
                         </div>
                         <div class="col text-center ">
                             <div class="border border-dark border-2">
-                                <img src="/images/case-bottom-3-populated.png"
+                                <img src="./images/case-bottom-3-populated.png"
                                     alt="3-Output Build - Modules Installed" class="img-fluid ms-0 me-0">
                                 <hr class="opacity-100 mt-0 mb-0">
                                 <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">3&#8209;Output Build -
@@ -803,7 +894,7 @@
                     <p id="assembly-3-3">Create power harnesses.</p>
                     <div class="clearfix mt-3">
                         <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
-                            <img src="/images/case-bottom-3-power.png" alt="3-Output Build - Power Harness Routing"
+                            <img src="./images/case-bottom-3-power.png" alt="3-Output Build - Power Harness Routing"
                                 class="img-fluid ms-0 me-0">
                             <hr class="opacity-100 mt-0 mb-0">
                             <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">3&#8209;Output Build - Power
@@ -836,7 +927,7 @@
                                 data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
                                 data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/red-led.png' alt='Single Pin tip' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/red-led.png' alt='Single Pin tip' class='mx-auto' width='400px'>">
                                 longer positive (anode) lead</a> of the red LED and then solder
                             the 3K resistor to the positive lead. Trim the negative (cathode) lead. Cut the ends off a
                             couple of Dupont jumpers and strip the ends. Cut and solder the Dupont jumpers to the resistor and negative lead. 
@@ -858,7 +949,7 @@
                             between the rocker switch and the barrel jack. 
                         </p>
                         <p>The positive lead of the barrel jack is connected to the switch through the PPTC fuse. First solder a couple
-                            of leads onto the PPTC then solder one lead to the positive lead of the barrel jack and the other leade to
+                            of leads onto the PPTC then solder one lead to the positive lead of the barrel jack and the other lead to
                             one of the pole leads of the rocker switch.
                         </p>
                     </span>
@@ -905,7 +996,7 @@
 
                     <div class="clearfix mt-3">
                         <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
-                            <img src="/images/3-output-panel.png" alt="3-Output Build - Output-panel"
+                            <img src="./images/3-output-panel.png" alt="3-Output Build - Output-panel"
                                 class="img-fluid ms-0 me-0">
                             <hr class="opacity-100 mt-0 mb-0">
                             <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">3&#8209;Output Build - Output
@@ -937,7 +1028,7 @@
                             way
                             to do
                             this is to connect the ESP32-C3 to your computer using a USB cable and then use the
-                            <a href="/CheapoDC/CheapoDCFlash.html"
+                            <a href="../CheapoDC/CheapoDCFlash.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                 target="_blank">WebFlash</a> tool to upload the latest firmware. After the firmware is
                             uploaded, follow
@@ -971,7 +1062,7 @@
                     </p>
                     <div class="clearfix mt-3">
                         <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
-                            <img src="/images/case-bottom-3-final.png" alt="3-Output Build - Wiring Complete"
+                            <img src="./images/case-bottom-3-final.png" alt="3-Output Build - Wiring Complete"
                                 class="img-fluid ms-0 me-0">
                             <hr class="opacity-100 mt-0 mb-0">
                             <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">3&#8209;Output Build - Wiring
@@ -1028,7 +1119,7 @@
             <span class="fw-normal fs-4">
                 <p>This 6 output device was built for firmware testing and demonstration purposes, not to be used on an
                     actual astrophotography rig and as such this affected some aspects of the design. If you are building
-                    a 6-Output CheapoDC for personal use on your astrophotography rig, consider the following:
+                    a 6&#8209;Output CheapoDC for personal use on your astrophotography rig, consider the following:
                 <ul>
                     <li>There is an external LED for each output to help with testing. In general,
                         having a lot of flashing red LEDs on an astrophotography rig is not a good idea. Only the status
@@ -1061,8 +1152,8 @@
             <div class="clearfix">
                 <div class="col-sm-6 float-sm-end mb-3 ms-sm-3 ps-2">
                     <div class="border border-dark border-2 text-center">
-                        <img src="/images/esp32-c3-board.png" alt="ESP32-C3-board" class="img-fluid mx-auto">
-                        <img src="/images/esp32-c3-board-schematic.png" alt="ESP32-C3-board Schematic" class="img-fluid mx-auto">
+                        <img src="./images/esp32-c3-board.png" alt="ESP32-C3-board" class="img-fluid mx-auto">
+                        <img src="./images/esp32-c3-board-schematic.png" alt="ESP32-C3-board Schematic" class="img-fluid mx-auto">
                         <hr class="opacity-100 mt-0 mb-0">
                         <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">ESP32-C3-board</figcaption>
                     </div>
@@ -1090,8 +1181,8 @@
                         alternative is to use an <a href="#" data-bs-toggle="popover" data-bs-container="body" data-bs-trigger="focus hover"
                             data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                             class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                            data-bs-content="<img src='/images/esp32-c3-xboard.png' alt='ESP32-C3 SuperMini Expansion Board' class='mx-auto' width='400px'>">
-                            ESP32-C3 SuperMini Expansion Board</a> as was used in the 3-Output build. A version of 6-Output build case
+                            data-bs-content="<img src='./images/esp32-c3-xboard.png' alt='ESP32-C3 SuperMini Expansion Board' class='mx-auto' width='400px'>">
+                            ESP32-C3 SuperMini Expansion Board</a> as was used in the 3&#8209;Output build. A version of 6&#8209;Output build case
                         bottom that supports mounting the ESP32-C3 SuperMini expansion board is available in the GitHub repository. The
                         expansion board is a little larger than the protoboard based board and will make routing the power harnesses a
                         little tighter.
@@ -1102,8 +1193,8 @@
             <div class="clearfix">
                 <div class="col-sm-6 float-sm-end mb-3 ms-sm-3 ps-2">
                     <div class="border border-dark border-2 text-center">
-                        <img src="/images/power-board.png" alt="Power-board" class="img-fluid mx-auto">
-                        <img src="/images/power-board-schematic.png" alt="Power-board Schematic" class="img-fluid mx-auto">
+                        <img src="./images/power-board.png" alt="Power-board" class="img-fluid mx-auto">
+                        <img src="./images/power-board-schematic.png" alt="Power-board Schematic" class="img-fluid mx-auto">
                         <hr class="opacity-100 mt-0 mb-0">
                         <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">Power-board</figcaption>
                     </div>
@@ -1153,9 +1244,12 @@
 
             <p class="fw-normal fs-4">
                 Once the ESP32-C3 and Power-boards are completed, its time to move on to the assembly steps. These build
-                steps are very similar to the 3-Output
+                steps are very similar to the 3&#8209;Output
                 build steps.
             </p>
+            <p class="fw-normal fs-4"><strong>Note:</strong> The assembly steps below DO NOT include details about adding support for the SHT3x
+            humidity sensor. Read the <a href="./CheapoDCSensor.html" class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                target="_blank">documentation on adding the sensor</a> for more information.</p>
             <ol class="h4">
                 <li>
                     <p id="assembly-6-1">Solder pins to modules.</p>
@@ -1165,14 +1259,14 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
                                 data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/single-pin.png' alt='Single Pin tip' class='mx-auto' width='400px'>">piece
+                                data-bs-content="<img src='./images/single-pin.png' alt='Single Pin tip' class='mx-auto' width='400px'>">piece
                                 of painters tape with pierced with a single pin and taped to the buck converter to hold the pin in place while I
                                 soldered it</a>. The tape is removed after soldering.
                         </p>
-                        <p>For the 6-Output build I used 2-pin Molex KK-254 headers instead of the 2.54mm male pin headers used in th the
-                            3-Output build. The Molex KK-254 headers have a friction lock that helps to hold the female connector in place while
-                            the many wires in the 6-Output build are compressed into the case. If you want to avoid crimping your own wires then
-                            use the pin headers used in the 3-Output build with Dupont jumpers.
+                        <p>For the 6&#8209;Output build I used 2-pin Molex KK-254 headers instead of the 2.54mm male pin headers used in th the
+                            3&#8209;Output build. The Molex KK-254 headers have a friction lock that helps to hold the female connector in place while
+                            the many wires in the 6&#8209;Output build are compressed into the case. If you want to avoid crimping your own wires then
+                            use the pin headers used in the 3&#8209;Output build with Dupont jumpers.
                         </p>
                         <p>If your ESP32-C3 came without the header pins soldered to the board, also solder those header
                             pins at this time.
@@ -1183,7 +1277,7 @@
                     <p id="assembly-6-2">Mount modules to case bottom.</p>
                     <div class="clearfix mt-3">
                         <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
-                            <img src="/images/case-bottom-6-populated.png" alt="6-Output Build - Modules Installed"
+                            <img src="./images/case-bottom-6-populated.png" alt="6-Output Build - Modules Installed"
                                 class="img-fluid ms-0 me-0">
                             <hr class="opacity-100 mt-0 mb-0">
                             <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - Modules
@@ -1206,7 +1300,7 @@
                     <p id="assembly-6-3">Create power harnesses.</p>
                     <div class="clearfix mt-3">
                         <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
-                            <img src="/images/case-bottom-6-power.png" alt="6-Output Build - Power Harness Routing"
+                            <img src="./images/case-bottom-6-power.png" alt="6-Output Build - Power Harness Routing"
                                 class="img-fluid ms-0 me-0">
                             <hr class="opacity-100 mt-0 mb-0">
                             <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - Power
@@ -1238,7 +1332,7 @@
                     <p id="assembly-6-4">Connect the power harnesses.</p>
                     <div class="clearfix mt-3">
                         <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
-                            <img src="/images/case-bottom-6-wiring.png"
+                            <img src="./images/case-bottom-6-wiring.png"
                                 alt="6-Output Build - Installed Power Harness" class="img-fluid ms-0 me-0">
                             <hr class="opacity-100 mt-0 mb-0">
                             <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - Installed
@@ -1269,14 +1363,14 @@
                     <p id="assembly-6-5">Assemble the Switch-panel</p>
                     <div class="clearfix mt-3">
                         <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
-                            <img src="/images/6-switch-panel.png" alt="6-Output Build - Switch-panel"
+                            <img src="./images/6-switch-panel.png" alt="6-Output Build - Switch-panel"
                                 class="img-fluid ms-0 me-0">
                             <hr class="opacity-100 mt-0 mb-0">
                             <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - Switch
                                 Panel</figcaption>
                         </div>
                         <span class="fw-normal fs-4">
-                            <p>The 6-Output switch-panel the power switch and power input jack as well as two RCA jacks for for
+                            <p>The 6&#8209;Output switch-panel the power switch and power input jack as well as two RCA jacks for for
                                 CheapoDC outputs 0 and 1. If building with the output LEDs then there is also one LED for each
                                 of the two outputs. The image shows the switch-panel assembled with connections attached.
                             </p>
@@ -1323,7 +1417,7 @@
                     <p id="assembly-6-6">Install the Switch-panel.</p>
                     <div class="clearfix mt-3">
                         <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
-                            <img src="/images/6-switch-panel-install.png"
+                            <img src="./images/6-switch-panel-install.png"
                                 alt="6-Output Build - Switch-panel Installed" class="img-fluid ms-0 me-0">
                             <hr class="opacity-100 mt-0 mb-0">
                             <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - Switch
@@ -1384,7 +1478,7 @@
                     <span class="fw-normal fs-4">
                         <p>If you have not installed the CheapoDC firmware onto the ESP32-C3 then do it now. The easiest way
                             to do this is to connect the ESP32-C3 to your computer using a USB cable and then use the <a
-                                href="/CheapoDC/CheapoDCFlash.html"
+                                href="../CheapoDC/CheapoDCFlash.html"
                                 class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                 target="_blank">WebFlash</a> tool to upload the latest firmware. After the firmware is
                             uploaded, follow the steps outlined in <a
@@ -1418,7 +1512,7 @@
                     </p>
                     <div class="clearfix mt-3">
                         <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
-                            <img src="/images/6-output-panel.png" alt="6-Output - Output-panel"
+                            <img src="./images/6-output-panel.png" alt="6-Output - Output-panel"
                                 class="img-fluid ms-0 me-0">
                             <hr class="opacity-100 mt-0 mb-0">
                             <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - Output
@@ -1454,7 +1548,7 @@
                     </p>
                     <div class="clearfix mt-3">
                         <div class="border border-dark border-2 col-sm-6 float-sm-end mb-3 ms-sm-3 text-center">
-                            <img src="/images/6-output-panel-install.png" alt="6-Output - Output-panel Installed"
+                            <img src="./images/6-output-panel-install.png" alt="6-Output - Output-panel Installed"
                                 class="img-fluid ms-0 me-0">
                             <hr class="opacity-100 mt-0 mb-0">
                             <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - Output
@@ -1471,7 +1565,7 @@
                                 the MOSFET module terminal block is very tight. You may need to disconnect the J1 Power-board connections before
                                 doing the MOSFET module connections. Then reconnect the Power-board connections.
                             </p>
-                            <p>Work your way, using the image, right to left with the upper barrel jack connecting to the right Mosfet module, the
+                            <p>Work your way, using the image, right to left with the upper barrel jack connecting to the right MOSFET module, the
                                 right RCA jack connecting to the middle MOSFET module and then the left RCA jack connecting to the left-most MOSFET
                                 module.
                             </p>
@@ -1486,7 +1580,7 @@
                     <div class="row align-items-center">
                         <div class="col text-center">
                             <div class="border border-dark border-2">
-                                <img src="/images/case-bottom-6-control.png" alt="6-Output Build - GPIO Connections"
+                                <img src="./images/case-bottom-6-control.png" alt="6-Output Build - GPIO Connections"
                                     class="img-fluid mx-auto">
                                 <hr class="opacity-100 mt-0 mb-0">
                                 <figcaption class="figure-caption mt-1 mb-1 fw-medium fs-4">6&#8209;Output Build - GPIO
@@ -1495,7 +1589,7 @@
                         </div>
                         <div class="col text-center">
                             <div class="border border-dark border-2">
-                                <img src="/images/case-bottom-6-final.png" alt="6-Output Build - Wiring Complete"
+                                <img src="./images/case-bottom-6-final.png" alt="6-Output Build - Wiring Complete"
                                     class="img-fluid mx-auto">
                                 <hr class="opacity-100 mt-0 mb-0">
                                 <h4>6&#8209;Output Build - Wiring Complete</h4>
@@ -1510,7 +1604,7 @@
                                 data-bs-custom-class="custom-popover" data-bs-position="top" data-bs-html="true"
                                 data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/6-control-zoom.png' alt='Single Pin tip' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/6-control-zoom.png' alt='Single Pin tip' class='mx-auto' width='400px'>">
                                 here</a> to see a zoomed in view of the ESP32-C3 pin connections.
                         </p>
                         <p>If you are crimping your own jumpers then cut them to length. If using Dupont jumpers then 10cm
@@ -1535,14 +1629,22 @@
             <h1 id="hardware-verification">Hardware Verification</h1>
             <span class="fw-normal fs-4">
                 <p>Before putting the top on the case verify that everything works. This can be done fairly easily and
-                the process is roughly the same for both the 6-Output and 3-Output builds. Having the output LEDs
+                the process is roughly the same for both the 6&#8209;Output and 3&#8209;Output builds. Having the output LEDs
                 helps with visual verification of the output of the MOSFET modules but you will still need to check
                 each output jack to confirm the connections to the jacks. There are a couple of ways to verify the
                 outputs are working:
                     <ol>
-                        <li>Using a voltmeter or multimeter to measure the voltage output. This works well if you have a
-                        multimeter. Using an RCA plug with a couple of leads makes this easier. The 6-Outlet build also has
-                        12V barrel jacks which will require a matching barrel plug with test leads.
+                        <li>Use a voltmeter or multimeter to measure the voltage output. Outputs set to an Output Mode of
+                            Boolean are easy to measure with a multimeter since they are either On (12 volts) or Off (0 volts).
+                            When configured to Controller or PWM Output Mode the measurement may depend on the multimeter. Both 
+                            of these modes use 
+                            <a href="https://soldered.com/learn/pwm-pulse-width-modulation/?srsltid=AfmBOoqV2_qgfV3VvC9shlpPNvV4GxhScqjDVusVctkjCPmTlKTOO6bQ"
+                            class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
+                            target="_blank">Pulse Width Modulation</a> (PWM) to switch the outputs between 0 volts and 12 volts
+                            1000 times per second. The amount of power output is determined by how much the output is at 12 volts
+                            versus 0 volts, the duty cycle. This may prevent a multimeter from providing useful readings. Making sure you have a 
+                            load across the output and measuring across the load will provide better readings. For this reason
+                            using the next method is often easier and more reliable.
                         </li>
                         <li>Making and using a simple LED test lead. This uses an LED set up for 12 volts soldered to an RCA
                             plug and/or 12V barrel plug. Moving the LED from output to output is easy and both On/Off and
@@ -1555,18 +1657,18 @@
                                 data-bs-trigger="focus hover" data-bs-custom-class="custom-popover"
                                 data-bs-position="top" data-bs-html="true" data-bs-boundary="popper"
                                 class="link-info link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
-                                data-bs-content="<img src='/images/test-led.png' alt='Test LED' class='mx-auto' width='400px'>">
+                                data-bs-content="<img src='./images/test-led.png' alt='Test LED' class='mx-auto' width='400px'>">
                                 Make an LED Test Lead</a></h2>
             <span class="fw-normal fs-4">
                 <p>To make a simple LED test lead, solder a 12 volt LED to an RCA plug. An LED can be configured for 12
                     volts by using a current limiting resistor. If you do not have a pre-made 12 volt LED you can make
                     one following the steps to solder up the <a href="#assembly-3-4"
                         class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
-                        3-Output status LED</a> except with a 3K&#8486; resistor instead of a 510&#8486;
+                        3&#8209;Output status LED</a> except with a 3K&#8486; resistor instead of a 510&#8486;
                     resistor. The LED positive lead should be connected to the center pin of the RCA plug and
                     the ground lead should be connected to the outer sleeve of the RCA plug.
                 </p>
-                <p>If you have a 6-Output CheapoDC with 12V barrel jacks then build a second LED test lead with a barrel
+                <p>If you have a 6&#8209;Output CheapoDC with 12V barrel jacks then build a second LED test lead with a barrel
                     plug.</p>
             </span>
             <h2>Connection Verification Steps</h2>
@@ -1603,7 +1705,7 @@
                                 then remain on then there may be an issue with the ESP32-C3 SuperMini. Pull the ESP32-C3
                                 SuperMini from the expansion board. Then power it from a USB connection on its own. If
                                 the power LED is on but the blue light remains off try uploading the firmware again
-                                using <a href="/CheapoDC/CheapoDCFlash.html"
+                                using <a href="../CheapoDC/CheapoDCFlash.html"
                                     class="link-primary link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                                     target="_blank">WebFlash</a>.
                             </li>
@@ -1694,9 +1796,8 @@
 
     <footer class="text-center footer py-3" data-bs-theme="dark" style="background-color: #474c88;">
         <div class="container-md mx-auto">
-            <span class="text-white">CheapoDC by <a target="_blank" href="https://github.com/hcomet/">
-                        <img src="/images/hc-logo-white.png" width="75" alt="HComet Logo" class="mb-0"></a>
-                &copy; 2025.</span>
+            <span class="text-white">CheapoDC by <a href="https://github.com/hcomet" class="link-light">hcomet</a>
+                &copy; 2025</a>.</span>
         </div>
     </footer>
 

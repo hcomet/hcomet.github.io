@@ -23,3 +23,6 @@ Red LED,1,2,US$0.05,https://www.aliexpress.com/item/1005003323707856.html,5mm re
 510Ω resistor,1,3,US$0.10,https://www.aliexpress.com/item/1005007714306585.html,Used with the Red LED to make a test LED for output verification instead of using a voltmeter. Getting a kit with an assortment of ¼W resistors may be an option.
 RCA Plug,1,1,US$1.00,https://www.aliexpress.com/item/1005005222350895.html,Used to make the LED test tool for output verification. Also useful if using a voltmeter for verification.
 12V 5.5x2.1mm Barrel Plug,1,0,US$1.00,https://www.aliexpress.com/item/1005001842323383.html,Used to make the LED test tool for output verification. The 6-Output build uses both RCA and Barrel jacks.
+SHT3x Humidity Sensor,1,1,US$1.00,https://www.aliexpress.com/item/32695064184.html,Optional SHT30 humidity sensor.
+3.5mm 4-pole Audio Plug,1,1,US$0.50,https://www.aliexpress.com/item/1005006399336850.html,Connector required for optional SHT30 humidity sensor. 4-pole required.
+3.5mm 4-pole Audio Jack,1,1,US$1.25,https://www.aliexpress.com/item/1005007486711391.html,"	Jack required for optional SHT30 humidity sensor. 4-pole required."
